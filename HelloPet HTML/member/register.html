@@ -12,6 +12,10 @@
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+<style>
+
+
+</style>
 <body>
     <div id="wrapper">
         <header>
@@ -36,49 +40,63 @@
         </header>
         <main class="main">
             <div class="terms_div">
-                <div class="terms_top">
+                <div class="register_top">
                     <span>펫오너 회원가입</span>
                     <div class="terms_top2">
-                        <span>이용약관</span>
-                        <div class="terms_img">
-                            <img src="../img/tab1.png" alt="">
+                        <span>회원가입</span>
+                        <div class="register_img">
+                            <img src="../img/tab2.png" alt="">
                         </div>
                     </div>
-                </div>
-                <div class="terms_content">
-                    <div class="content">
-                        <span>이용약관</span>
-                        <p>
-                            여기에는 약관 내용이 들어갑니다.
-                        </p>
+                    <div>
+                        <form action="">
+                            <table>
+                                <tr>
+                                    <td>휴대폰</td>
+                                    <td>
+                                        <input type="text" name="hp">
+                                        <input type="button" name="btnHpCheck" value="본인확인">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>이름</td>
+                                    <td>
+                                        <input type="text" name="name">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>이메일</td>
+                                    <td>
+                                        <input type="email" name="email">
+                                        <input type="button" name="btnEmailCheck" value="중복확인">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>비밀번호</td>
+                                    <td>
+                                        <input type="password" name="pass1">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>비밀번호 확인</td>
+                                    <td>
+                                        <input type="password" name="pass2">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>닉네임</td>
+                                    <td>
+                                        <input type="text" name="nick">
+                                        <input type="button" name="btnNickCheck" value="중복확인">
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
                     </div>
-                    <div class="terms_check">
-                        <input type="checkbox" name="check">
-                        <span>이용약관에 동의합니다.</span>
-                    </div>
-                </div>
-                <div class="terms_privacy">
-                    <div class="contetent1">
-                        <span>개인정보처리방침</span>
-                        <p>
-                            여기에는 약관 내용이 들어갑니다.
-                        </p>
-                    </div>
-                    <div class="div_check">
-                        <div>
-                            <input type="checkbox" name="check">
-                            <span>이용약관에 동의합니다.</span>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="check">
-                            <span>전체동의합니다.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="terms_button">
+                <div class="register_button">
                     <ul>
                         <li><input type="button" value="취소"></li>
-                        <li><input type="button" value="다음 단계로"></li>
+                        <li><input type="button" value="가입하기"></li>
                     </ul>
                 </div>
             </div>
