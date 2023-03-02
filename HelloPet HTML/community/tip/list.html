@@ -110,12 +110,7 @@
         }
 
 
-        main {
-            width: 100%;
-            height: auto;
-            margin: 0 auto;
-            
-        }
+       
 
         
 
@@ -216,10 +211,71 @@
 
         /* community_tipList */
 
-       #tipMain table {
-        margin: 0 auto;
+        .container {
+        width: 100%;
+        text-align: center;
        }
+
+       section  table {
+        display: block;
+        margin: 0 auto;
+        width: 1200px;
+        height: 141px;
+        border-top: 2px solid #10958b;
+        border-bottom: 1px solid #dcdcdc;
+        margin-top: 70px;
+       }
+       
+       
+       
+
+       table  span:first-child{
+        display: block;
+        width: 160px;
+        height: 100px;
+       }
+       table tr{
+        border-bottom: 2px solid #dcdcdc;
+       }
+    
+
+       .tipTitle{
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: -15px;
+        margin-left: 24px;
+        color: #333;
+       }
+
+      
+
+       .tipNick{
+        display: block;
+        font-size: 18px;
+        font-weight: 700;
+        margin-right: 230px;
+        color: #10958b;
+       }
+
+       .tipInfo{
+        display: inline-block;
+        margin-right: -1150px;
         
+       }
+
+       .tipLike{
+        
+       }
+
+       .tipHit{
+        dis
+       }
+
+       .paging > ul > li{
+        display: inline-block;
+       }
+
+
         
     </style>
 </head>
@@ -259,18 +315,22 @@
             <section id="tipMain">
                 <div class="container">
                     <div class="tip_table">
-                        <table>
+                        <table border="0">
                             <tr>
-                                <img src="#" alt="#">
-                            </tr>
-                            <tr>    
-                                <td>고양이 유전질환 비대성 심근증(HCM)</td>
-                            </tr>
-                            <tr>
-                                <td>좋아요<strong>3</strong></td>
-                                <td>조회64<span>2023.00.00</span></td>
+                                <td class="tipImg">
+                                    <span style="background: url(../img/tip_table1.png) center center / cover no-repeat"></span>
+                                </td>
+                                <td>    
+                                    <div class="tipTitle">고양이 유전질환 비대성 심근증(HCM)</div><br>
+                                   <span class="tipNick">헬로펫</span>
+                                </td>
+                                <td class="tipInfo">
+                                   <div class="tipLike">좋아요<strong>3</strong></div><br>
+                                    <div class="tipHit">조회64<span>2023.00.00</span></div>
+                                </td>
                             </tr>
                         </table>
+                        </div>
                 <div class="write">
                     <button>글쓰기</button>
                 </div>
