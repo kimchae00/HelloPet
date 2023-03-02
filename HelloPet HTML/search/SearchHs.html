@@ -11,17 +11,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
     <style>
-          * {
+        * {
             margin: 0;
             padding: 0;
-            font: normal 12px "Noto Sans CJK KR";
+            font-family: "Noto Sans KR","Apple SD Gothic Neo",Helvetica,sans-serif,Arial;
         }
-
-
         *, :after, :before {
             box-sizing: inherit!important;
         }
-
         a {
             text-decoration: none;
             color: #111;
@@ -30,74 +27,130 @@
         input, textarea {
             outline: none;
         }
-        #wrapper {
-            width: 100%;
-        }
-        header {
-            width: 100%;
-            height: 190px;
+        
+        .header {
+            z-index: 200;
+            position: fixed;
+            padding: 40px 60px 0;
+            height: 120px;
+            background: #32a69f;
         }
 
-      
-
-        header > div {
+        .header, .header:before {
+            top: 0;
+            left: 0;
             width: 100%;
-            box-sizing: border-box;
         }
-        header > .top {
-            height: 35px;
+        .header:before {
+            content: "";
+            position: absolute;
+            height: 40px;
             background: #e1f3f3;
         }
-        header > .top > div {
-            width: 1200px;
-            height: 100%;
-            margin: 0 auto;
-            text-align: right;
+
+        .header_inner, .header_top {
+            position: relative;
+            margin: auto;
         }
-        header > .top > div > a {
-            display: inline-block;
+        .header_inner {
+            z-index: 2;
+            text-align: center;
+        }
+        .header_top {
+            width: 100%;
+            height: 100px;
+        }
+        .header_logo {
+            display: block;
+            z-index: 10001;
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 120px;
+            height: 120px;
+        }
+        .header_logo a {
+            display: block;
+            width: 100%;
             height: 100%;
-            line-height: 35px;
-            padding: 0 10px;
+            background: url(../img/ci.png);
+        }
+        .blind {
+            overflow: hidden;
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            clip: rect(1px,1px,1px,1px);
+        }
+        .header__menu {
+            display: inline-block;
+            position: relative;
+        }
+        .header-menu-ul {
+            display: flex;
+        }  
+        .header-menu-ul>li {
+            position: relative;
+        }
+        .header-menu-ul .menu-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            margin: 0 30px;
+            padding: 10px;
+            line-height: 1;
+            font-size: 20px;
+            font-weight: 300;
+            color: #fff;
+            transition: all .15s ease-out;
+        }
+       
+        .header-menu-ul>li:nth-child(2) {
+            margin-right:100px
+        }
+
+        .header-menu-ul>li:nth-child(3) {
+            margin-left: 100px
+        }
+
+        .header-menu-ul .menu-link {
+            margin: 0 60px
+        }
+
+        .header-customer-ul a {
+            margin-left: 10px
+        }
+        .header_right {
+            position: absolute;
+            top: -37px;
+            right: -50px;
+        }
+        .header-customer-ul {
+            display: flex;
+            align-items: center;
+        }
+        .header-customer-ul a {
+            display: block;
+            margin-left: 30px;
+            padding: 5px;
             font-size: 14px;
             color: #555;
             font-weight: 300;
         }
-
-        header > .menu {
-            padding: 40px 60px 0;
-            height: 100px;
-            background: #32a69f;
-            box-sizing: border-box;
-        }
-        header > .menu > div {
-            width: 1200px;
-            height: 100%;
-            margin: 0 auto;
-        }
-        header > .menu > div > ul {
-            display: inline-block;
-            margin-top: 0px;
-        }
-        header > .menu > div > ul:nth-child(1) {float: left;}
-        header > .menu > div > ul:nth-child(2) {float: right;}
-        header > .menu > div > ul > li {float: left;}
-        header > .menu > div > ul > li > a {
-            padding: 0 60px;
-            font-size: 20px;
-            color: white;
-        }
-        header > .menu > div > ul > .logo {margin-top: -50px; overflow: hidden;}
+        
 
         
-        main {
+        .SearchIndex {
             width: 1200px;
             height: auto;
             margin: 0 auto;
             overflow: hidden;
         }
 
-        main > section {
+        .SearchIndex > section {
             float: right;
             width: 985px;
             height: auto;
@@ -156,16 +209,17 @@
             font-weight: bold;
         }
 
+        
 
         .SearchHs {
             min-height: 600px;
         }
 
-        .SearchHs > .sub-contents{
-            padding: 0px 0 160px;
+        .SearchHs > .contents{
+            padding: 120px 0 160px;
         }
 
-        .SearchHs > .sub-contents> div{
+        .SearchHs > .contents> div{
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -174,7 +228,7 @@
             background: #e1f4f3;
         }
 
-        .SearchHs > .sub-contents>.search-top > .title {
+        .SearchHs > .contents>.search-top > .title {
         line-height: 1.4;
         font-size: 35px;
         color: #555;
@@ -183,73 +237,106 @@
         padding: 0 15px;
         }
 
-        .SearchHs > .sub-contents > .section1 {
+        .SearchHs  section {
             margin-top: 60px;
         }
-        .SearchHs > .sub-contents > .section1 > .container{
+        .SearchHs  section > .container{
             margin: auto;
             max-width: 1200px;
             padding: 0;
         }
-        .SearchHs > .sub-contents > .section1 > .search-head {
+        .SearchHs  section > .container > .search-head {
             position: relative;
             z-index: 3;
             margin-top: -115px;
             margin-bottom: 40px;
         }
-        .SearchHs > .sub-contents > .section1 > .search-box-container {
+        .SearchHs  section > .container > .search-head > .search-box-container {
             margin: 62px auto 0;
             padding: 10px;
-            max-width: 640px;
+            max-width: 450px;
             width: 100%;
-            height: 100px;
+            height: 60px;
             background-image: linear-gradient(90deg,#1dc6f7,#00e5c2);
             box-shadow: 0 6px 15px 0 rgb(36 36 36 / 21%);
         }
 
+        .SearchHs .inner {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+        }
+        .SearchHs .inner input {
+            padding: 0 90px 0 20px;
+            width: 100%;
+            height: 100%;
+            font-size: 34px;
+            color: #0dbcaf;
+            font-weight: 300;
+            border: none!important;
+        }
+
+        .SearchHs .inner button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 90px;
+            height: 100%;
+            background: url(../img/search3.png) no-repeat 50%;
+            border: none;
+        }
 
     </style>
 </head>
 <body>
     <div id="wrapper">
-        <header>
-            <div class="top">
-                <div>
-                    <a href="#">로그인</a>
-                    <a href="#">회원가입</a>
-                    <a href="#">마이페이지</a>
-                </div>
-           </div>
-           <div class="menu">
-                <div>
-                   <ul>
-                       <li><a href="#">증상별질병찾기</a></li>
-                       <li><a href="#">병원/약국찾기</a></li>
-                       <li class="logo"><a href=".//index.html"><img src="../img/logo.png" alt="logo"></a></li>
-                       <li><a href="#">커뮤니티</a></li>
-                       <li><a href="#">고객센터</a></li>
-                   </ul>
-                </div>
+        <header class="header">
+            <div class="header_inner">
+                 <div class="header_top">
+                    <h1 class="header_logo">
+                        <a href="/HelloPet HTML/index.html"><span class="blind">헬로펫</span></a>
+                    </h1>
+                    <div class="header_contents">
+                        <div class="header_menu">
+                            <ul class="header-menu-ul">
+                                <li><a href="#" class="menu-link"><h2>증상별질병찾기</h2></a></li>
+                                <li><a href="#" class="menu-link"><h2>병원/약국찾기</h2></a></li>
+                                <li><a href="#" class="menu-link"><h2>커뮤니티</h2></a></li>
+                                <li><a href="#" class="menu-link"><h2>고객센터</h2></a></li>
+                            </ul>
+                        </div>
+                        <div class="header_right">
+                            <ul class="header-customer-ul">
+                                <li><a href="#"><span>로그인</span></a></li>
+                                <li><a href="#"><span>회원가입</span></a></li>
+                                <li><a href="#"><span>마이페이지</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                 </div>
             </div>
-
+            
         </header>
         <div class="SearchHs">
-          <div class="sub-contents">
+          <div class="contents">
             <div class="search-top">
                 <h3 class="title">동물병원 찾기</h3>
             </div>
             <section class="section1">
                 <div class="container">
-                    <div class="search-head">
-                        <div class="search-box-container">
-                             <div class="inner">
-                                <input type="text">
-                                <button type="button"></button>
-                             </div>
-                        </div>     
-                    </div>         
-                             
+                   <div class="search-head">
+                     <div class="search-box-container">
+                        <div class="inner">
+                            <input type="text">
+                            <button type="button" id="btnHs"></button>
+                        </div>    
+                     </div>   
+                     <div class="list">
 
+                     </div>        
+                  </div>  
                 </div>
             </section>
 
