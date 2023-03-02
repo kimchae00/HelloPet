@@ -10,361 +10,54 @@
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            font-family: "Noto Sans KR","Apple SD Gothic Neo",Helvetica,sans-serif,Arial;
-        }
-        *, :after, :before {
-            box-sizing: inherit!important;
-        }
-        a {
-            text-decoration: none;
-            color: #111;
-        }
-        ul, ol {list-style: none;}
-        input, textarea {
-            outline: none;
-        }
-        
-        .header {
-            z-index: 200;
-            position: fixed;
-            padding: 40px 60px 0;
-            height: 120px;
-            background: #32a69f;
-        }
-
-        .header, .header:before {
-            top: 0;
-            left: 0;
-            width: 100%;
-        }
-        .header:before {
-            content: "";
-            position: absolute;
-            height: 40px;
-            background: #e1f3f3;
-        }
-
-        .header_inner, .header_top {
-            position: relative;
-            margin: auto;
-        }
-        .header_inner {
-            z-index: 2;
-            text-align: center;
-        }
-        .header_top {
-            width: 100%;
-            height: 100px;
-        }
-        .header_logo {
-            display: block;
-            z-index: 10001;
-            position: absolute;
-            top: -20px;
-            left: 0;
-            right: 0;
-            margin: auto;
-            width: 120px;
-            height: 120px;
-        }
-        .header_logo a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            background: url(../img/ci.png);
-        }
-        .blind {
-            overflow: hidden;
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            clip: rect(1px,1px,1px,1px);
-        }
-        .header__menu {
-            display: inline-block;
-            position: relative;
-        }
-        .header-menu-ul {
-            display: flex;
-        }  
-        .header-menu-ul>li {
-            position: relative;
-        }
-        .header-menu-ul .menu-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 80px;
-            margin: 0 30px;
-            padding: 10px;
-            line-height: 1;
-            font-size: 20px;
-            font-weight: 300;
-            color: #fff;
-            transition: all .15s ease-out;
-        }
-       
-        .header-menu-ul>li:nth-child(2) {
-            margin-right:100px
-        }
-
-        .header-menu-ul>li:nth-child(3) {
-            margin-left: 100px
-        }
-
-        .header-menu-ul .menu-link {
-            margin: 0 60px
-        }
-
-        .header-customer-ul a {
-            margin-left: 10px
-        }
-        .header_right {
-            position: absolute;
-            top: -37px;
-            right: -50px;
-        }
-        .header-customer-ul {
-            display: flex;
-            align-items: center;
-        }
-        .header-customer-ul a {
-            display: block;
-            margin-left: 30px;
-            padding: 5px;
-            font-size: 14px;
-            color: #555;
-            font-weight: 300;
-        }
-        
-        /*
-        header > div {
-            width: 100%;
-        }
-        header > .top {
-            height: 35px;
-            width: 100%;
-            background: #e1f3f3;
-        }
-        header > .top > div {
-            width: 100%;
-            height: 100%;
-            margin: 0 auto;
-            text-align: right;
-        }
-        header > .top > div > a {
-            display: inline-block;
-            height: 100%;
-            line-height: 35px;
-            padding: 0 10px;
-            font-size: 14px;
-            color: #555;
-            font-weight: 300;
-        }
-
-        header > .top > .menu {
-            padding: 40px 60px 0;
-            height: 70px;
-            background: #32a69f;
-            box-sizing: border-box;
-        }
-        header > .top > .menu > div {
-            width: 1200px;
-            height: 100%;
-            margin: 0 auto;
-        }
-        header > .top > .menu > div > ul {
-            display: inline-block;
-            margin-top: 0px;
-        }
-        header > .top > .menu > div > ul:nth-child(1) {float: left;}
-        header > .top > .menu > div > ul:nth-child(2) {float: right;}
-        header > .top > .menu > div > ul > li {float: left;}
-        header > .top > .menu > div > ul > li > a {
-            padding: 0 60px;
-            font-size: 20px;
-            color: white;
-        }
-        header > .top > .menu > div > ul > .logo {margin-top: -50px;}
-            */
-        
-        #sub-wrap {
-            min-height: 600px;
-        }
-        .sub-contents {
-            padding: 120px 0 160px;
-        }
-
-        
-        .search-top-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 215px;
-            background: #e1f4f3;
-        }
-        .search-top-container .title {
-            line-height: 1.4;
-            font-size: 40px;
-            color: #555;
-            font-weight: 700;
-            text-align: center;
-            padding: 0 15px;
-        }
-        .section-tab-container {
-            z-index: 3;
-            position: relative;
-            margin: -40px auto 0;
-            max-width: 800px;
-            width: 100%;
-        }
-        .tab-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            position: relative;
-        }
-        .tab-list>li {
-            margin-top: -1px;
-            margin-left: -1px;
-            flex: 1;
-            transition: all .3s ease-in-out;
-        }
-        .tab-list--block>li {
-            border-bottom: 2px solid #32a69f;
-        }
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1.5;
-            padding: 0 10px;
-            text-align: center;
-            transition: all .15s ease;
-            cursor: pointer;
-        }
-        .tab-list>li .button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 14px 10px;
-            font-size: 22px;
-            text-align: center;
-            color: #aaa;
-            letter-spacing: -.05em;
-            font-weight: 300;
-            background-color: #fff;
-            transition: all .3s ease-in-out;
-        }
-
-        .tab-list--block>li .button {
-            height: 100%;
-            color: #32a69f;
-            font-weight: 700;
-        }
-        .tab-list--block>li.on .button {
-            background: #32a69f;
-            color: #fff;
-            font-weight: 700;
-        }
-        .section-tab-container .tab-list--block>li .button {
-            padding: 22px 10px;
-            font-size: 26px;
-        }
-        
-
-        footer{
-            width: 100%;
-            height: 192px;
-            background: #b4e8e3;
-            border-top: 1px solid #e9e9e9;
-            box-sizing: border-box;
-        }
-
-        footer > div {
-            width: 1200px;
-            height: auto;
-            padding-top: 20px;
-            box-sizing: border-box;
-            margin: 0 auto;
-        }
-
-        footer > div > .footer_info > p {
-            float: left;
-            height: 100%;
-            line-height: 20px;
-            font-size: 15px;
-            color: #10958b;
-        }
-
-        footer > div > .footer_link {
-            float: right;
-        }
-        footer > div > .footer_link > ul {
-            width: 100%;
-            height: 100%;
-            box-sizing: border-box;
-        }
-        footer > div > .footer_link > ul > li {
-            display: inline-block;
-            font-weight: bold;
-        }
-        footer > div > .footer_link > ul > li > a {
-            font-size: 17px;
-            color: #10958b;
-            font-weight: bold;
-            padding: 0 10px;
-        }
-        footer p > strong {
-            display: inline-block;
-            padding: 6px 15px 7px 0;
-            color: #10958b;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        
-        
-
-
-        
-
+    <link rel="stylesheet" href="../css/style.css">
     </style>
 </head>
 <body>
     <div id="vue-app">
-        <header class="header">
-            <div class="header_inner">
-                 <div class="header_top">
-                    <h1 class="header_logo">
-                        <a href="/HelloPet HTML/index.html"><span class="blind">헬로펫</span></a>
+        <header data-header-mobile="off" class="header">
+            <div class="header__inner">
+                <div class="header__top">
+                    <h1 class="header__logo">
+                        <a href="#" title="홈으로 이동"><span class="blind">펫트라슈</span></a>
                     </h1>
-                    <div class="header_contents">
-                        <div class="header_menu">
+                    <div class="header__contents">
+                        <div class="header__menu">
                             <ul class="header-menu-ul">
-                                <li><a href="#" class="menu-link"><h2>증상별질병찾기</h2></a></li>
-                                <li><a href="#" class="menu-link"><h2>병원/약국찾기</h2></a></li>
-                                <li><a href="#" class="menu-link"><h2>커뮤니티</h2></a></li>
-                                <li><a href="#" class="menu-link"><h2>고객센터</h2></a></li>
+                                <li>
+                                    <a href="#" class="menu-link"><h2>증상별질병찾기</h2></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="menu-link"><h2>동물병원·약국찾기</h2></a>
+                                </li>
+                                <li><a href="#" class="menu-link"><h2>커뮤니티</h2></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="menu-link"><h2>고객센터</h2></a>
+                                </li>
                             </ul>
                         </div>
-                        <div class="header_right">
+                        <div class="header__right">
                             <ul class="header-customer-ul">
-                                <li><a href="#"><span>로그인</span></a></li>
-                                <li><a href="#"><span>회원가입</span></a></li>
-                                <li><a href="#"><span>마이페이지</span></a></li>
+                                <li>
+                                    <a href="#"><span>로그인</span></a>
+                                </li>
+                                <li><a href="#"><span>회원가입</span></a>
+                                </li>
+                                <!---->
+                                <li>
+                                    <a href="#">마이페이지</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
-                 </div>
+                </div>
             </div>
-            
+            <div class="mobile-menu">
+                <button type="button" class="mobile-menu__button mobile-menu__button--flip">
+                    <span></span>
+                </button>
+            </div>
         </header>
         <div id="sub-wrap">
             <div class="sub-contents">
@@ -373,43 +66,110 @@
                 </div>
                 <div class="section-tab-container">
                     <ul class="tab-list tab-list--block">
-                        <li class="on"><a href="#" class="button">공지사항</a></li>
-                        <li><a href="#" class="button">FAQ</a></li>
-                        <li><a href="#" class="button">QNA</a></li>
+                        <li class="on">
+                            <a href="#" aria-current="page" class="button router-link-exact-active router-link-active">공지사항</a>
+                        </li>
+                        <li>
+                            <a href="#" class="button">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="#" class="button">QNA</a>
+                        </li>
                     </ul>
                 </div>
-                <section class="bbs_style">
+                <section class="section-bbs">
                     <div class="container">
-
+                        <table id="bbs_style">
+                            <tr class="bbs-list-row">
+                                <th class="bbs-list-col">번호</th>
+                                <th class="bbs-list-col">제목</th>
+                                <th class="bbs-list-col">작성자</th>
+                                <th class="bbs-list-col">작성일</th>
+                                <th class="bbs-list-col">조회</th>
+                            </tr>
+                            <tr>
+                                <td align="center" class="bbs-num">1</td>
+                                <td align="left" class="bbs-title" style="word-break: break-all;">
+                                    <a href="#">반려동물 진료비를 위해 함께 해주세요</a>
+                                </td>
+                                <td align="center" class="bbs-name">관리자</td>
+                                <td align="center" class="bbs-date">2023-03-02</td>
+                                <td align="center" class="bbs-viewcount">1200</td>
+                            </tr>
+                            <tr>
+                                <td align="center" class="bbs-num">2</td>
+                                <td align="left" class="bbs-title" style="word-break: break-all;">
+                                    <a href="#">반려동물 진료비를 위해 함께 해주세요</a>
+                                </td>
+                                <td align="center" class="bbs-name">관리자</td>
+                                <td align="center" class="bbs-date">2023-03-02</td>
+                                <td align="center" class="bbs-viewcount">1200</td>
+                            </tr>
+                            <tr>
+                                <td align="center" class="bbs-num">3</td>
+                                <td align="left" class="bbs-title" style="word-break: break-all;">
+                                    <a href="#">반려동물 진료비를 위해 함께 해주세요</a>
+                                </td>
+                                <td align="center" class="bbs-name">관리자</td>
+                                <td align="center" class="bbs-date">2023-03-02</td>
+                                <td align="center" class="bbs-viewcount">1200</td>
+                            </tr>
+                            <tr>
+                                <td align="center" class="bbs-num">4</td>
+                                <td align="left" class="bbs-title" style="word-break: break-all;">
+                                    <a href="#">반려동물 진료비를 위해 함께 해주세요</a>
+                                </td>
+                                <td align="center" class="bbs-name">관리자</td>
+                                <td align="center" class="bbs-date">2023-03-02</td>
+                                <td align="center" class="bbs-viewcount">1200</td>
+                            </tr>
+                            <tr>
+                                <td align="center" class="bbs-num">5</td>
+                                <td align="left" class="bbs-title" style="word-break: break-all;">
+                                    <a href="#">반려동물 진료비를 위해 함께 해주세요</a>
+                                </td>
+                                <td align="center" class="bbs-name">관리자</td>
+                                <td align="center" class="bbs-date">2023-03-02</td>
+                                <td align="center" class="bbs-viewcount">1200</td>
+                            </tr>
+                        </table>
+                        <div class="pagination">
+                            <nav role="navigation" aria-label="Pagination Navigation" page="1">
+                                <ul class="v-pagination theme--light">
+                                    <li>
+                                        <button type="button" aria-label="Previous page" class="v-pagination__navigation v-pagination__navigation--disabled">
+                                            <i aria-hidden="true" class="v-icon notranslate mdi mdi-arrow-left theme--light"></i>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button type="button" aria-current="true" aria-label="Current Page, Page 1" class="v-pagination__item v-pagination__item--active primary">1</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" aria-label="Goto Page 2" class="v-pagination__item">2</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" aria-label="Goto Page 3" class="v-pagination__item">3</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" aria-label="Goto Page 4" class="v-pagination__item">4</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" aria-label="Goto Page 5" class="v-pagination__item">5</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" aria-label="Next page" class="v-pagination__navigation">
+                                            <i aria-hidden="true" class="v-icon notranslate mdi mdi-arrow-right theme--light"></i>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </section>
             </div>
-            
-        </div>
+        </div>    
         <footer>
-            <div>
-                <div class="footer_info">
-                    <p>
-                        <strong>HELLOPET</strong>
-                        <br>
-                        부산시 남구 수영로 299 10층
-                        <br>
-                        대표이사 : 김헬로
-                        <br>
-                        사업자등록번호 : 220-81-83676 사업자정보확인
-                        <br>
-                        통신판매업신고 : 부산 10630호 Fax : 051-589-8842
-                    </p>
-                </div>
-                <div class="footer_link">
-                    <ul>
-                        <li><a href="#">회사소개</a></li>
-                        <li><a href="#">서비스이용약관</a></li>
-                        <li><a href="#">개인정보처리방침</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-                </div>
-            </div>
+           
         </footer>
     </div>
 </body>

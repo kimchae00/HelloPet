@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans KR","Apple SD Gothic Neo",Helvetica,sans-serif,Arial;
+}
+a {
+    text-decoration: none;
+    color: #111;
+}
+ul, ol {list-style: none;}
+input, textarea {
+    outline: none;
+}
+#wrapper {width: 100%;}
+header {
+    width: 100%;
+    height: auto;
+}
+header > div {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+header > .top {
+    height: 40px;
+    background-color: #e1f3f3;
+}
+header > .top > div {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: right;
+}
+header > .top > div > a {
+    display: inline-block;
+    height: 100%;
+    font-size: 14px;
+    line-height: 35px;
+    padding: 0 10px;
+    color: #555;
+}
+header > .menu {
+    height: 80px;
+    background: #32a69f;
+    box-sizing: border-box;
+}
+header > .menu > div {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+header > .menu > div > ul {
+    display: inline-block;
+    margin-top: -30px;
+}
+header > .menu > div > ul:nth-child(1) {
+    float: left;
+}
+header > .menu > div > ul > li {
+    float: left;
+}
+header > .menu > div > ul > li > a {
+    display: flex;
+    height: 80px;
+    margin: 50px 60px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    transition: all .15s ease-out;
+}
+header > .menu > div > ul > .logo {margin-top: -45px;}
+header > .menu > div > ul > .logo img {width: 120px; height: 120px;}
+
+
+main {
+    min-height: 600px;
+}
+#list > .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+    background: #e1f4f3;
+}
+#list > .container > .title {
+    line-height: 1.4;
+    font-size: 40px;
+    color: #555;
+    font-weight: 700;
+    text-align: center;
+    padding: 0 15px;
+}
+
+/*
+footer{
+    width: 100%;
+    height: 192px;
+    background: #b4e8e3;
+    box-sizing: border-box;
+}
+
+footer > div {
+    width: 1200px;
+    height: auto;
+    padding-top: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+footer > div > .footer_info > p {
+    float: left;
+    height: 100%;
+    line-height: 20px;
+    font-size: 15px;
+    color: #10958b;
+}
+
+footer > div > .footer_link {
+    float: right;
+}
+footer > div > .footer_link > ul {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+footer > div > .footer_link > ul > li {
+    display: inline-block;
+    font-weight: bold;
+}
+footer > div > .footer_link > ul > li > a {
+    font-size: 17px;
+    color: #10958b;
+    font-weight: bold;
+    padding: 0 10px;
+}
+footer p > strong {
+    display: inline-block;
+    padding: 6px 15px 7px 0;
+    color: #10958b;
+    font-size: 30px;
+    font-weight: bold;
+}
+*/
