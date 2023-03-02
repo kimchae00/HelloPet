@@ -11,11 +11,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
     <style>
-        * {
+          * {
             margin: 0;
             padding: 0;
             font: normal 12px "Noto Sans CJK KR";
         }
+
+
+        *, :after, :before {
+            box-sizing: inherit!important;
+        }
+
         a {
             text-decoration: none;
             color: #111;
@@ -150,50 +156,57 @@
             font-weight: bold;
         }
 
-        
-        
 
-        main {}
-        main > .start {}
-        main > .start img {
-            width: 80%;
-            height: 80%;
-            margin-left: 140px;
+        .SearchHs {
+            min-height: 600px;
         }
 
-        main p {
-            font-size: 35px;
-            font-weight: bold;
-            font-style: normal;
-        }
-        main > .btns > a {
-            display: inline-block;
+        .SearchHs > .sub-contents{
+            padding: 0px 0 160px;
         }
 
-
-        main > .btns > a > img {
-            padding: 0px 0px 48px 0px;
+        .SearchHs > .sub-contents> div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 215px;
+            background: #e1f4f3;
         }
 
-        main >.btns > a:nth-child(1){
-            margin-left: 250px;
+        .SearchHs > .sub-contents>.search-top > .title {
+        line-height: 1.4;
+        font-size: 35px;
+        color: #555;
+        font-weight: 700;
+        text-align: center;
+        padding: 0 15px;
         }
-        
-        main >.btns > a:nth-child(2){
-            margin-left: 40px;
-        }
-        
 
-                
-        
-        main > .end img {
+        .SearchHs > .sub-contents > .section1 {
+            margin-top: 60px;
+        }
+        .SearchHs > .sub-contents > .section1 > .container{
+            margin: auto;
+            max-width: 1200px;
+            padding: 0;
+        }
+        .SearchHs > .sub-contents > .section1 > .search-head {
+            position: relative;
+            z-index: 3;
+            margin-top: -115px;
+            margin-bottom: 40px;
+        }
+        .SearchHs > .sub-contents > .section1 > .search-box-container {
+            margin: 62px auto 0;
+            padding: 10px;
+            max-width: 640px;
             width: 100%;
-            height: 100%;
-            padding: 30px 0px 0px 0px;
-            margin: 23px;
+            height: 100px;
+            background-image: linear-gradient(90deg,#1dc6f7,#00e5c2);
+            box-shadow: 0 6px 15px 0 rgb(36 36 36 / 21%);
         }
 
-        
 
     </style>
 </head>
@@ -201,38 +214,47 @@
     <div id="wrapper">
         <header>
             <div class="top">
-                 <div>
-                     <a href="#">로그인</a>
-                     <a href="#">회원가입</a>
-                     <a href="#">마이페이지</a>
-                 </div>
+                <div>
+                    <a href="#">로그인</a>
+                    <a href="#">회원가입</a>
+                    <a href="#">마이페이지</a>
+                </div>
+           </div>
+           <div class="menu">
+                <div>
+                   <ul>
+                       <li><a href="#">증상별질병찾기</a></li>
+                       <li><a href="#">병원/약국찾기</a></li>
+                       <li class="logo"><a href=".//index.html"><img src="../img/logo.png" alt="logo"></a></li>
+                       <li><a href="#">커뮤니티</a></li>
+                       <li><a href="#">고객센터</a></li>
+                   </ul>
+                </div>
             </div>
-            <div class="menu">
-                 <div>
-                    <ul>
-                        <li><a href="#">증상별질병찾기</a></li>
-                        <li><a href="#">병원/약국찾기</a></li>
-                        <li class="logo"><a href=".//index.html"><img src="../img/logo.png" alt="logo"></a></li>
-                        <li><a href="#">커뮤니티</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-                 </div>
-             </div>
-        </header>
-        <main>
-            <div class="start">
-            <img src="../img/search2.jpg" alt="한번에">
-                
 
+        </header>
+        <div class="SearchHs">
+          <div class="sub-contents">
+            <div class="search-top">
+                <h3 class="title">동물병원 찾기</h3>
             </div>
-            <div class="btns">
-                    <a href="./SearchHs.html"><img src="../img/find1.jpg" alt="찾기1"></a>
-                    <a href="./SearchPm.html"><img src="../img/find2.jpg" alt="찾기2"></a>
-            </div>
-            <div class="end">
-                <img src="../img/search1.jpg" alt="신규회원혜택">
-            </div>
-        </main>
+            <section class="section1">
+                <div class="container">
+                    <div class="search-head">
+                        <div class="search-box-container">
+                             <div class="inner">
+                                <input type="text">
+                                <button type="button"></button>
+                             </div>
+                        </div>     
+                    </div>         
+                             
+
+                </div>
+            </section>
+
+         </div>
+        </div>
         <footer>
             <div>
                 <div class="footer_info">
@@ -257,6 +279,7 @@
                     </ul>
                 </div>
             </div>
+
         </footer>
     </div>
 </body>
