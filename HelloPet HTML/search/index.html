@@ -14,7 +14,10 @@
         * {
             margin: 0;
             padding: 0;
-            font: normal 12px "Noto Sans CJK KR";
+            font-family: "Noto Sans KR","Apple SD Gothic Neo",Helvetica,sans-serif,Arial;
+        }
+        *, :after, :before {
+            box-sizing: inherit!important;
         }
         a {
             text-decoration: none;
@@ -24,74 +27,130 @@
         input, textarea {
             outline: none;
         }
-        #wrapper {
-            width: 100%;
-        }
-        header {
-            width: 100%;
-            height: 190px;
+        
+        .header {
+            z-index: 200;
+            position: fixed;
+            padding: 40px 60px 0;
+            height: 120px;
+            background: #32a69f;
         }
 
-      
-
-        header > div {
+        .header, .header:before {
+            top: 0;
+            left: 0;
             width: 100%;
-            box-sizing: border-box;
         }
-        header > .top {
-            height: 35px;
+        .header:before {
+            content: "";
+            position: absolute;
+            height: 40px;
             background: #e1f3f3;
         }
-        header > .top > div {
-            width: 1200px;
-            height: 100%;
-            margin: 0 auto;
-            text-align: right;
+
+        .header_inner, .header_top {
+            position: relative;
+            margin: auto;
         }
-        header > .top > div > a {
-            display: inline-block;
+        .header_inner {
+            z-index: 2;
+            text-align: center;
+        }
+        .header_top {
+            width: 100%;
+            height: 100px;
+        }
+        .header_logo {
+            display: block;
+            z-index: 10001;
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 120px;
+            height: 120px;
+        }
+        .header_logo a {
+            display: block;
+            width: 100%;
             height: 100%;
-            line-height: 35px;
-            padding: 0 10px;
+            background: url(../img/ci.png);
+        }
+        .blind {
+            overflow: hidden;
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            clip: rect(1px,1px,1px,1px);
+        }
+        .header__menu {
+            display: inline-block;
+            position: relative;
+        }
+        .header-menu-ul {
+            display: flex;
+        }  
+        .header-menu-ul>li {
+            position: relative;
+        }
+        .header-menu-ul .menu-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            margin: 0 30px;
+            padding: 10px;
+            line-height: 1;
+            font-size: 20px;
+            font-weight: 300;
+            color: #fff;
+            transition: all .15s ease-out;
+        }
+       
+        .header-menu-ul>li:nth-child(2) {
+            margin-right:100px
+        }
+
+        .header-menu-ul>li:nth-child(3) {
+            margin-left: 100px
+        }
+
+        .header-menu-ul .menu-link {
+            margin: 0 60px
+        }
+
+        .header-customer-ul a {
+            margin-left: 10px
+        }
+        .header_right {
+            position: absolute;
+            top: -37px;
+            right: -50px;
+        }
+        .header-customer-ul {
+            display: flex;
+            align-items: center;
+        }
+        .header-customer-ul a {
+            display: block;
+            margin-left: 30px;
+            padding: 5px;
             font-size: 14px;
             color: #555;
             font-weight: 300;
         }
-
-        header > .menu {
-            padding: 40px 60px 0;
-            height: 100px;
-            background: #32a69f;
-            box-sizing: border-box;
-        }
-        header > .menu > div {
-            width: 1200px;
-            height: 100%;
-            margin: 0 auto;
-        }
-        header > .menu > div > ul {
-            display: inline-block;
-            margin-top: 0px;
-        }
-        header > .menu > div > ul:nth-child(1) {float: left;}
-        header > .menu > div > ul:nth-child(2) {float: right;}
-        header > .menu > div > ul > li {float: left;}
-        header > .menu > div > ul > li > a {
-            padding: 0 60px;
-            font-size: 20px;
-            color: white;
-        }
-        header > .menu > div > ul > .logo {margin-top: -50px; overflow: hidden;}
+        
 
         
-        main {
+        .SearchIndex {
             width: 1200px;
             height: auto;
             margin: 0 auto;
             overflow: hidden;
         }
 
-        main > section {
+        .SearchIndex > section {
             float: right;
             width: 985px;
             height: auto;
@@ -153,81 +212,95 @@
         
         
 
-        main {}
-        main > .start {}
-        main > .start img {
+        .SearchIndex {}
+        .SearchIndex > .start {}
+        .SearchIndex > .start img {
             width: 80%;
             height: 80%;
             margin-left: 140px;
+            margin-top: 200px;
+            margin-bottom: 50px;
         }
 
-        main p {
+        .SearchIndex > p {
             font-size: 35px;
             font-weight: bold;
             font-style: normal;
         }
-        main > .btns > a {
+        .SearchIndex > .btns > a {
             display: inline-block;
         }
 
 
-        main > .btns > a > img {
-            padding: 0px 0px 48px 0px;
+        .SearchIndex > .btns > a > img {
+            
         }
 
-        main >.btns > a:nth-child(1){
+        .SearchIndex > .btns > a > img:hover {
+            box-shadow: 1px 1px 20px #ddd;
+        }
+
+
+        .SearchIndex >.btns > a:nth-child(1){
             margin-left: 250px;
         }
         
-        main >.btns > a:nth-child(2){
+        .SearchIndex >.btns > a:nth-child(2){
             margin-left: 40px;
         }
         
 
                 
         
-        main > .end img {
+        .SearchIndex > .end img {
             width: 100%;
             height: 100%;
-            padding: 30px 0px 0px 0px;
-            margin: 23px;
+            margin: 100px 0px 60px 17px;
         }
 
+       
         
 
     </style>
 </head>
 <body>
     <div id="wrapper">
-        <header>
-            <div class="top">
-                 <div>
-                     <a href="#">로그인</a>
-                     <a href="#">회원가입</a>
-                     <a href="#">마이페이지</a>
+        <header class="header">
+            <div class="header_inner">
+                 <div class="header_top">
+                    <h1 class="header_logo">
+                        <a href="/HelloPet HTML/index.html"><span class="blind">헬로펫</span></a>
+                    </h1>
+                    <div class="header_contents">
+                        <div class="header_menu">
+                            <ul class="header-menu-ul">
+                                <li><a href="#" class="menu-link"><h2>증상별질병찾기</h2></a></li>
+                                <li><a href="#" class="menu-link"><h2>병원/약국찾기</h2></a></li>
+                                <li><a href="#" class="menu-link"><h2>커뮤니티</h2></a></li>
+                                <li><a href="#" class="menu-link"><h2>고객센터</h2></a></li>
+                            </ul>
+                        </div>
+                        <div class="header_right">
+                            <ul class="header-customer-ul">
+                                <li><a href="#"><span>로그인</span></a></li>
+                                <li><a href="#"><span>회원가입</span></a></li>
+                                <li><a href="#"><span>마이페이지</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
                  </div>
             </div>
-            <div class="menu">
-                 <div>
-                    <ul>
-                        <li><a href="#">증상별질병찾기</a></li>
-                        <li><a href="#">병원/약국찾기</a></li>
-                        <li class="logo"><a href=".//index.html"><img src="../img/logo.png" alt="logo"></a></li>
-                        <li><a href="#">커뮤니티</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-                 </div>
-             </div>
+            
         </header>
-        <main>
+        <main class="SearchIndex">
             <div class="start">
             <img src="../img/search2.jpg" alt="한번에">
                 
 
             </div>
             <div class="btns">
-                    <a href="./SearchHs.html"><img src="../img/find1.jpg" alt="찾기1"></a>
-                    <a href="./SearchPm.html"><img src="../img/find2.jpg" alt="찾기2"></a>
+                    <a href="./SearchHs.html"><img src="../img/search-find1.png" alt="찾기1"></a>
+                    <a href="./SearchPm.html"><img src="../img/search-find2.png" alt="찾기2"></a>
             </div>
             <div class="end">
                 <img src="../img/search1.jpg" alt="신규회원혜택">
