@@ -10,30 +10,83 @@
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/member.css">
 </head>
+<style>
+   input[id=naver]:hover {
+    background: #007aff;
+   }
+
+   input[id=kakao]:hover {
+    background: #007aff;
+   }
+
+   input[id=apple]:hover {
+    background: #007aff;
+   }
+</style>
 <body>
     <div id="wrapper">
-        <header>
-            <div class="top">
-                 <div>
-                     <a href="#">로그인</a>
-                     <a href="#">회원가입</a>
-                     <a href="#">마이페이지</a>
-                 </div>
-            </div>
-            <div class="menu">
-                 <div>
-                    <ul>
-                        <li><a href="#">증상별질병찾기</a></li>
-                        <li><a href="#">병원/약국찾기</a></li>
-                        <li class="logo"><a href="./index.html"><img src="../img/ci.png" alt="logo"></a></li>
-                        <li><a href="#">커뮤니티</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-                 </div>
-             </div>
-        </header>
+        <div class="header_div">
+            <header>
+                <div class="header_background">
+                    <div class="header_right">
+                        <ul class="header_customer">
+                            <li>
+                                <a href="#">
+                                    <span>로그인</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>회원가입</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>고객센터</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="menu_background">
+                    <div class="header_menu">
+                        <div class="menu_left">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <h2>증상별질병검색</h2>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <h2>동물병원약국찾기</h2>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menu_right">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <h2>커뮤니티</h2>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <h2>고객센터</h2>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="header_logo">
+                        <a href="#"><img src="../img/ci.png" alt=""></a>
+                    </div>
+                </div>
+            </header>
+        </div>
         <main class="main">
             <div class="login_div">
                 <article class="login">
@@ -46,10 +99,10 @@
                                 <div>
                                     <input type="checkbox" name="check"><i class="circle"></i><span class="text">아이디저장</span>
                                 </div>
-                                <input type="submit" value="로그인">
-                                <input type="text" name="naver" value="Naver 로 로그인">
-                                <input type="text" name="kakao" value="Kakao 로 로그인">
-                                <input type="text" name="apple" value="Apple 로 로그인">
+                                <input type="submit" id="login" value="로그인">
+                                <input type="text" id="naver" value="Naver 로 로그인">
+                                <input type="text" id="kakao" value="Kakao 로 로그인">
+                                <input type="text" id="apple" value="Apple 로 로그인">
                                 <ul>
                                     <li><a href="">회원가입</a><span>|</span></li>
                                     <li><a href="">아이디/비밀번호찾기</a></li>
@@ -61,31 +114,57 @@
                 </article>
             </div>
         </main>
-        <footer>
-            <div>
-                <div class="footer_info">
-                    <p>
-                        <strong>HELLOPET</strong>
-                        <br>
-                        부산시 남구 수영로 299 10층
-                        <br>
-                        대표이사 : 김헬로
-                        <br>
-                        사업자등록번호 : 220-81-83676 사업자정보확인
-                        <br>
-                        통신판매업신고 : 부산 10630호 Fax : 051-589-8842
-                    </p>
+        <div class="footer_div">
+            <footer>
+                <div class="footer_background">
+                    <div class="footer_left">
+                        <ul>
+                            <li>HelloPet</li>
+                            <li>대표이사 홍길동</li>
+                            <li>사업자등록번호 123-45-78910</li>
+                            <li>통신판매업신고번호 어쩌고저쩌고123454</li>
+                            <li>부산광역시 어쩌구구 어쩌로로로 119, 어쩌구무슨동 12345호 (주)12</li>
+                            <li>TEL.051-123-4567</li>
+                            <li>E-mail abc@naver.com</li>
+                            <li>Copyright all rights reserved example</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="footer_right">
+                            <li>
+                                <a href="#">회사소개</a>
+                            </li>
+                            <li>
+                                <a href="#">이용약관</a>
+                            </li>
+                            <li>
+                                <a href="#">개인정보처리방침</a>
+                            </li>
+                            <li>
+                                <a href="#">광고문의관리</a>
+                            </li>
+                            <li>
+                                <a href="#">고객의소리</a>
+                            </li>
+                        </ul>
+                        <ul class="footer_sns">
+                            <li>
+                                <a href=""><img src="../img/footer-sns-0.png" alt=""></a>
+                            </li>
+                            <li>
+                                <a href=""><img src="../img/footer-sns-1.png" alt=""></a>
+                            </li>
+                            <li>
+                                <a href=""><img src="../img/footer-sns-2.png" alt=""></a>
+                            </li>
+                            <li>
+                                <a href=""><img src="../img/footer-sns-3.png" alt=""></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="footer_link">
-                    <ul>
-                        <li><a href="#">회사소개</a></li>
-                        <li><a href="#">서비스이용약관</a></li>
-                        <li><a href="#">개인정보처리방침</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </div>
 </body>
 </html>
