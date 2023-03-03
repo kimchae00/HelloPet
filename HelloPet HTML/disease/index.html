@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
     <style>
-        * {
+        * * {
             margin: 0;
             padding: 0;
             font: normal 12px "Noto Sans CJK KR";
@@ -20,9 +20,10 @@
             text-decoration: none;
             color: #111;
         }
-        ul, ol {list-style: none;}
-        input, textarea {
+        ul, ol, li {list-style: none;}
+        input, textarea, button {
             outline: none;
+            border: none;
         }
         #wrapper {
             width: 100%;
@@ -30,6 +31,7 @@
         header {
             width: 100%;
             height: 190px;
+            background: #e1f3f3;
         }
 
         header > div {
@@ -81,11 +83,17 @@
         }
         header > .menu > div > ul > .logo {margin-top: -50px;}
 
+
+
+
+
+
+
+
         
         main {
-            width: 1200px;
+            width: 100%;
             height: auto;
-            margin: 0 auto;
             overflow: hidden;
         }
 
@@ -97,8 +105,156 @@
         }
 
 
+        .search-top-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            background: #e1f4f3;
+        }
 
+        .search-top-container .title {
+            line-height: 1.4;
+            font-size: 40px;
+            color: #555;
+            font-weight: 700;
+            text-align: center;
+            padding: 0 15px;
+        }
+        .search-tab-container {
+            z-index: 2;
+            position: relative;
+            margin: -40px auto 0;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .section-tab-container {
+            z-index: 2;
+            position: relative;
+            margin: -40px auto 0;
+            max-width: 800px;
+            width: 100%;
+        }
+        .tab-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+        }
+        ul {
+            list-style: none;
+        }
+
+        .tab-list--block>li {
+            border-bottom: 2px solid #32a69f;
+        }
+
+        .tab-list>li {
+            margin-top: -1px;
+            margin-left: -1px;
+            flex: 1;
+            transition: all .3s ease-in-out;
+        }
+
+        .section-tab-container .tab-list--block>li .button {
+            padding:22px 10px;
+            font-size: 26px;
+        }
+        .tab-list--block>li.on .button {
+            background: #32a69f;
+            color: #fff;
+            font-weight: 700;
+        }
         
+        .tab-list--block>li .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            text-align: center;
+            letter-spacing: -.05em;
+            background-color: #fff;
+            transition: all .3s ease-in-out;
+        }
+
+       
+
+        .top-round {
+            z-index: 2;
+            position: relative;
+            margin: 30px auto 0;
+            padding: 15px;
+            max-width: 600px;
+            width: 100%;
+            min-height: 60px;
+            text-align: center;
+            background: #fff;
+            border-radius: 100px;
+            box-shadow: 0 3px 10px 0 rgb(36 36 36 / 15%);
+        }
+
+        .top-round .title {
+            line-height: 3;
+            font-size: 26px;
+            color: #3c83dc;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .section-grid {
+            width: 1200px;
+            min-height: 100px;
+            margin: 80px auto;
+            overflow: hidden;
+        }
+
+        .section-grid > article {
+            float: left;
+            width: 33.33%;
+            min-height: 400px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+
+        .search-category-list .title {
+            display: block;
+            position: relative;
+            margin-bottom: 34px;
+            padding: 0 0 16px 8px;
+            font-size: 32px;
+            color: #0dbcaf;
+            font-weight: 700;
+        }
+
+
+        .search-category-list .title:after {
+            content:"";
+            position: absolute;
+            bottom: 0;
+            left:0;
+            width:100%;
+            height:1px;
+            background-image: linear-gradient(90deg, #1dc6f7, #00e5c2);
+
+        }
+        .search-category-list .name {
+            display: block;
+            margin-bottom: 20px;
+            font-size: 0;
+        }
+
+        .search-category-list .name a {
+            display: inline-block;
+            position: relative;
+            padding: 5px 8px;
+            line-height: 1;
+            font-size: 20px;
+            color: #777;
+            font-weight: 300
+        }
 
         footer{
             width: 100%;
@@ -151,7 +307,6 @@
         }
 
         
-        
 
 
         
@@ -181,114 +336,122 @@
              </div>
         </header>
         <main>
+            <div id="sub-wrap">
             <div class="sub-contents">
-                <div class="search-contents">
+                <div class="search-top-container">
                     <h3 class="title">증상별 질병 검색</h3>
                 </div>
                 <div class="section-tab-container">
                     <ul class="tab-list tab-list--block">
                         <li class="on">
-                            <button type="button" class="button">반려견                                
-                            </button>
+                            <button type="button" class="button">반려견</button>
                         </li>
                         <li class>
-                            <button type="button" class="button">반려묘
-                            </button>
+                            <button type="button" class="button">반려묘</button>
                         </li>
                     </ul>
                 </div>
                 <div class="top-round">
                     <h4 class="title">아래의 증상 중 한가지를 선택하세요!</h4>
                 </div>
-                <section class="section-top-category">
-                    <div class="container">
-                        <ul class="grid">
-                            <li class="grid-8">
-                                <dl class="search-category-list">
-                                    <dt class="title">"눈 이상"</dt>
-                                    <dd class="name">
-                                        <a href="#" class=눈꺼풀이 벌겋게 붓는다></a>
-                                    </dd>
-                                    <dd class="name">
-                                        <a href="#" class=눈꺼풀이 벌겋게 붓는다></a>
-                                    </dd>
-                                    <dd class="name">
-                                        <a href="#" class=눈꺼풀이 벌겋게 붓는다></a>
-                                    </dd>
-                                </dl>
-                                <li class="grid-8">
-                                    <dl class="search-category-list">
-                                        <dt class="title">"행동이상"</dt>
-                                        <dd class="name">
-                                            <a href="#">기지개를 켠다</a>
-                                        </dd>
-                                        <dd class="name">
-                                            <a href="#">기지개를 켠다</a>
-                                        </dd>
-                                        <dd class="name">
-                                            <a href="#">기지개를 켠다</a>
-                                        </dd>
-                                    </dl>
-                                </li>
-                                <li class="grid-8">
-                                    <dl class="search-category-list">
-                                        <dt class="title">"코이상"</dt>
-                                        <dd class="name">
-                                            <a href="#">콧물을 많이 흘린다</a>
-                                        </dd>
-                                        <dd class="name">
-                                            <a href="#">콧물을 많이 흘린다</a>
-                                        </dd>
-                                        <dd class="name">
-                                            <a href="#">콧물을 많이 흘린다</a>
-                                        </dd>
-                                    </dl>
-                                </li>
-                                    <li class="grid-8">
-                                        <dl class="search-category-list">
-                                            <dt class="title">"음식 섭취 이상"</dt>
-                                            <dd class="name">
-                                                <a href="#">밥을 잘 먹지 않는다</a>
-                                            </dd>
-                                            <dd class="name">
-                                                <a href="#">밥을 잘 먹지 않는다</a>
-                                            </dd>
-                                            <dd class="name">
-                                                <a href="#">밥을 잘 먹지 않는다</a>
-                                            </dd>
-                                        </dl>
-                                    </li>
-                                    <li class="grid-8">
-                                        <dl class="search-category-list">
-                                            <dt class="title">"다리 이상"</dt>
-                                            <dd class="name">
-                                                <a href="#">다리를 절룩거리다</a>
-                                            </dd>
-                                            <dd class="name">
-                                                <a href="#">다리를 절룩거리다</a>
-                                            </dd>
-                                            <dd class="name">
-                                                <a href="#">다리를 절룩거리다</a>
-                                            </dd>
-                                        </dl>
-                                    </li>
-                                    <li class="grid-8">
-                                        <dl class="search-category-list">
-                                            <dt class="title">"숨소리 이상"</dt>
-                                            <dd class="name">
-                                                <a href="#">숨을 헐떡인다</a>
-                                            </dd>
-                                            <dd class="name">
-                                                <a href="#">숨을 헐떡인다</a>
-                                            </dd>
-                                            <dd class="name">
-                                                <a href="#">숨을 헐떡인다</a>
-                                            </dd>
-                                        </dl>
-                                    </li>
-                            </li>
-                        </ul>
-                    </div>
+                <section class="section-grid">
+                    <article>
+                        <dl class="search-category-list">
+                            <dt class="title">
+                                눈이상
+                            </dt>
+                            <dd class="name">
+                                <a href="#" class>눈꺼풀이 벌겋게 붓는다</a>
+                            </dd>
+                            <dd class="name">
+                                <a href="#" class>눈꺼풀이 벌겋게 붓는다</a>
+                            </dd>
+                            <dd class="name">
+                                <a href="#" class>눈꺼풀이 벌겋게 붓는다</a>
+                            </dd>
+                        </dl>
+
+                    </article>
+                    <article>
+                        <dl class="search-category-list">
+                            <dt class="title">
+                                행동이상
+                            </dt>
+                            <dd class="name">
+                                <a href="#" class>기지개를 켠다</a>
+                            </dd>
+                            <dd class="name">
+                                <a href="#" class>기지개를 켠다</a>
+                            </dd>
+                            <dd class="name">
+                                <a href="#" class>기지개를 켠다</a>
+                            </dd>
+                        </dl>
+                    </article>
+                    <article> 
+                        <dl class="search-category-list">
+                            <dt class="title">
+                                코이상
+                            </dt>
+                            <dd class="name">
+                                <a href="#" class>콧물을 많이 흘린다</a>
+                            </dd>
+                            <dd class="name">
+                                <a href="#" class>콧물을 많이 흘린다</a>
+                            </dd>
+                            <dd class="name">
+                                <a href="#" class>콧물을 많이 흘린다</a>
+                            </dd>
+                        </dl>
+                    </article>
+                    <article>
+                        <dl class="search-category-list">
+                            <dt class="title">
+                                음식 섭취 이상
+                            </dt>
+                            <dd class="name">
+                                <a href="#" class>밥을 잘 먹지 않는다</a>
+                            </dd>
+                            <dd class="name">
+                                <a href="#" class>밥을 잘 먹지 않는다</a>
+                            </dd>
+                            <dd class="name">
+                                <a href="#" class>밥을 잘 먹지 않는다</a>
+                            </dd>
+                        </dl>
+                    </article>
+                    <article>
+                        <dl class="search-category-list">
+                            <dt class="title">
+                                다리이상
+                            </dt>
+                            <dd class="name">
+                                <a href="#" class>다리를 절룩거리다</a>
+                            </dd>
+                            <dd class="name">
+                                <a href="#" class>다리를 절룩거리다</a>
+                            </dd>
+                            <dd class="name">
+                                <a href="#" class>다리를 절룩거리다</a>
+                            </dd>
+                        </dl>
+                    </article>
+                    <article>
+                        <dl class="search-category-list">
+                            <dt class="title">
+                                숨소리이상
+                            </dt>
+                            <dd class="name">
+                                <a href="#" class>숨을 헐떡인다</a>
+                            </dd>
+                            <dd class="name">
+                                <a href="#" class>숨을 헐떡인다</a>
+                            </dd>
+                            <dd class="name">
+                                <a href="#" class>숨을 헐떡인다</a>
+                            </dd>
+                        </dl>
+                    </article>                    
                 </section>
             </div>
         </main>
