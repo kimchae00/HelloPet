@@ -12,19 +12,15 @@
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/member.css">
 </head>
-<style>
-   input[id=naver]:hover {
-    background: #007aff;
-   }
+<script>
+    function popup(){
+        let url = 'findId.html';
+        let name = 'popup test';
+        let option = "width = 500, height = 500, top = 100, left = 200, location = no"
 
-   input[id=kakao]:hover {
-    background: #007aff;
-   }
-
-   input[id=apple]:hover {
-    background: #007aff;
-   }
-</style>
+        window.open(url, name, option);
+    }
+</script>
 <body>
     <div id="wrapper">
         <div class="header_div">
@@ -104,8 +100,8 @@
                                 <input type="text" id="kakao" value="Kakao 로 로그인">
                                 <input type="text" id="apple" value="Apple 로 로그인">
                                 <ul>
-                                    <li><a href="">회원가입</a><span>|</span></li>
-                                    <li><a href="">아이디/비밀번호찾기</a></li>
+                                    <li><a href="./terms.html">회원가입</a><span>|</span></li>
+                                    <li><a href="javascript:popup()">아이디/비밀번호찾기</a></li>
                                 </ul>
                                 </div>
                             </form>

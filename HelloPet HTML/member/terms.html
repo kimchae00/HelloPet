@@ -12,29 +12,76 @@
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/member.css">
 </head>
+<script>
+    $(document).ready(function(){
+        $('input[id=terms_next]').click(function(){
+            location.href="./register.html";
+        });
+    });
+</script>
 <body>
     <div id="wrapper">
-        <header>
-            <div class="top">
-                 <div>
-                     <a href="#">로그인</a>
-                     <a href="#">회원가입</a>
-                     <a href="#">마이페이지</a>
-                 </div>
-            </div>
-            <div class="menu">
-                 <div>
-                    <ul>
-                        <li><a href="#">증상별질병찾기</a></li>
-                        <li><a href="#">병원/약국찾기</a></li>
-                        <li class="logo"><a href="./index.html"><img src="../img/ci.png" alt="logo"></a></li>
-                        <li><a href="#">커뮤니티</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-                 </div>
-             </div>
-        </header>
-        <main class="main">
+        <div class="header_div">
+            <header>
+                <div class="header_background">
+                    <div class="header_right">
+                        <ul class="header_customer">
+                            <li>
+                                <a href="#">
+                                    <span>로그인</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>회원가입</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>고객센터</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="menu_background">
+                    <div class="header_menu">
+                        <div class="menu_left">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <h2>증상별질병검색</h2>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <h2>동물병원약국찾기</h2>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menu_right">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <h2>커뮤니티</h2>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <h2>고객센터</h2>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="header_logo">
+                        <a href="#"><img src="../img/ci.png" alt=""></a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <main class="terms_main">
             <div class="terms_div">
                 <div class="terms_top">
                     <span>펫오너 회원가입</span>
@@ -57,7 +104,7 @@
                         <span>이용약관에 동의합니다.</span>
                     </div>
                 </div>
-                <div class="terms_privacy">
+                <div class="terms_content">
                     <div class="content">
                         <span>개인정보처리방침</span>
                         <p>
@@ -65,49 +112,73 @@
                         </p>
                     </div>
                     <div class="terms_check">
-                        <div>
                             <input type="checkbox" name="check">
                             <span>이용약관에 동의합니다.</span>
-                        </div>
-                        <div class="all">
-                            <input type="checkbox" name="all">
-                            <span>전체동의합니다.</span>
-                        </div>
+                            <div>
+                                <input type="checkbox" name="all">
+                                <span>전체동의합니다.</span>    
+                            </div>
                     </div>
                 </div>
                 <div class="terms_button">
                     <ul>
                         <li><input type="button" value="취소"></li>
-                        <li><input type="button" value="다음 단계로"></li>
+                        <li><input type="button" id="terms_next" value="다음 단계로"></li>
                     </ul>
                 </div>
             </div>
         </main>
-        <footer>
-            <div>
-                <div class="footer_info">
-                    <p>
-                        <strong>HELLOPET</strong>
-                        <br>
-                        부산시 남구 수영로 299 10층
-                        <br>
-                        대표이사 : 김헬로
-                        <br>
-                        사업자등록번호 : 220-81-83676 사업자정보확인
-                        <br>
-                        통신판매업신고 : 부산 10630호 Fax : 051-589-8842
-                    </p>
+        <div class="footer_div">
+            <footer>
+                <div class="footer_background">
+                    <div class="footer_left">
+                        <ul>
+                            <li>HelloPet</li>
+                            <li>대표이사 홍길동</li>
+                            <li>사업자등록번호 123-45-78910</li>
+                            <li>통신판매업신고번호 어쩌고저쩌고123454</li>
+                            <li>부산광역시 어쩌구구 어쩌로로로 119, 어쩌구무슨동 12345호 (주)12</li>
+                            <li>TEL.051-123-4567</li>
+                            <li>E-mail abc@naver.com</li>
+                            <li>Copyright all rights reserved example</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="footer_right">
+                            <li>
+                                <a href="#">회사소개</a>
+                            </li>
+                            <li>
+                                <a href="#">이용약관</a>
+                            </li>
+                            <li>
+                                <a href="#">개인정보처리방침</a>
+                            </li>
+                            <li>
+                                <a href="#">광고문의관리</a>
+                            </li>
+                            <li>
+                                <a href="#">고객의소리</a>
+                            </li>
+                        </ul>
+                        <ul class="footer_sns">
+                            <li>
+                                <a href=""><img src="../img/footer-sns-0.png" alt=""></a>
+                            </li>
+                            <li>
+                                <a href=""><img src="../img/footer-sns-1.png" alt=""></a>
+                            </li>
+                            <li>
+                                <a href=""><img src="../img/footer-sns-2.png" alt=""></a>
+                            </li>
+                            <li>
+                                <a href=""><img src="../img/footer-sns-3.png" alt=""></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="footer_link">
-                    <ul>
-                        <li><a href="#">회사소개</a></li>
-                        <li><a href="#">서비스이용약관</a></li>
-                        <li><a href="#">개인정보처리방침</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </div>
 </body>
 </html>

@@ -12,101 +12,6 @@
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/member.css">
 </head>
-<style>
-    .register_img {
-        display: block;
-        margin-bottom: 100px;
-    }
-    .join_tap {
-        display: flex;
-        justify-content: center;
-    }
-
-    .join_tap > div {
-        display: flex;
-        justify-content: center;
-        width: 1200px;
-        padding-top: 50px;
-        padding-bottom: 50px;
-        border-top: 2px solid #dbdee8;
-        border-bottom: 1px solid #0dbcaf;
-        margin-bottom: 20px;
-    }
-
-    .join_tap > div > button {
-        border-radius: 50px;
-        width: 200px;
-        height: 50px;
-        border: none;
-    }
-
-    .join_tap > div > button:nth-child(1) {
-        color: #fff;
-        font-weight: 700;
-        background-image: linear-gradient(90deg,#1dc6f7,#00e5c2);
-        margin-right: 10px;
-    }
-
-    .register_business {
-        width: 1200px;
-        margin: 0 auto;   
-    }
-    .register_business_table {}
-
-    .register_business_table tr {}
-
-    .register_business_table tr > td {}
-
-    .register_business_table tr > td:nth-child(1) {
-        display: block;
-        width: 100%;
-        color: #333;
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 3;
-    }
-
-    .register_business_table tr > td:nth-child(2) > input:nth-child(1) {
-        width: 500px;
-        height: 35px;
-        margin-left: 50px;
-        text-indent: 10px;
-        border: 1px solid #e5e5e5;
-    }
-
-    .register_business_table tr > td:nth-child(2) > input:nth-child(2) {
-        width: 100px;
-        padding: 10px;
-        border: 1px solid #e5e5e5;
-        margin-left: 10px;
-    }
-    #radio > td:nth-of-type(2) > input {
-        vertical-align: -1px;
-    }
-
-    #radio > td:nth-of-type(2) > input:nth-of-type(1) {
-        border: 1px solid red;
-        width: 12px;
-        height: 12px;
-        margin-right: 5px;
-        
-    }
-
-    #radio > td:nth-of-type(2) > input {
-        margin-right: 5px;
-    }
-
-    #radio > td:nth-child(2) > span:nth-child(2) {
-        margin-right: 5px;
-    }
-
-    #Business_Registration {
-        padding-top: 6px;
-        height: 30px;
-        text-indent: 0;
-    }
-
-</style>
 <body>
     <div id="wrapper">
         <div class="header_div">
@@ -169,13 +74,13 @@
                 </div>
             </header>
         </div>
-        <main class="main">
-            <div class="register_div">
-                <div class="register_top">
+        <main class="business_main">
+            <div class="business_div">
+                <div class="business_top">
                     <span>펫병원 약국 회원가입</span>
-                    <div class="register_top2">
+                    <div class="business_top2">
                         <span>회원가입</span>
-                        <div class="register_img">
+                        <div class="business_img">
                             <img src="../img/tab2.png" alt="">
                         </div>
                     </div>
@@ -188,7 +93,7 @@
                 </div>
                 <div class="register_business">
                     <form action="" class="register_business_form">
-                        <table border="0" class="register_business_table">
+                        <table class="register_business_table">
                             <tr>
                                 <td>휴대폰</td>
                                 <td>
