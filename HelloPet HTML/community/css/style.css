@@ -1,0 +1,552 @@
+* {
+    margin: 0;
+    padding: 0;
+    font: normal 12px "Noto Sans CJK KR";
+}
+
+a {
+    text-decoration: none;
+    color: #111;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+input,
+textarea {
+    outline: none;
+}
+
+#wrapper {
+    width: 100%;
+}
+
+header {
+    width: 100%;
+    height: 135px;
+    position: sticky;
+    top: 0px;
+}
+
+header>div {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header>.top {
+    height: 35px;
+    background: #e1f3f3;
+}
+
+header>.top>div {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: right;
+}
+
+header>.top>div>a {
+    display: inline-block;
+    height: 100%;
+    line-height: 35px;
+    padding: 0 10px;
+    font-size: 14px;
+    color: #555;
+    font-weight: 300;
+}
+
+header>.menu {
+    padding: 40px 60px 0;
+    height: 100px;
+    background: #32a69f;
+    box-sizing: border-box;
+}
+
+header>.menu>div {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+header>.menu>div>ul {
+    display: inline-block;
+    margin-top: 0px;
+}
+
+header>.menu>div>ul:nth-child(1) {
+    float: left;
+}
+
+header>.menu>div>ul:nth-child(2) {
+    float: right;
+}
+
+header>.menu>div>ul>li {
+    float: left;
+}
+
+header>.menu>div>ul>li>a {
+    padding: 0 60px;
+    font-size: 20px;
+    color: white;
+}
+
+header>.menu>div>ul>.logo {
+    margin-top: -50px;
+}
+
+
+
+
+
+
+
+
+footer {
+    width: 100%;
+    height: 192px;
+    background: #b4e8e3;
+    border-top: 1px solid #e9e9e9;
+    box-sizing: border-box;
+}
+
+footer>div {
+    width: 1200px;
+    height: auto;
+    padding-top: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+footer>div>.footer_info>p {
+    float: left;
+    height: 100%;
+    line-height: 20px;
+    font-size: 15px;
+    color: #10958b;
+}
+
+footer>div>.footer_link {
+    float: right;
+}
+
+footer>div>.footer_link>ul {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+footer>div>.footer_link>ul>li {
+    display: inline-block;
+    font-weight: bold;
+}
+
+footer>div>.footer_link>ul>li>a {
+    font-size: 17px;
+    color: #10958b;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+footer p>strong {
+    display: inline-block;
+    padding: 6px 15px 7px 0;
+    color: #10958b;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* community */
+.communityTop {
+    height: 150px;
+    background-color: #e1f4f3;
+    text-align: center;
+}
+
+.communityTop > h3 {
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 55px;
+}
+
+.tab {
+   width: 587px;
+   height: 83.33px;
+   background-color: white;
+   margin: 0 auto;
+   margin-top: -40px;
+}
+
+.tab > ul{
+    border-bottom: 2px solid #10958b;
+    width: 100%;
+}
+
+.tab > ul > li{
+    display: inline-block;
+    margin: 25px 82px;
+}
+
+
+
+.tab > ul > li > a{
+    font-size: 20px;
+    font-weight: bold;
+    color: #10958b;
+}
+
+/* community_tipList */
+
+.container {
+width: 100%;
+text-align: center;
+}
+
+section  table {
+display: inline-block;
+margin: 0 auto;
+width: 1200px;
+height: auto;
+border-top: 2px solid #10958b;
+margin-top: 70px;
+}
+
+
+section table tr{
+display: inline-block;
+width: 1200px;
+height: 120px;
+border-bottom: 2px solid #dcdcdc;
+margin-top: 16px;
+}
+
+section table tr td:nth-child(2){
+width: 500px;
+}
+
+
+section table  span:first-child{
+display: inline-block;
+width: 160px;
+height: 100px;
+}
+
+
+
+.tipTitle{
+margin-left: -20px;
+margin-top: -23px;
+}
+
+.tipTitle > a{
+font-size: 24px;
+font-weight: 700;
+color: #333;
+} 
+
+
+.tipNick{
+display: inline-block;
+font-size: 18px;
+font-weight: 700;
+color: #10958b;
+margin-right: 330px;
+}
+
+.tipInfo{
+width: 604.56px;
+text-align: right;
+}
+.tipLike{
+font-weight: bold;
+color: #666;
+font-size: 18px;
+}
+
+.tipLike > strong{
+font-weight: bolder;
+color: #111;
+font-size: 20px;
+}
+
+.tipHit{
+color: #999;
+font-weight: bold;
+font-size: 18px;
+}
+
+.tipIcon{
+display: inline-block;
+width: 32px;
+height: 32px;
+background-position: 50%;
+background-repeat: no-repeat;
+background-size: cover;
+margin-bottom: -7px;
+}
+
+.tipHeart{
+display: inline-block;
+width: 18px;
+height: 15px;
+background-size: fill;
+background-repeat: no-repeat;
+}
+
+.write{
+width: 1200px;
+margin: 0 auto;
+}
+.write  button {
+text-align: center;
+align-items: center;
+background-color: #10958b;
+border: 1px solid white;
+min-width: 120px;
+height: 56px;
+font-size: 18px;
+font-weight: 900;
+color: white;
+margin-top: 40px;
+margin-bottom: 20px;
+margin-left: 1080px;
+}
+
+.paging a{
+display: inline-block;
+box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+border-radius: 4px;
+align-items: center;
+height: 32px;
+width: 32px;
+margin: 0.3rem 10px;
+font-size: 20px;
+margin-bottom: 10px;
+}
+
+.paging .on {
+background-color: #10958b;
+color: #fff;
+}
+
+/* community_tipView */
+
+.tip_view_title{
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 70px;
+    border-top: 5px solid #b4e8e3;
+    border-bottom: 5px solid #b4e8e3;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.tip_view_title > h3{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: #333;
+    }
+.tip_view_nick{
+    display: inline-block;
+    width: 1200px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #10958b;
+}
+
+
+.tip_view_content{
+    width: 1200px;
+    margin: 0 auto;
+    border-bottom: 5px solid #b4e8e3;
+    margin-bottom: 100px;
+}
+
+.tip_view_hit{
+    text-align: right;
+    color: #999;
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 20px;
+
+}
+
+.view_img_div{
+    width: 1200px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.view_img{
+    width: 800px;
+    height: 800px;
+    margin: 0 auto;
+}
+
+.tip_view_text{
+    height: auto;
+    text-align: center;
+    font-size: 18px;
+    
+}
+
+
+
+
+.view_link{
+    text-align: right;
+    margin-bottom: 30px;
+    margin-top: 80px;
+}
+
+.view_link > a > .view_list{
+    text-align: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #10958b;
+    min-width: 60px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 900;
+    color: #333;
+}
+
+.view_link > a > .view_modify{
+    text-align: center;
+    align-items: center;
+    background-color: #10958b;
+    border: 1px solid #10958b;
+    min-width: 60px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 900;
+    color: white;
+}
+
+.view_link > a > .view_delete{
+    text-align: center;
+    align-items: center;
+    background-color: #10958b;
+    border: 1px solid #10958b;
+    min-width: 60px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 900;
+    color: white;
+}
+
+
+/* community_tipWrite */
+.write_cate{
+    width: 1200px;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.write_tip{
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    width: 260px;
+    height: 40px;
+    background-color: #10958b;
+    border: #10958b;
+    color: white;
+    border-radius: 5%;
+    line-height: 40px;
+}
+
+.write_table{
+    width: 1200px;
+    margin: 0 auto;
+    border-top: 5px solid #b4e8e3;
+    border-bottom: 5px solid #b4e8e3;
+    border-collapse: separate;
+    border-spacing: 0 40px;
+}
+
+
+
+.write_table input{
+    width: 1060px;
+    height: 40px;
+    font-size: 18px;
+    padding: 5px 5px;
+}
+
+.write_table textarea{
+    width: 1055px;
+    height: 400px;
+    font-size: 16px;
+    padding: 10px 10px;
+}
+
+
+
+.write_table td {
+    margin-top: 30px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 50px;
+}
+
+
+
+
+
+.write_table button{
+    width: 80px;
+    height: 30px;
+}
+
+
+.write_font{
+    width: 150px;
+    height: auto;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+
+.write_link{
+    width: 1200px;
+    margin: 0 auto;
+    text-align: right;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.write_cancel{
+    text-align: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #10958b;
+    min-width: 100px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 900;
+    color: #333;
+}
+
+.write_complete{
+    text-align: center;
+    align-items: center;
+    background-color: #10958b;
+    border: 1px solid #10958b;
+    min-width: 100px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 900;
+    color: white;
+}
+
