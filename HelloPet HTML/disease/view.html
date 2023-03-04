@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link async="" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans KR","Apple SD Gothic Neo",Helvetica,sans-serif,Arial;
+}
+a {
+    text-decoration: none;
+    color: #555;
+}
+ul, ol {list-style: none;}
+input, textarea {
+    outline: none;
+}
+img {border-style: none; max-width: 100%;}
+button {outline: none; border: none;}
+#wrapper {
+    width: 100%;
+    min-width: 1200px;
+}
+
+header {
+    min-width: 1200px;
+    width: 100%;
+    height: 105px;
+    position: relative;
+}
+
+header>div {
+    width: 100%;
+    box-sizing: border-box;
+   
+}
+
+header>.headerTop {
+    position: absolute;
+    height: 35px;
+    background: #e1f3f3;
+}
+
+header>.headerTop>div {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: right;
+}
+
+header>.headerTop>div>a {
+    display: inline-block;
+    height: 100%;
+    line-height: 35px;
+    padding: 0 10px;
+    font-size: 14px;
+    color: #555;
+    font-weight: 300;
+}
+
+header>.menu {
+    position: absolute;
+    top: 35px;
+    height: 70px;
+    background: #32a69f;
+    box-sizing: border-box;
+}
+
+header > .menu > div {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+header > .menu > div > ul {
+    display: inline-block;
+    margin-top: 20px;
+    
+}
+header > .menu > div > ul > li {float: left;}
+header > .menu > div > ul > li > a {
+    font-size: 20px;
+    color: white;
+    padding: 0 64px;
+}
+header > .menu > div > ul > li img {width: 70px;}
+header > .menu > div > ul > li:nth-child(3) {
+    position: relative;
+    top: -22px;
+}
+main {
+    width: 100%;
+    min-width: 1200px;
+    min-height: 800px;
+    margin: 0 auto;
+}
+.top {
+    overflow: hidden;
+    height: 200px;
+    background-color: #e1f4f3;
+    text-align: center;
+}
+
+.top > h3 {
+    color: #555;
+    font-size: 38px;
+    font-weight: bold;
+    padding-top: 60px;
+}
+
+.tab {
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    margin-top: -40px;
+}
+.tab > ul {
+    width: 700px;
+    height: 100%;
+    background: white;
+}
+
+.tab > ul > li {
+    text-align: center;
+    float: left;
+    width: 33.3%;
+    align-items: center;
+    line-height: 70px;
+    border-bottom: 1px solid #10958b;
+}
+.tab > ul > li > a {
+    font-weight: bold;
+    font-size: 20px;
+    color: #10958b;
+}
+.tab > ul > .on {
+    background: #32a69f;
+}
+.tab > ul > .on a {
+    color: #fff;
+}
+
+#sub-wrap {
+            min-height: 600px;
+            
+        }
+
+        .sub-contents {
+            padding: 0 0 80px;
+        }
+
+        .search-top-container {
+            height: 215px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #e1f4f3;
+        }
+        .search-top-container .title{
+            font-size: 40px;
+            line-height: 1.4;
+            color: #555;
+            font-weight: 700;
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .section-tab-container {
+            z-index: 2;
+            position: relative;
+            margin: -40px auto 0;
+            max-width: 800px;
+            width: 100%;
+            margin-top: -30px;
+        }
+
+        .tab-list {
+            display: flex;
+            flex:wrap;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 35px;
+        }
+        ul {
+            list-style: none;
+        }
+
+        .tab-list>li {
+            width: 50%;
+        }
+
+        .tab-list--block>li {
+            border-bottom: 2px solid #32a69f;
+        }
+        .tab-list>li {
+            margin-top: -1px;
+            margin-left: -1px;
+            flex: 1;
+            transition: all .3s ease-in-out;
+        }
+        .section-tab-container .tab-list--block .button {
+            padding: 16px 10px;
+            font-size: 20px;
+        }
+        .tab-list--block>li.on .button {
+            background: #32a69f;
+            color: #fff;
+            font-weight: 700;
+            height: 100%;
+        }
+        .tab-list>li .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: center;
+            width: 100%;
+            text-align: center;
+            letter-spacing: -.05em;
+            transition: all .3s ease-in-out;
+            background-color: #fff;;
+        }
+        .section-tab-container .tab-list--block>li .button {
+            padding: 16px 10px;
+            font-size: 26px;
+        }
+        .tab-list--block>li .button {
+            height: 100%;
+            color:#32a69f;
+            font-weight: 700;
+        }
+        .top-round{
+            z-index: 2;
+            position: relative;
+            margin: 30px auto 0;
+            text-align: center;
+            background: #fff;
+            border-radius: 100px;
+            box-shadow: 0 3px 10px 0 rgb(36 36 36 / 15%);
+            width: 320px;
+            min-height: auto;
+            padding: 15px;
+            margin-top: 70px;
+        }
+
+       
+        .top-round2{
+            z-index: 2;
+            position: relative;
+            margin: 30px auto 0;
+            text-align: center;
+            background: #fff;  
+            border-radius: 100px;
+            box-shadow: 0 3px 10px 0 rgb(36 36 36 / 15%);
+            width: 600px;
+            min-height: auto;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .top-round3{
+            z-index: 2;
+            position: relative;
+            margin: 30px auto 0;
+            text-align: center;
+            background: #fff;
+            border-radius: 100px;
+            box-shadow: 0 3px 10px 0 rgb(36 36 36 / 15%);
+            width: 400px;
+            min-height: auto;
+            padding: 15px;
+            margin-top: 25px;
+        }
+        
+        
+
+    
+
+        .top-round--larger {
+            max-width: 1000px;
+        }
+        .top-round .title {
+            font-size: 16px;
+            line-height: 1;
+            color: #3c83dc;
+            font-weight: 700;
+        }
+       
+        .top-round2--larger {
+            max-width: 1000px;
+        }
+        .top-round3--lager{
+            max-width: 1000px;
+        }
+
+        .top-round2 .title2 {
+            font-size: 16px;
+            line-height: 1;
+            color: #3c83dc;
+            font-weight: 700;
+        }
+        .top-round3 .title3 {
+            font-size: 16px;
+            line-height: 1;
+            color: #3c83dc;
+            font-weight: 700;
+        }
+        
+        h4 {
+            display: block;
+            margin-block-start: 1.33em;
+            margin-block-end: 1.33em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+        }
+        .top-round .pr {
+            font-size: 18px;
+            margin-top: 8px;
+            line-height: 1;
+            color: #777;
+            font-weight: 700;
+        }
+        .top-round2 .pr2 {
+            font-size: 18px;
+            margin-top: 8px;
+            line-height: 1;
+            color: #777;
+            font-weight: 700;
+
+        }
+        .top-round3 .pr3 {
+            font-size: 18px;
+            margin-top: 8px;
+            line-height: 1;
+            color: #777;
+            font-weight: 700;
+
+        }
+        p {
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-block-end: 0px;
+        }
+
+        footer {
+    width: 100%;
+    height: 192px;
+    background: #b4e8e3;
+    border-top: 1px solid #e9e9e9;
+    box-sizing: border-box;
+}
+
+footer>div {
+    width: 1200px;
+    height: auto;
+    padding-top: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+footer>div>.footer_info>p {
+    float: left;
+    height: 100%;
+    line-height: 20px;
+    font-size: 15px;
+    color: #10958b;
+}
+
+footer>div>.footer_link {
+    float: right;
+}
+
+footer>div>.footer_link>ul {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+footer>div>.footer_link>ul>li {
+    display: inline-block;
+    font-weight: bold;
+}
+
+footer>div>.footer_link>ul>li>a {
+    font-size: 17px;
+    color: #10958b;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+footer p>strong {
+    display: inline-block;
+    padding: 6px 15px 7px 0;
+    color: #10958b;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <header class="header">
+            <div class="headerTop">
+                <div>
+                    <a href="#">로그인</a>
+                    <a href="#">회원가입</a>
+                    <a href="#">마이페이지</a>
+                </div>
+            </div>
+            <div class="menu">
+                <div>
+                    <ul>
+                        <li><a href="#">증상별질병찾기</a></li>
+                        <li><a href="#">병원/약국찾기</a></li>
+                        <li class="logo"><a href="/index.html"><img src="../img/ci.png" alt="logo"></a></li>
+                        <li><a href="#">커뮤니티</a></li>
+                        <li><a href="#">고객센터</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div id="sub-wrap">
+            <div class="sub-contents">
+                <div class="search-top-container">
+                    <h3 class="title">증상별 질병 검색</h3>
+                </div>
+                <div class="section-tab-container">
+                    <ul class="tab-list tab-list--block">
+                        <li class="on">
+                           <a href="#" type="button" class="button">반려견</a>
+                        </li>
+                        <li class>
+                            <a href="#" type="button" class="button">반려묘</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="top-round top-round--lager">
+                    <h4 class="title">눈 이상</h4>
+                    <p class="pr">눈꺼풀이 벌겋게 붛는다</p>
+                </div>
+
+                <div class="top-round2 top-round2--larger">
+                    <h4 class="title2">안검염</h4>
+                    <p class="pr2">안검염은 눈꺼풀 혹은 그 주변에 염증이 생겨 붉게 부어오르는 질병입니다. </p>
+                </div>
+
+                <div class="top-round3 top-round3--larger">
+                    <h4 class="title3">진료 가능 항목</h4>
+                    <p class="pr3">안과 안압 검진 </p>
+                </div>
+                   
+                </main>
+                <footer>
+                    <div>
+                        <div class="footer_info">
+                            <p>
+                                <strong>HELLOPET</strong>
+                                <br>
+                                부산시 남구 수영로 299 10층
+                                <br>
+                                대표이사 : 김헬로
+                                <br>
+                                사업자등록번호 : 220-81-83676 사업자정보확인
+                                <br>
+                                통신판매업신고 : 부산 10630호 Fax : 051-589-8842
+                            </p>
+                        </div>
+                        <div class="footer_link">
+                            <ul>
+                                <li><a href="#">회사소개</a></li>
+                                <li><a href="#">서비스이용약관</a></li>
+                                <li><a href="#">개인정보처리방침</a></li>
+                                <li><a href="#">고객센터</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </body>
+        </html>
+
+                
