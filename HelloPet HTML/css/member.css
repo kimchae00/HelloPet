@@ -786,7 +786,7 @@ input[name=addr2] {
     border: none;
 }
 
-.join_tap > div > button:nth-child(1) {
+.join_tap > div > button:nth-child(1).on {
     color: #fff;
     font-weight: 700;
     background-image: linear-gradient(90deg,#1dc6f7,#00e5c2);
