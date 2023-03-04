@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>헬로펫</title>
+    <title>HelloPet</title>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
@@ -13,13 +13,39 @@
     <link rel="stylesheet" href="../css/member.css">
 </head>
 <script>
-    function popup(){
-        let url = 'findId.html';
-        let name = 'popup test';
-        let option = "width = 500, height = 800, top = 100, left = 200, location = no"
 
-        window.open(url, name, option);
-    }
+    $(document).ready(function(){
+        $('button[name=btnFindEmail]').click(function(){
+            let name = $('input[name=findEmailName]').val();
+            let hp = $('input[name=findEmailHp]').val();
+            
+            if(name == ''){
+                alert('이름을 입력');
+            }else if(hp == ''){
+                alert('연락처를 입력');
+            }else{
+                alert('ajax 처리');
+            }
+            
+        });
+
+        $('button[name=btnFindPass]').click(function(){
+            let email = $('input[name=findEamil]').val();
+            let name = $('input[name=findPassName]').val();
+            let hp = $('input[name=findPassHp]').val();
+
+            if(email == ''){
+                alert('이메일을 입력');
+            }else if(name == ''){
+                alert('이름을 입력');
+            }else if(hp == ''){
+                alert('연락처를 입력');
+            }else{
+                alert('ajax 처리');
+            }
+        });
+    });
+
 </script>
 <body>
     <div id="wrapper">
@@ -83,33 +109,35 @@
                 </div>
             </header>
         </div>
-        <main class="main">
-            <div class="login_div">
-                <article class="login">
-                    <div class="main_first">
-                        <h2>로그인</h2>
-                        <div class="main_second">
-                            <form action="#" class="login_form">
-                                <input type="text" name="id" placeholder="아이디">
-                                <input type="password" name="pass" placeholder="비밀번호">
-                                <div>
-                                    <input type="checkbox" name="check"><i class="circle"></i><span class="text">아이디저장</span>
-                                </div>
-                                <input type="submit" id="login" value="로그인">
-                                <input type="text" id="naver" value="Naver 로 로그인">
-                                <input type="text" id="kakao" value="Kakao 로 로그인">
-                                <input type="text" id="apple" value="Apple 로 로그인">
-                                <ul>
-                                    <li><a href="./terms.html">회원가입</a><span>|</span></li>
-                                    <li><a href="./find.html">아이디/비밀번호찾기</a></li>
-                                </ul>
-                                </div>
-                            </form>
-                        </div>
+        <div class="find_div">
+            <main class="find_main">
+                <div class="findEmail">
+                    <h3>이메일 찾기</h3>
+                    <div>
+                        <input type="text" name="findEmailName" placeholder="이름">
+                        <input type="text" name="findEmailHp" placeholder="010-0000-0000">
+                        <button type="button" name="btnFindEmail">이메일찾기</button>
                     </div>
-                </article>
+                </div>
+                <div class="findPass">
+                    <h3>비밀번호 찾기</h3>
+                    <div>
+                        <input type="text" name="findEamil" placeholder="이메일">
+                        <input type="text" name="findPassName" placeholder="이름">
+                        <input type="text" name="findPassHp" placeholder="010-0000-0000">
+                        <button type="button" name="btnFindPass">비밀번호변경</button>
+                    </div>
+                </div>
+                
+            </main>
+            <div class="alert">
+                    <p>
+                        회원정보는 개인정보취급방침에 따라 안전하게 보호되며, 
+                        회원님의 명백한 동의 없이 공개 또는 제 3자에게 제공되지 않습니다.
+                    </p>
+                    <a href="">개인정보취급방침 ></a>
             </div>
-        </main>
+        </div>
         <div class="footer_div">
             <footer>
                 <div class="footer_background">
