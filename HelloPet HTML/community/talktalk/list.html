@@ -1,68 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>헬로펫</title>
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="../css/style.css">
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>헬로펫</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link async="" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    
+</head>
+
 <body>
     <div id="wrapper">
-        <header>
-            <div class="top">
-                 <div>
-                     <a href="#">로그인</a>
-                     <a href="#">회원가입</a>
-                     <a href="#">마이페이지</a>
-                 </div>
+        <header class="header">
+            <div class="headerTop">
+                <div>
+                    <a href="#">로그인</a>
+                    <a href="#">회원가입</a>
+                    <a href="#">마이페이지</a>
+                </div>
             </div>
             <div class="menu">
-                 <div>
+                <div>
                     <ul>
                         <li><a href="#">증상별질병찾기</a></li>
                         <li><a href="#">병원/약국찾기</a></li>
-                        <li class="logo"><a href="./index.html"><img src="./img/ci.png" alt="logo"></a></li>
+                        <li class="logo"><a href="/index.html"><img src="/img/ci.png" alt="logo"></a></li>
                         <li><a href="#">커뮤니티</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-                 </div>
-             </div>
-        </header>
-        <main>
-            <section>1</section>
-            <section>2</section>
-        </main>
-        <footer>
-            <div>
-                <div class="footer_info">
-                    <p>
-                        <strong>HELLOPET</strong>
-                        <br>
-                        부산시 남구 수영로 299 10층
-                        <br>
-                        대표이사 : 김헬로
-                        <br>
-                        사업자등록번호 : 220-81-83676 사업자정보확인
-                        <br>
-                        통신판매업신고 : 부산 10630호 Fax : 051-589-8842
-                    </p>
-                </div>
-                <div class="footer_link">
-                    <ul>
-                        <li><a href="#">회사소개</a></li>
-                        <li><a href="#">서비스이용약관</a></li>
-                        <li><a href="#">개인정보처리방침</a></li>
                         <li><a href="#">고객센터</a></li>
                     </ul>
                 </div>
             </div>
-        </footer>
+        </header>
+        <main>
+            <div class="top">
+                <h3>커뮤니티</h3>
+            </div>
+            <div class="tab">
+                <ul>
+                    <li><a href="#">반려동물 꿀팁</a></li>
+                    <li class="on"><a href="#">반려동물 톡톡</a></li>
+                </ul>
+            </div>
+            <section id="talkMain">
+                <div class="container">
+                    <div class="talk_title">
+                        <h3>내가 올린 사진</h3>
+                        <div class="talk_write">
+                            <a href="./write.html"><div>사진 올리기</div></a>
+                        </div>
+                    </div>
+                    <div class="talk_head">
+                        <div class="select">
+                            <select class="c1Name">
+                                <option value="0">최신순</option>
+                                <option>좋아요순</option>
+                                <option>댓글순</option>
+                            </select>
+                            <select class="c2Name">
+                                <option value="0">마이펫 제 2기 모델 콘테스트</option>
+                                <option>마이펫 제 1기 모델 콘테스트</option>
+                                <option>일상공유</option>
+                                <option>건강일기</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="talk_rank">
+                        <div class="rank_img">
+                            <img src="../img/congratulate_img.png" alt="랭킹이미지">
+                        </div>
+                        <div class="gallery_items">
+                            <div class="gallery_item">
+                                <div class="gallery_item_con1">
+                                    <div class="gallery_thumb" style="#"></div>
+                                </div>
+                                <div class="gallery_item_con2">
+                                    <div class="gallery_info1">
+                                        <div class="gallery_title">마이펫 제2기 모델(로이 밍밍 2살)</div>
+                                        <div class="gallery_like"><span class="gallery_like_icon"></span>23</div>
+                                        <div class="gallery_comment"><span class="gallery_comment_icon"></span>21</div>
+                                    </div>
+                                    <div class="gallery_info2">
+                                        <div class="rank_nick"><span class="rank_nick_icon"></span>로이밍밍</div>
+                                        <div class="rank_date">2023-03-05</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gallery_item">
+                                <div class="gallery_item_con1">
+                                    <div class="gallery_thumb" style="#"></div>
+                                </div>
+                                <div class="gallery_item_con2">
+                                    <div class="gallery_info1">
+                                        <div class="gallery_title">2기 모델 지원합니다</div>
+                                        <div class="gallery_like"><span class="gallery_like_icon"></span>18</div>
+                                        <div class="gallery_comment"><span class="gallery_comment_icon"></span>10</div>
+                                    </div>
+                                    <div class="gallery_info2">
+                                        <div class="rank_nick"><span class="rank_nick_icon"></span>봉팔공주엄뉘</div>
+                                        <div class="rank_date">2023-03-05</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gallery_item">
+                                <div class="gallery_item_con1">
+                                    <div class="gallery_thumb" style="#"></div>
+                                </div>
+                                <div class="gallery_item_con2">
+                                    <div class="gallery_info1">
+                                        <div class="gallery_title">펫트라슈 2기모델 4살 반달과 3살 포비</div>
+                                        <div class="gallery_like"><span class="gallery_like_icon"></span>14</div>
+                                        <div class="gallery_comment"><span class="gallery_comment_icon"></span>6</div>
+                                    </div>
+                                    <div class="gallery_info2">
+                                        <div class="rank_nick"><span class="rank_nick_icon"></span>반달포비맘</div>
+                                        <div class="rank_date">2023-03-05</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="talk_normal">
+                        <div class="gallery_items">
+                            <div class="gallery_item">
+                                <div class="gallery_item_con1">
+                                    <div class="gallery_thumb" style="#"></div>
+                                </div>
+                                <div class="gallery_item_con2">
+                                    <div class="gallery_info1">
+                                        <div class="gallery_title">봄 엔 슈</div>
+                                        <div class="gallery_like"><span class="gallery_like_icon"></span>5</div>
+                                        <div class="gallery_comment"><span class="gallery_comment_icon"></span>0</div>
+                                    </div>
+                                    <div class="gallery_info2">
+                                        <div class="rank_nick"><span class="rank_nick_icon"></span>봄엔슈</div>
+                                        <div class="rank_date">2023-03-05</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gallery_item">
+                                <div class="gallery_item_con1">
+                                    <div class="gallery_thumb" style="#"></div>
+                                </div>
+                                <div class="gallery_item_con2">
+                                    <div class="gallery_info1">
+                                        <div class="gallery_title">봄 엔 슈</div>
+                                        <div class="gallery_like"><span class="gallery_like_icon"></span>5</div>
+                                        <div class="gallery_comment"><span class="gallery_comment_icon"></span>0</div>
+                                    </div>
+                                    <div class="gallery_info2">
+                                        <div class="rank_nick"><span class="rank_nick_icon"></span>봄엔슈</div>
+                                        <div class="rank_date">2023-03-05</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gallery_item">
+                                <div class="gallery_item_con1">
+                                    <div class="gallery_thumb" style="#"></div>
+                                </div>
+                                <div class="gallery_item_con2">
+                                    <div class="gallery_info1">
+                                        <div class="gallery_title">봄 엔 슈</div>
+                                        <div class="gallery_like"><span class="gallery_like_icon"></span>5</div>
+                                        <div class="gallery_comment"><span class="gallery_comment_icon"></span>0</div>
+                                    </div>
+                                    <div class="gallery_info2">
+                                        <div class="rank_nick"><span class="rank_nick_icon"></span>봄엔슈</div>
+                                        <div class="rank_date">2023-03-05</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gallery_item">
+                                <div class="gallery_item_con1">
+                                    <div class="gallery_thumb" style="#"></div>
+                                </div>
+                                <div class="gallery_item_con2">
+                                    <div class="gallery_info1">
+                                        <div class="gallery_title">봄 엔 슈</div>
+                                        <div class="gallery_like"><span class="gallery_like_icon"></span>5</div>
+                                        <div class="gallery_comment"><span class="gallery_comment_icon"></span>0</div>
+                                    </div>
+                                    <div class="gallery_info2">
+                                        <div class="rank_nick"><span class="rank_nick_icon"></span>봄엔슈</div>
+                                        <div class="rank_date">2023-03-05</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gallery_item">
+                                <div class="gallery_item_con1">
+                                    <div class="gallery_thumb" style="#"></div>
+                                </div>
+                                <div class="gallery_item_con2">
+                                    <div class="gallery_info1">
+                                        <div class="gallery_title">봄 엔 슈</div>
+                                        <div class="gallery_like"><span class="gallery_like_icon"></span>5</div>
+                                        <div class="gallery_comment"><span class="gallery_comment_icon"></span>0</div>
+                                    </div>
+                                    <div class="gallery_info2">
+                                        <div class="rank_nick"><span class="rank_nick_icon"></span>봄엔슈</div>
+                                        <div class="rank_date">2023-03-05</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gallery_item">
+                                <div class="gallery_item_con1">
+                                    <div class="gallery_thumb" style="#"></div>
+                                </div>
+                                <div class="gallery_item_con2">
+                                    <div class="gallery_info1">
+                                        <div class="gallery_title">봄 엔 슈</div>
+                                        <div class="gallery_like"><span class="gallery_like_icon"></span>5</div>
+                                        <div class="gallery_comment"><span class="gallery_comment_icon"></span>0</div>
+                                    </div>
+                                    <div class="gallery_info2">
+                                        <div class="rank_nick"><span class="rank_nick_icon"></span>봄엔슈</div>
+                                        <div class="rank_date">2023-03-05</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gallery_item">
+                                <div class="gallery_item_con1">
+                                    <div class="gallery_thumb" style="#"></div>
+                                </div>
+                                <div class="gallery_item_con2">
+                                    <div class="gallery_info1">
+                                        <div class="gallery_title">봄 엔 슈</div>
+                                        <div class="gallery_like"><span class="gallery_like_icon"></span>5</div>
+                                        <div class="gallery_comment"><span class="gallery_comment_icon"></span>0</div>
+                                    </div>
+                                    <div class="gallery_info2">
+                                        <div class="rank_nick"><span class="rank_nick_icon"></span>봄엔슈</div>
+                                        <div class="rank_date">2023-03-05</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gallery_item">
+                                <div class="gallery_item_con1">
+                                    <div class="gallery_thumb" style="#"></div>
+                                </div>
+                                <div class="gallery_item_con2">
+                                    <div class="gallery_info1">
+                                        <div class="gallery_title">봄 엔 슈</div>
+                                        <div class="gallery_like"><span class="gallery_like_icon"></span>5</div>
+                                        <div class="gallery_comment"><span class="gallery_comment_icon"></span>0</div>
+                                    </div>
+                                    <div class="gallery_info2">
+                                        <div class="rank_nick"><span class="rank_nick_icon"></span>봄엔슈</div>
+                                        <div class="rank_date">2023-03-05</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gallery_item">
+                                <div class="gallery_item_con1">
+                                    <div class="gallery_thumb" style="#"></div>
+                                </div>
+                                <div class="gallery_item_con2">
+                                    <div class="gallery_info1">
+                                        <div class="gallery_title">봄 엔 슈</div>
+                                        <div class="gallery_like"><span class="gallery_like_icon"></span>5</div>
+                                        <div class="gallery_comment"><span class="gallery_comment_icon"></span>0</div>
+                                    </div>
+                                    <div class="gallery_info2">
+                                        <div class="rank_nick"><span class="rank_nick_icon"></span>봄엔슈</div>
+                                        <div class="rank_date">2023-03-05</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="paging">
+                        <a href="#" class="prev">←</a>
+                        <a href="#" class="num on">1</a>
+                        <a href="#" class="num">2</a>
+                        <a href="#" class="num">3</a>
+                        <a href="#" class="next">→</a>
+                    </div>
+                </div>
+
+                
+            </section>
+
+            
+        </main>
+        <footer>
+            <div class="footer">
+                 <div class="container">
+                     <div class="footer-col">
+                         <ul class="info">
+                             <li>GREEN ACADEMY</li>
+                             <li>대표이사 김헬로</li>
+                             <li>사업자 등록번호 230-12-15432</li>
+                             <li>통신판매업신고번호 제 2023-부산-00213호</li>
+                             <li>부산광역시 남구 수영로 299</li>
+                             <li>TEL 051-000-0000</li>
+                             <li>Email HelloPet@email.com</li>
+                         </ul>
+                     </div>
+                     <div class="footer-col">
+                         <ul class="link">
+                             <li><a href="#">회사소개</a></li>
+                             <li><a href="#">이용약관</a></li>
+                             <li><a href="#">문의하기</a></li>
+                             <li><a href="#">고객센터</a></li>
+                         </ul>
+                     </div>
+                 </div>
+            </div>
+         </footer>
     </div>
 </body>
+
 </html>
