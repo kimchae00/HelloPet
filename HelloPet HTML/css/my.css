@@ -252,8 +252,10 @@ footer {
 
 .sub-cate {
     font-size: 14px;
+    background: #f9f9f9;
     margin-top: 8px;
     margin-bottom: 10px;
+    padding: 10px;
 }
 
 .sub-cate > li {
@@ -261,6 +263,7 @@ footer {
 }
 
 .sub-cate > li > a {
+    color: #999;
     margin-left: 10px;
 }
 
@@ -318,14 +321,12 @@ footer {
 }
 
 #info_modify {
-    position: relative;
-    left: -150px;
     text-align: center;
 }
 
 #info_modify > button {
     width: 250px;
-    height: 50px;
+    height: 65px;
     margin-top: 100px;
     border: 4px solid #1dc6f7;
     text-align: center;
