@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloPet</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/my.css">
+</head>
+<style>
+
+.info_main {
+    border: 0px solid red;
+    width: 1200px;
+    min-height: 700px;
+    margin: auto;
+    padding: 130px 0;
+    height: auto;
+}
+
+.title {
+    text-align: right;
+    padding: 15px;
+    line-height: 1;
+    font-size: 28px;
+    color: #555;
+    font-weight: 700;
+}
+
+.info_aside {
+    float: left;
+    width: 190px;
+    border: 0px solid orange;
+    box-sizing: border-box;
+}
+
+.info_aside {
+    float: left;
+    width: 190px;
+    border: 0px solid orange;
+}
+
+.info_aside aside {}
+
+.info_aside > article > aside > ul > li > a.on {
+    color: #0dbcaf;
+    padding: 15px 0;
+    font-size: 20px;
+    font-weight: 700;
+    border-bottom: 1px solid #0dbcaf;
+}
+
+.info_aside ul {
+    margin-top: 20px;
+}
+
+.info_aside aside > ul > li{
+    color: #777;
+    line-height: 1;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 20px 0;
+    border-bottom: 1px solid #dbdee8;
+    cursor: pointer;
+
+}
+
+.sub-cate {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.sub-cate > li {
+    padding: 5px;
+}
+
+.sub-cate > li > a {
+    margin-left: 10px;
+}
+
+
+.info_div {
+    float: right;
+    width: 960px;
+    height: auto;
+    border-top: 2px solid #e5e5e5;
+    margin-left: 50px;
+    padding-top: 40px;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.info_div > table {}
+
+.info_div > table tr {}
+
+.info_div > table tr > td {
+    width: 170px;
+    height: 60px;
+    font-size: 18px;
+    font-weight: 300;
+    color: #5a5d5a;
+    padding: 5px;
+    padding-left: 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.info_div > table tr > td:nth-child(1) {
+    
+    border-left: 4px solid #e1f4f3;
+    border-right: 1px solid #e1f4f3;
+
+}
+
+.info_div > table tr > td:nth-child(2) button {
+    border: 1px solid #0dbcaf;
+    width: 150px;
+    height: 50px;
+    padding: 10px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    background: #0dbcaf;
+}
+
+#info_modify {
+    position: relative;
+    left: -150px;
+    text-align: center;
+}
+
+#info_modify > button {
+    width: 250px;
+    height: 50px;
+    margin-top: 100px;
+    border: 4px solid #1dc6f7;
+    text-align: center;
+    background: #fff;
+    border-radius: 100px;
+
+}
+
+#info_modify > button > span {
+    color: #3c83dc;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.info_table td  > span {
+    display: block;
+    width: 600px;
+    padding: 5px;
+}
+    
+</style>
+<body>
+    <div id="wrapper">
+        <header class="header">
+            <div class="headerTop">
+                <div>
+                    <a href="#">로그인</a>
+                    <a href="#">회원가입</a>
+                    <a href="#">마이페이지</a>
+                </div>
+            </div>
+            <div class="menu">
+                <div>
+                    <ul>
+                        <li><a href="#">증상별질병찾기</a></li>
+                        <li><a href="#">병원/약국찾기</a></li>
+                        <li class="logo"><a href="/index.html"><img src="../img/ci.png" alt="logo"></a></li>
+                        <li><a href="#">커뮤니티</a></li>
+                        <li><a href="#">고객센터</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <main class="info_main">
+            <div class="title">
+                <span>보호자 정보관리</span>
+            </div>
+            <div class="info_aside">
+                <article>
+                    <aside>
+                        <ul>
+                            <li><a href="#" class="on">보호자정보관리</a></li>
+                            <li><a href="#">마이펫 관리</a></li>
+                            <li><a href="#">예약 목록</a></li>
+                            <li><a href="#">열람권 목록</a></li>
+                            <li><a href="#">후기 관리</a>
+                                <ul class="sub-cate">
+                                    <li><a href="#">병원 후기</a></li>
+                                    <li><a href="#">약국 후기</a></li>
+                                    <li><a href="#">업체 후기</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">게시글 관리</a></li>
+                            <li><a href="#">메시지 관리 목록</a></li>
+                            <li><a href="#">포인트 관리</a></li>
+                            <li><a href="#">1:1 문의</a></li>
+                        </ul>
+                    </aside>
+                </article>
+            </div>
+            <div class="info_div">
+                <table class="info_table">
+                    <tr>
+                        <td>휴대폰</td>
+                        <td><span>여기는 번호</span></td>
+                    </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td><span>여기는 이름</span></td>
+                    </tr>
+                    <tr>
+                        <td>이메일</td>
+                        <td><span>여기는 메일</span></td>
+                    </tr>
+                    <tr>
+                        <td>닉네임</td>
+                        <td><span>여기는 닉네임</span></td>
+                    </tr>
+                    <tr>
+                        <td>주소</td>
+                        <td><span>여기는 주소</span></td>
+                    </tr>
+                    <tr>
+                        <td>추천인 이메일</td>
+                        <td><span>여기는 추천인 이메일</span></td>
+                    </tr>
+                    <tr>
+                        <td>회원탈퇴</td>
+                        <td><button>탈퇴하기</button></td>
+                    </tr>
+                </table>
+                <div id="info_modify">
+                    <button><span>수정하기</span></button>
+                </div>
+            </div>
+        </main>
+        <div class="footer_div">
+            <footer>
+                <div class="footer">
+                     <div class="container">
+                         <div class="footer-col">
+                             <ul class="info">
+                                 <li>GREEN ACADEMY</li>
+                                 <li>대표이사 김헬로</li>
+                                 <li>사업자 등록번호 230-12-15432</li>
+                                 <li>통신판매업신고번호 제 2023-부산-00213호</li>
+                                 <li>부산광역시 남구 수영로 299</li>
+                                 <li>TEL 051-000-0000</li>
+                                 <li>Email HelloPet@email.com</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col">
+                             <ul class="link">
+                                 <li><a href="#">회사소개</a></li>
+                                 <li><a href="#">이용약관</a></li>
+                                 <li><a href="#">문의하기</a></li>
+                                 <li><a href="#">고객센터</a></li>
+                             </ul>
+                         </div>
+                     </div>
+                </div>
+             </footer>
+        </div>
+    </div>
+</body>
+</html>

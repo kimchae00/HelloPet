@@ -23,69 +23,32 @@
     });
 </script>
 <style>
+    .article_first > h2 {
+        margin-top: 100px;
+    }
 </style>
 <body>
     <div id="wrapper">
-        <div class="header_div">
-            <header>
-                <div class="header_background">
-                    <div class="header_right">
-                        <ul class="header_customer">
-                            <li>
-                                <a href="#">
-                                    <span>로그인</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span>회원가입</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span>고객센터</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+        <header class="header">
+            <div class="headerTop">
+                <div>
+                    <a href="#">로그인</a>
+                    <a href="#">회원가입</a>
+                    <a href="#">마이페이지</a>
                 </div>
-                <div class="menu_background">
-                    <div class="header_menu">
-                        <div class="menu_left">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <h2>증상별질병검색</h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h2>동물병원약국찾기</h2>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="menu_right">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <h2>커뮤니티</h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h2>고객센터</h2>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="header_logo">
-                        <a href="#"><img src="../img/ci.png" alt=""></a>
-                    </div>
+            </div>
+            <div class="menu">
+                <div>
+                    <ul>
+                        <li><a href="#">증상별질병찾기</a></li>
+                        <li><a href="#">병원/약국찾기</a></li>
+                        <li class="logo"><a href="/index.html"><img src="../img/ci.png" alt="logo"></a></li>
+                        <li><a href="#">커뮤니티</a></li>
+                        <li><a href="#">고객센터</a></li>
+                    </ul>
                 </div>
-            </header>
-        </div>
+            </div>
+        </header>
         <main class="main">
             <div class="join_div">
                 <div class="join_div_first">
@@ -101,7 +64,7 @@
                                 </div>
                                 <img src="../img/join-gate-symbol-icon1.png" alt="">
                                 <div class="nav">
-                                    <a href="">펫오너로 가입</a>
+                                    <a href="./register.html">펫오너로 가입</a>
                                 </div>
                                 <div class="sns">
                                     <div class="sns_text">
@@ -123,7 +86,7 @@
                                 </div>
                                 <img src="../img/join-gate-symbol-icon2.png" alt="">
                                 <div class="nav">
-                                    <a href="">펫오너로 가입</a>
+                                    <a href="./registerBusiness.html">병원/약국 가입</a>
                                 </div>
                             </div>
                             <div class="join_content" id="join_content">
@@ -135,7 +98,7 @@
                                 </div>
                                 <img src="../img/join-gate-symbol-icon3.png" alt="">
                                 <div class="nav">
-                                    <a href="">펫오너로 가입</a>
+                                    <a href="#">가입</a>
                                 </div>
                             </div>
                         </div>
@@ -145,54 +108,30 @@
         </main>
         <div class="footer_div">
             <footer>
-                <div class="footer_background">
-                    <div class="footer_left">
-                        <ul>
-                            <li>HelloPet</li>
-                            <li>대표이사 홍길동</li>
-                            <li>사업자등록번호 123-45-78910</li>
-                            <li>통신판매업신고번호 어쩌고저쩌고123454</li>
-                            <li>부산광역시 어쩌구구 어쩌로로로 119, 어쩌구무슨동 12345호 (주)12</li>
-                            <li>TEL.051-123-4567</li>
-                            <li>E-mail abc@naver.com</li>
-                            <li>Copyright all rights reserved example</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <ul class="footer_right">
-                            <li>
-                                <a href="#">회사소개</a>
-                            </li>
-                            <li>
-                                <a href="#">이용약관</a>
-                            </li>
-                            <li>
-                                <a href="#">개인정보처리방침</a>
-                            </li>
-                            <li>
-                                <a href="#">광고문의관리</a>
-                            </li>
-                            <li>
-                                <a href="#">고객의소리</a>
-                            </li>
-                        </ul>
-                        <ul class="footer_sns">
-                            <li>
-                                <a href=""><img src="../img/footer-sns-0.png" alt=""></a>
-                            </li>
-                            <li>
-                                <a href=""><img src="../img/footer-sns-1.png" alt=""></a>
-                            </li>
-                            <li>
-                                <a href=""><img src="../img/footer-sns-2.png" alt=""></a>
-                            </li>
-                            <li>
-                                <a href=""><img src="../img/footer-sns-3.png" alt=""></a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="footer">
+                     <div class="container">
+                         <div class="footer-col">
+                             <ul class="info">
+                                 <li>GREEN ACADEMY</li>
+                                 <li>대표이사 김헬로</li>
+                                 <li>사업자 등록번호 230-12-15432</li>
+                                 <li>통신판매업신고번호 제 2023-부산-00213호</li>
+                                 <li>부산광역시 남구 수영로 299</li>
+                                 <li>TEL 051-000-0000</li>
+                                 <li>Email HelloPet@email.com</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col">
+                             <ul class="link">
+                                 <li><a href="#">회사소개</a></li>
+                                 <li><a href="#">이용약관</a></li>
+                                 <li><a href="#">문의하기</a></li>
+                                 <li><a href="#">고객센터</a></li>
+                             </ul>
+                         </div>
+                     </div>
                 </div>
-            </footer>
+             </footer>
         </div>
     </div>
 </body>
