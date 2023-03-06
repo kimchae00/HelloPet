@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>헬로펫</title>
+    <title>HelloPet</title>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/member.css">
+    <link rel="stylesheet" href="../css/my.css">
 </head>
 <body>
     <div id="wrapper">
@@ -34,31 +34,67 @@
                 </div>
             </div>
         </header>
-        <main class="login_main">
-            <div class="login_div">
-                <article class="login">
-                    <div class="main_first">
-                        <h2>로그인</h2>
-                        <div class="main_second">
-                            <form action="#" class="login_form">
-                                <input type="text" name="id" placeholder="아이디">
-                                <input type="password" name="pass" placeholder="비밀번호">
-                                <div>
-                                    <input type="checkbox" name="check"><i class="circle"></i><span class="text">아이디저장</span>
-                                </div>
-                                <input type="submit" id="login" value="로그인">
-                                <input type="text" id="naver" value="Naver 로 로그인">
-                                <input type="text" id="kakao" value="Kakao 로 로그인">
-                                <input type="text" id="apple" value="Apple 로 로그인">
-                                <ul>
-                                    <li><a href="./terms.html">회원가입</a></li>
-                                    <li><a href="./find.html">아이디</a></li>
-                                    <li><a href="./find.html">비밀번호찾기</a></li>
+        <main class="info_main">
+            <div class="title">
+                <span>보호자 정보관리</span>
+            </div>
+            <div class="info_aside">
+                <article>
+                    <aside>
+                        <ul>
+                            <li class="on"><a href="#" class="on">보호자정보관리</a></li>
+                            <li><a href="#">마이펫 관리</a></li>
+                            <li><a href="#">예약 목록</a></li>
+                            <li><a href="#">열람권 목록</a></li>
+                            <li><a href="#">후기 관리</a>
+                                <ul class="sub-cate">
+                                    <li><a href="#">병원 후기</a></li>
+                                    <li><a href="#">약국 후기</a></li>
+                                    <li><a href="#">업체 후기</a></li>
                                 </ul>
-                            </form>
-                        </div>
-                    </div>
+                            </li>
+                            <li><a href="#">게시글 관리</a></li>
+                            <li><a href="#">메시지 관리 목록</a></li>
+                            <li><a href="#">포인트 관리</a></li>
+                            <li><a href="#">1:1 문의</a></li>
+                        </ul>
+                    </aside>
                 </article>
+            </div>
+            <div class="info_div">
+                <table class="info_table">
+                    <tr>
+                        <td>휴대폰</td>
+                        <td><span>여기는 번호</span></td>
+                    </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td><span>여기는 이름</span></td>
+                    </tr>
+                    <tr>
+                        <td>이메일</td>
+                        <td><span>여기는 메일</span></td>
+                    </tr>
+                    <tr>
+                        <td>닉네임</td>
+                        <td><span>여기는 닉네임</span></td>
+                    </tr>
+                    <tr>
+                        <td>주소</td>
+                        <td><span>여기는 주소</span></td>
+                    </tr>
+                    <tr>
+                        <td>추천인 이메일</td>
+                        <td><span>여기는 추천인 이메일</span></td>
+                    </tr>
+                    <tr>
+                        <td>회원탈퇴</td>
+                        <td><button>탈퇴하기</button></td>
+                    </tr>
+                </table>
+                <div id="info_modify">
+                    <button><span>수정하기</span></button>
+                </div>
             </div>
         </main>
         <div class="footer_div">
