@@ -2,490 +2,139 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>헬로펫</title>
-    <style>
-    * {
-        
-            margin: 0;
-            padding: 0;
-            font: normal 12px "Noto Sans CJK KR";
-        }
-        a {
-            text-decoration: none;
-            color: #111;
-        }
-        ul, ol {list-style: none;}
-        input, textarea {
-            outline: none;
-        }
-        #wrapper {
-            width: 100%;
-        }
-        header {
-            width: 100%;
-            height: 190px;
-        }
-
-        header > div {
-            width: 100%;
-            box-sizing: border-box;
-        }
-        header > .top {
-            height: 35px;
-            background: #e1f3f3;
-        }
-        header > .top > div {
-            width: 1200px;
-            height: 100%;
-            margin: 0 auto;
-            text-align: right;
-        }
-        header > .top > div > a {
-            display: inline-block;
-            height: 100%;
-            line-height: 35px;
-            padding: 0 10px;
-            font-size: 14px;
-            color: #555;
-            font-weight: 300;
-        }
-
-        header > .menu {
-            padding: 40px 60px 0;
-            height: 100px;
-            background: #32a69f;
-            box-sizing: border-box;
-        }
-        header > .menu > div {
-            width: 1200px;
-            height: 100%;
-            margin: 0 auto;
-        }
-        header > .menu > div > ul {
-            display: inline-block;
-            margin-top: 0px;
-        }
-        header > .menu > div > ul:nth-child(1) {float: left;}
-        header > .menu > div > ul:nth-child(2) {float: right;}
-        header > .menu > div > ul > li {float: left;}
-        header > .menu > div > ul > li > a {
-            padding: 0 60px;
-            font-size: 20px;
-            color: white;
-        }
-        header > .menu > div > ul > .logo {margin-top: -50px;}
-
-        
-        main {
-            width: 1200px;
-            height: auto;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-
-        main > section {
-            float: right;
-            width: 985px;
-            height: auto;
-            box-sizing: border-box;
-        }
- #sub-wrap {
-         min-height: 600px;
-    }
-    * {
-        padding: 0;
-        margin: 0;
-    }
-    *, :after, :before {
-        background-repeat: no-repeat;
-    }
-    div {
-        display: block;
-    }
-    .sub-contents {
-        padding: 120px 0 160px;
-    }
-    *, :after, :before {
-        box-sizing: inherit!important;
-    }
-    *{
-        margin:0;
-    }
-    *, :after, :before {
-        background-repeat: no-repeat;
-    }
-    div {
-        display:block;
-    }
-    #vue-app .container {
-     margin:auto;
-     max-width: 1200px;
-     padding:0;
-    }
-    .container {
-        width: 100%;
-    }
-    div{
-        display: block;
-    }
-    .mypage-container {
-        display: flex;
-        flex-wrap: wrap;
-        position: relative;
-        padding: 80px;
-    }
-    * {
-        padding: 0;
-        margin: 0;
-    }
-     *, :after, :before {
-        background-repeat: no-repeat;
-    }
-    .mypage-navigation {
-        padding-right: 60px;
-        width: 260px;
-    }
-    *, :after, :before {
-        background-repeat: no-repeat;
-    }
-    nav {
-        display: block;
-    }
-    .mypage-nav {
-        overflow: hidden;
-        position: relative;
-        padding: 30px 20px 40px;
-        list-style: none;
-        border-radius: 16px;
-        box-shadow: 0 0 10px 0 rgb(36 36 36 / 15%);
-    }
-    ul {
-        display: block;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        padding-inline-start: 40px;
-    }
-    .mypage-nav:before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 10px;
-        background-image:  linear-gradient( 90deg, #1dc6f7, #00e5c2);
-    }
-    
-    
-    .mypage-nav__list-link.active {
-        color: #0dbcaf;
-        font-weight: 700;
-        border-bottom-color: #0dbcaf;
-    }
-    .mypage-nav__list-link {
-        display: block;
-        position: relative;
-        padding: 20px 0;
-        line-height: 1;
-        font-size: 20px;
-        color: #777;
-        border-bottom: 1px solid #dbdee8;
-        cursor: pointer;
-    }
-    .mypage-contents {
-        width: calc(100% - 260px);
-    }
-    .mypage-contents__title {
-        margin: 20px 0 35px;
-        padding-bottom: 16px;
-        line-height: 1;
-        text-align: right;
-        font-size: 28px;
-        color: #555;
-        font-weight: 700;
-        border-bottom: 1px solid #dbdee8;
-    }
-    h2 {
-        display: block;
-        margin-block-start: 0.83em;
-        margin-block-start: 0.83em;
-        margin-block-end: 0.83em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-    }
-    [role=table] {
-        display: table;
-        table-layout: fixed;
-        border-collapse: collapse;
-        width: 100%;
-    }
-    
-    
-    .mypage-table[role=columnheader]{
-        position: relative;
-        padding: 10px 5ps 10px 20px;
-        width: 205px;
-        height:70px;
-        font-size: 18px;
-        font-weight: 300;
-        border-left: 4px solid #e1f4f3;
-    }
-    [role=table] [role=columnheader] {
-        display: table-cell;
-        vertical-align: middle;
-    }
-    .mypage-table[role=columnheader]:before{
-        content:"";
-        position: absolute;
-        top:0;
-        left:-4px;
-        width:4px;
-        height:10px;
-        background: #fff;
-    }
-    [role=table] [role=columnheader] {
-        display: table-cel;
-        vertical-align: middle;
-    }
-    .mypage-table[role=cell] {
-        padding: 10px 0;
-        font-size: 18px;
-        font-weight: 300;
-    }
-    [role=table] [role=cell] {
-        display: table-cell;
-        vertical-align: middle;
-    }
-    
-
-
-
-
-
-
-
-    footer{
-            width: 100%;
-            height: 192px;
-            background: #b4e8e3;
-            border-top: 1px solid #e9e9e9;
-            box-sizing: border-box;
-        }
-
-        footer > div {
-            width: 1200px;
-            height: auto;
-            padding-top: 20px;
-            box-sizing: border-box;
-            margin: 0 auto;
-        }
-
-        footer > div > .footer_info > p {
-            float: left;
-            height: 100%;
-            line-height: 20px;
-            font-size: 15px;
-            color: #10958b;
-        }
-
-        footer > div > .footer_link {
-            float: right;
-        }
-        footer > div > .footer_link > ul {
-            width: 100%;
-            height: 100%;
-            box-sizing: border-box;
-        }
-        footer > div > .footer_link > ul > li {
-            display: inline-block;
-            font-weight: bold;
-        }
-        footer > div > .footer_link > ul > li > a {
-            font-size: 17px;
-            color: #10958b;
-            font-weight: bold;
-            padding: 0 10px;
-        }
-        footer p > strong {
-            display: inline-block;
-            padding: 6px 15px 7px 0;
-            color: #10958b;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        
-
-    
-
-
-
-     
-    
-     
-
-
-    
-       
-    </style>
+    <title>HelloPet</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/my.css">
 </head>
+<script>
+    $(document).ready(function(){
+        $('.post').click(function(){
+            if($(".sub-cate").css("display") == "none"){
+                $(".sub-cate").show();
+            } else {
+                $(".sub-cate").hide();
+            }
+        });
+    });
+</script>
+<style>
+    .sub-cate {
+        display: none;
+    }
+</style>
 <body>
     <div id="wrapper">
-        <header>
-            <div class="top">
-                 <div>
-                     <a href="#">로그인</a>
-                     <a href="#">회원가입</a>
-                     <a href="#">마이페이지</a>
-                 </div>
+        <header class="header">
+            <div class="headerTop">
+                <div>
+                    <a href="#">로그인</a>
+                    <a href="#">회원가입</a>
+                    <a href="#">마이페이지</a>
+                </div>
             </div>
             <div class="menu">
-                 <div>
+                <div>
                     <ul>
                         <li><a href="#">증상별질병찾기</a></li>
                         <li><a href="#">병원/약국찾기</a></li>
-                        <li class="logo"><a href="./index.html"><img src="./img/ci.png" alt="logo"></a></li>
+                        <li class="logo"><a href="/index.html"><img src="../img/ci.png" alt="logo"></a></li>
                         <li><a href="#">커뮤니티</a></li>
                         <li><a href="#">고객센터</a></li>
                     </ul>
-                 </div>
-             </div>
-        </header>
-    <main>
-    <div id="sub-wrap">
-        <div class="sub-contents">
-            <div class="container"></div>
-                <div class="mypage-container"></div>
-                    <nav class="mypage-navigation">
-                        <ul class="mypage-nav">
-                            
-                            <li class="mypage-nav__list">
-                                <a href="/mypage/myinfo" aria-current="page" class="mypage-nav__list-link-exact-active active">
-                                    <span>보호자 정보관리</span>
-                                </a>
-        
-                            <li class="mypage-nav__list">
-                                <a href="/mypage/reservation" class="mypage-nav__list-link">
-                                    <span>예약목록</span>
-                                </a>
-                            </li>
-                            <li class="mypage-nav__list">
-                                <a href="/mypage/post" class="mypage-nav__list-link mypage-nav__level--0" data-togle="opened">
-                                    <span>게시글 관리</span>
-                                </a>
-                            <li class="mypage-nav__list">
-                                <a href="/mypage/questions" class="mypage-nav__list-link">
-                                    <span>1:1 문의</span>
-                                </a>
-                            </li>
-                        </li>
-                    </ul>
-             </nav>
-        <div class="mypage-contents">
-            <div class="mypage-contents__head">
-                <h2 class="mypage-contents__title">보호자 정보관리</h2>
-            </div>
-            <div class="mypage-contents__body">
-                <div class="form-container">
-                    <div role="table" class="mypage-table">
-                        <div role="rowgroup">
-                            <div role="row">
-                                <div role="columnheader">
-                                    휴대폰
-                                </div>
-                                <div role="cell">
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div role="row">
-                                <div role="columnheader">
-                                    이름
-                                </div>
-                                <div role="cell"></div>
-                            </div>
-                            <div role="row">
-                                <div role="columnheader">
-                                    이메일
-                                </div>
-                                <div role="cell">
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div role="row">
-                                <div role="columnheader">
-                                    닉네임
-                                </div>
-                                <div role="cell">
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div role="row">
-                                <div role="columnheader">
-                                    주소
-                                </div>
-                                <div role="cell">
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div role="row">
-                                <div role="columnheader">
-                                    추천인 이메일
-                                </div>
-                                <div role="cell">
-
-                                </div>
-                            </div>
-                            <div role="row">
-                                <div role="columnheader">
-                                    회원탈퇴
-                                </div>
-                                <div role="cell">
-                                    <button type="button" name="button" class="button button-point">
-                                        <span>탈퇴하기</span>
-                                    </button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="button-button">
-                            <button class="button button-border-gradient">
-                                <span class="color-blue">수정하기</span>
-                            </button>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
+        </header>
+        <main class="info_main">
+            <div class="title">
+                <span>보호자 정보관리</span>
+            </div>
+            <div class="info_aside">
+                <article>
+                    <aside>
+                        <ul>
+                            <li class="on"><a href="#" class="on">보호자정보관리</a></li>
+                            <li><a href="#">예약 목록</a></li>
+                            <li><a href="#" class="post">게시글 관리</a>
+                                <ul class="sub-cate">
+                                    <li><a href="#">무료나눔 체험단</a></li>
+                                    <li><a href="#">반려동물 꿀팁</a></li>
+                                    <li><a href="#">펫스타그램</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">1:1 문의</a></li>
+                        </ul>
+                    </aside>
+                </article>
+            </div>
+            <div class="info_div">
+                <table class="info_table">
+                    <tr>
+                        <td>아이디</td>
+                        <td><span>dongdong1234</span></td>
+                    </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td><span>홍길동</span></td>
+                    </tr>
+                    <tr>
+                        <td>이메일</td>
+                        <td><span>dongdong@naver.com</span></td>
+                    </tr>
+                    <tr>
+                        <td>닉네임</td>
+                        <td><span>동동</span></td>
+                    </tr>
+                    <tr>
+                        <td>휴대폰</td>
+                        <td><span>010-1234-1234</span></td>
+                    </tr>
+                    <tr>
+                        <td>주소</td>
+                        <td><span>(48907) 해운대구 달맞이길 56(중동)</span></td>
+                    </tr>
+                    <tr>
+                        <td>회원탈퇴</td>
+                        <td><button>탈퇴하기</button></td>
+                    </tr>
+                </table>
+                <div id="info_modify">
+                    <button><span>수정하기</span></button>
+                </div>
+            </div>
+        </main>
+        <div class="footer_div">
+            <footer>
+                <div class="footer">
+                     <div class="container">
+                         <div class="footer-col">
+                             <ul class="info">
+                                 <li>GREEN ACADEMY</li>
+                                 <li>대표이사 김헬로</li>
+                                 <li>사업자 등록번호 230-12-15432</li>
+                                 <li>통신판매업신고번호 제 2023-부산-00213호</li>
+                                 <li>부산광역시 남구 수영로 299</li>
+                                 <li>TEL 051-000-0000</li>
+                                 <li>Email HelloPet@email.com</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col">
+                             <ul class="link">
+                                 <li><a href="#">회사소개</a></li>
+                                 <li><a href="#">이용약관</a></li>
+                                 <li><a href="#">문의하기</a></li>
+                                 <li><a href="#">고객센터</a></li>
+                             </ul>
+                         </div>
+                     </div>
+                </div>
+             </footer>
         </div>
     </div>
-    </main>
-    <footer>
-        <div>
-            <div class="footer_info">
-                <p>
-                    <strong>HELLOPET</strong>
-                    <br>
-                    부산시 남구 수영로 299 10층
-                    <br>
-                    대표이사 : 김헬로
-                    <br>
-                    사업자등록번호 : 220-81-83676 사업자정보확인
-                    <br>
-                    통신판매업신고 : 부산 10630호 Fax : 051-589-8842
-                </p>
-            </div>
-            <div class="footer_link">
-                <ul>
-                    <li><a href="#">회사소개</a></li>
-                    <li><a href="#">서비스이용약관</a></li>
-                    <li><a href="#">개인정보처리방침</a></li>
-                    <li><a href="#">고객센터</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-</div>
 </body>
 </html>
