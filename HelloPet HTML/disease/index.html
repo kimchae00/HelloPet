@@ -17,127 +17,12 @@
     <link rel="stylesheet" href="./css/style.css">
     <style>
            
-
-
-
-
-    #sub-wrap{
-             min-height: 600px ;
-    }
-    .sub-contents{
-            padding: 0 0 ;
-    }
-    .search-top-container {
-            height: 215px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #e1f4f3;
-        }
-        .search-top-container .title{
-            font-size: 40px;
-            line-height: 1.4;
-            color: #555;
-            font-weight: 700;
-            text-align: center;
-            padding: 0 15px;
-        }
-
-        .section-tab-container {
-            z-index: 2;
-            position: relative;
-            margin: -40px auto 0;
-            max-width: 800px;
-            width: 100%;
-            margin-top: -30px;
-        }
-        .tab-list {
-            display: flex;
-            flex:wrap;
-            justify-content: center;
-            position: relative;
-            margin-bottom: 35px;
-        }
-        ul {
-            list-style: none;
-        }
-
-        .tab-list>li {
-            width: 50%;
-        }
-
-        .tab-list--block>li {
-            border-bottom: 2px solid #32a69f;
-        }
-        .tab-list>li {
-            margin-top: -1px;
-            margin-left: -1px;
-            flex: 1;
-            transition: all .3s ease-in-out;
-        }
-        .section-tab-container .tab-list--block .button {
-            padding: 16px 10px;
-            font-size: 20px;
-        }
-        .tab-list--block>li.on .button {
-            background: #32a69f;
-            color: #fff;
-            font-weight: 700;
-            height: 100%;
-        }
-        .tab-list>li .button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: center;
-            width: 100%;
-            text-align: center;
-            letter-spacing: -.05em;
-            transition: all .3s ease-in-out;
-            background-color: #fff;;
-        }
-        .section-tab-container .tab-list--block>li .button {
-            padding: 16px 10px;
-            font-size: 26px;
-        }
-        .tab-list--block>li .button {
-            height: 100%;
-            color:#32a69f;
-            font-weight: 700;
-        }
-        li{
-            display: list-item;
-            text-align: -webkit-match-parent;
-        }
-        .section-tab-container .tab-list--block>li .button {
-            padding: 16px 10px;
-            font-size: 20px;
-        }   
-        .tab-list--block>li.on .button{
-            background: #32a69f;
-            color: #fff;
-            font-weight: 700;
-        }
-        .tab-list--block>li .button{
-            height: 100%;
-            color: #32a69f;
-            font-weight: 700;
-        }
-        .tab-list>li .button{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            text-align: center;
-            letter-spacing: -.05em;
-            transition: all .3s ease-in-out;
-        }
+    
         .top-round {
             width: 320px;
             min-height: auto;
-            padding: 15px;
-            margin-top: 25px;
+            padding: 10px;
+            margin-top:30px;
             z-index: 2;
             position: relative;
             margin: 30px auto 0;
@@ -153,6 +38,8 @@
             line-height: 1;
             color: #3c83dc;
             font-weight: 700;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
         h4{
             display: block;
@@ -329,20 +216,15 @@
         </header>
         <main>
             <div id="sub-wrap">
-                <div class="sub-contents">
-                    <div class="search-top-container">
-                        <h3 class="title">증상별 질병 검색</h3>
-                    </div>
-                    <div class="section-tab-container">
-                        <ul class="tab-list tab-list--block">
-                            <li class="on">
-                                <button type="button" class="button">반려견</button>
-                            </li>
-                            <li class>
-                                <button type="button" class="button">반려묘</button>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="top">
+                    <h3>증상별 질병검색</h3>
+                </div>
+                <div class="tab">
+                    <ul>
+                        <li class="on"><a href="#">반려견</a></li>
+                        <li><a href="#">반려묘</a></li>
+                    </ul>
+                    
                 </div>
                 <div class="top-round">
                 <h4 class="title">아래의 증상 중 한가지를 선택하세요!</h4>

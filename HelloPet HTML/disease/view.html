@@ -18,171 +18,33 @@
     <style>
        
 
-#sub-wrap {
-            min-height: 600px;
-            
-        }
-
-        .sub-contents {
-            padding: 0 0 80px;
-        }
-
-        .search-top-container {
-            height: 215px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #e1f4f3;
-        }
-        .search-top-container .title{
-            font-size: 40px;
-            line-height: 1.4;
-            color: #555;
-            font-weight: 700;
-            text-align: center;
-            padding: 0 15px;
-        }
-
-        .section-tab-container {
+        .top-round {
             z-index: 2;
             position: relative;
-            margin: -40px auto 0;
-            max-width: 800px;
-            width: 100%;
-            margin-top: -30px;
-        }
-
-        .tab-list {
-            display: flex;
-            flex:wrap;
-            justify-content: center;
-            position: relative;
-            margin-bottom: 35px;
-        }
-        ul {
-            list-style: none;
-        }
-
-        .tab-list>li {
-            width: 50%;
-        }
-
-        .tab-list--block>li {
-            border-bottom: 2px solid #32a69f;
-        }
-        .tab-list>li {
-            margin-top: -1px;
-            margin-left: -1px;
-            flex: 1;
-            transition: all .3s ease-in-out;
-        }
-        .section-tab-container .tab-list--block .button {
-            padding: 16px 10px;
-            font-size: 20px;
-        }
-        .tab-list--block>li.on .button {
-            background: #32a69f;
-            color: #fff;
-            font-weight: 700;
-            height: 100%;
-        }
-        .tab-list>li .button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: center;
-            width: 100%;
-            text-align: center;
-            letter-spacing: -.05em;
-            transition: all .3s ease-in-out;
-            background-color: #fff;;
-        }
-        .section-tab-container .tab-list--block>li .button {
-            padding: 16px 10px;
-            font-size: 26px;
-        }
-        .tab-list--block>li .button {
-            height: 100%;
-            color:#32a69f;
-            font-weight: 700;
-        }
-        .top-round{
-            z-index: 2;
-            position: relative;
-            margin: 30px auto 0;
+            margin: 70px auto 0;
+            padding: 5px;
+            width: 1000px;
+            min-height: 80px;
             text-align: center;
             background: #fff;
             border-radius: 100px;
             box-shadow: 0 3px 10px 0 rgb(36 36 36 / 15%);
-            width: 320px;
-            min-height: auto;
-            padding: 15px;
-            margin-top: 70px;
+          
         }
-
-       
-        .top-round2{
-            z-index: 2;
-            position: relative;
-            margin: 30px auto 0;
-            text-align: center;
-            background: #fff;  
-            border-radius: 100px;
-            box-shadow: 0 3px 10px 0 rgb(36 36 36 / 15%);
-            width: 600px;
-            min-height: auto;
-            padding: 30px;
-            margin-top: 30px;
-        }
-
-        .top-round3{
-            z-index: 2;
-            position: relative;
-            margin: 30px auto 0;
-            text-align: center;
-            background: #fff;
-            border-radius: 100px;
-            box-shadow: 0 3px 10px 0 rgb(36 36 36 / 15%);
-            width: 400px;
-            min-height: auto;
-            padding: 15px;
-            margin-top: 25px;
-        }
-        
-        
-
     
 
         .top-round--larger {
             max-width: 1000px;
         }
         .top-round .title {
-            font-size: 16px;
+            font-size: 26px;
             line-height: 1;
             color: #3c83dc;
             font-weight: 700;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
        
-        .top-round2--larger {
-            max-width: 1000px;
-        }
-        .top-round3--lager{
-            max-width: 1000px;
-        }
-
-        .top-round2 .title2 {
-            font-size: 16px;
-            line-height: 1;
-            color: #3c83dc;
-            font-weight: 700;
-        }
-        .top-round3 .title3 {
-            font-size: 16px;
-            line-height: 1;
-            color: #3c83dc;
-            font-weight: 700;
-        }
         
         h4 {
             display: block;
@@ -198,22 +60,7 @@
             color: #777;
             font-weight: 700;
         }
-        .top-round2 .pr2 {
-            font-size: 18px;
-            margin-top: 8px;
-            line-height: 1;
-            color: #777;
-            font-weight: 700;
-
-        }
-        .top-round3 .pr3 {
-            font-size: 18px;
-            margin-top: 8px;
-            line-height: 1;
-            color: #777;
-            font-weight: 700;
-
-        }
+        
         p {
             display: block;
             margin-block-start: 1em;
@@ -222,6 +69,100 @@
             margin-block-end: 0px;
         }
 
+        .section-disease {
+            margin: 300px;
+            margin-top: 50px;
+        }
+
+        #vue-app .container {
+            margin: auto;
+            max-width: 1200px;
+            padding: 40px 0px;
+        }
+        .container{
+            width: 100%;
+        }
+        .disease-block{
+            text-align: center;
+        }
+        div{display: block;}
+
+        .disease-block .type{
+            display: block;
+            position: relative;
+            padding: 0 0 22px;
+            color: #0dbcaf;
+
+        }
+        .disease-block .type:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-image: linear-gradient(90deg, #1dc6f7, #0dbcaf);
+        }
+        .disease-block .title{
+            padding-top: 15px;
+            font-size: 40px;
+            display: block;
+            position: relative;
+            padding: 55px 0 0;
+            color: #3c83dc;
+            font-weight: 700;
+        }
+        
+        .disease-block .pr{
+            margin-top: 40px;
+            font-size: 20px;
+            line-height: 1.8;
+            color: #777;
+            font-weight: 300;
+        }
+
+        p{
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-block-end: 0px;
+        }
+        
+        .disease-block .border-box{
+            margin: 55px auto 40px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid #3c83dc;
+        }
+
+        .disease-block .border-box .box-title{
+            margin-bottom: 36px;
+            font-size: 24px;
+            color: #0dbcaf;
+            font-weight: 700;
+        }
+        .section-disease .bottom-box{
+            padding: 22px 22px 24px;
+            text-align: center;
+            line-height: 1.5;
+            font-size: 18px;
+            font-weight: 300;
+            background: #f5f5f5;
+        }
+        p{
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+        }
+
+       
+        
+
+        
 
     </style>
 </head>
@@ -249,35 +190,56 @@
         </header>
         <main>
             <div id="sub-wrap">
-            <div class="sub-contents">
-                <div class="search-top-container">
-                    <h3 class="title">증상별 질병 검색</h3>
-                </div>
-                <div class="section-tab-container">
-                    <ul class="tab-list tab-list--block">
-                        <li class="on">
-                           <a href="#" type="button" class="button">반려견</a>
-                        </li>
-                        <li class>
-                            <a href="#" type="button" class="button">반려묘</a>
-                        </li>
-                    </ul>
-                </div>
+                <div id="sub-wrap">
+                    <div class="top">
+                        <h3>증상별 질병검색</h3>
+                    </div>
+                    <div class="tab">
+                        <ul>
+                            <li class="on"><a href="#">반려견</a></li>
+                            <li><a href="#">반려묘</a></li>
+                        </ul>
+                        
+                    </div>
                 <div class="top-round top-round--lager">
-                    <h4 class="title">눈 이상</h4>
-                    <p class="pr">눈꺼풀이 벌겋게 붛는다</p>
+                    <h4 class="title">코 이상</h4>
+                    <p class="pr">콧물을 많이 흘린다</p>
                 </div>
-
-                <div class="top-round2 top-round2--larger">
-                    <h4 class="title2">안검염</h4>
-                    <p class="pr2">안검염은 눈꺼풀 혹은 그 주변에 염증이 생겨 붉게 부어오르는 질병입니다. </p>
-                </div>
-
-                <div class="top-round3 top-round3--larger">
-                    <h4 class="title3">진료 가능 항목</h4>
-                    <p class="pr3">안과 안압 검진 </p>
-                </div>
-                   
+                <section class="section-disease">
+                    <div class="container">
+                        <div class="diseasecontainer">
+                        <div class="container">
+                            <div>
+                                <div class="disease-block">
+                                    <span class="type">
+                                    </span>
+                                    <span class="title">세균 및 바이러스 감염</span>
+                                    <p class="pr">
+                                        "반려견이 콧물이 나는 경우 가장 흔한 원인은 바이러스, 세균, 진균 등에 의한 감염이다. 
+                                        일반 엑스레이 및 치과 엑스레이검사, 비강 내시경 검사, CT검사, 콧물의 세균/ 곰팡이 배양검사 및 세포학검사, 비강점막 조직검사 등 여러 검사를 통해 비교적 정확한 
+                                        원인을 찾을 수 있다. 검사 이후에는 일반적으로 항생제, 항진균제, 소염제 등의 약물처방으로 치료를 합니다."
+                                    </p>
+                                    
+                                    <div class="border-box">
+                                        <span class="box-title">진료가능 항목</span>
+                                        <ul></ul>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="bottom-box">
+                                <p>
+                                    "진료가능 항목을 클릭하시면 평균 진료비를 확인하실 수 있습니다."
+                                <br>
+                                    "본 질병 조회는 문헌, 통계자료 분석에 의한 결과이므로 참고 자료로 활용하시고, 보다 정확한 진단은
+                                    수의사님의 진료가 필요합니다."                             
+                                </p>
+                               
+                             </div>   
+                        </div>
+                    </div>
+                </section>
+            </div>
+            </div>       
                 </main>
                 <footer>
                     <div>
