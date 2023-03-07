@@ -483,21 +483,38 @@ padding: 0 15px;
     margin-left: 30px;
 }
 
-.SearchHs #section2 > .lists > ul> li > .button-wrap > a > img {
-    width: 63px;
-    margin-right: 7px;
+.SearchHs #section2 > .lists > ul> li > .button-wrap > a > button:hover {
+    transform: scale(1.1);
 }
 
 
-.SearchHs #section2 > .lists > ul> li > .button-wrap > a > #btnja{
-    margin-left: 20px;
-}
-
-
-.SearchHs #section2 > .lists > ul> li > .button-wrap > a > #btnga{
-    height: 30px;    
+.SearchHs #btnDt{
     width: 80px;
+    margin: 0 auto;
+    height: 40px;
+    background-color: rgb(101, 173, 240);
+    color: #fff;
+    border: solid 2px rgb(212, 212, 212);
+    border-radius: 12px;
+    font-weight: 600;
+    margin-right: 10px;
+    margin-left: -20px;
+    margin-right: 7px;
+    margin-left: -30px;
 }
+
+.SearchHs #btnga{
+    width: 80px;
+    margin: 0 auto;
+    height: 40px;
+    background-color: rgb(32, 231, 231);
+    color: #fff;
+    border: solid 2px rgb(212, 212, 212);
+    border-radius: 12px;
+    font-weight: 600;
+    
+}
+
 
 
 .SearchHs #section2 > .paging {
@@ -719,18 +736,25 @@ padding: 0 15px;
     margin-left: 20px;
 }
 
-.SearchPm #section2 > .lists > ul> li > .button-wrap > a > img {
-    width: 63px;
+
+.SearchPm #btnDt{
+    width: 80px;
+    margin: 0 auto;
+    height: 40px;
+    background-color: rgb(101, 173, 240);
+    color: #fff;
+    border: solid 2px rgb(212, 212, 212);
+    border-radius: 12px;
+    font-weight: 600;
+    margin-right: 10px;
+    margin-left: -20px;
     margin-right: 7px;
+    margin-left: -30px;
 }
 
-
-.SearchPm #section2 > .lists > ul> li > .button-wrap > a > #btnja{
-
+.SearchPm #btnDt:hover {
+    transform: scale(1.1);
 }
-
-
-
 
 .SearchPm #section2 > .paging {
     width: 100%;
@@ -805,6 +829,11 @@ padding: 0 15px;
 .view > .contents > .view-top > a >img {
     margin-top: 20px;
     width: 100px;
+    margin-bottom: -20px
+}
+
+.view > .contents > .view-top > a >img:hover {
+    transform: scale(1.1);
 }
 
 .view  #map {
@@ -1059,4 +1088,20 @@ padding: 0 15px;
     font-weight: 500;
     color: dimgray;
 }
+
+
+#complete button {
+    margin: 40px 350px;
+    width: 200px;
+    height: 50px;
+    background-image: linear-gradient(90deg,#1dc6f7,#00e5c2,#00e5c2,#1dc6f7);
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+}
+
+#complete button:hover{
+    box-shadow: 1px 1px 20px #c2c2c2;
+}
+
 
