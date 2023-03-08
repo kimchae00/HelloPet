@@ -708,17 +708,17 @@ input[id=apple] {
 .register_table tr > td:nth-child(2) > input {}
 
 .register_table tr > td:nth-child(2) > input:nth-child(1) {
+    display: block;
     width: 400px;
     padding: 10px;
-    margin-right: 5px;
     border: 1px solid #e5e5e5;
     box-sizing: border-box;
 }
 
 .register_table tr > td:nth-child(2) > input:nth-child(2) {
+    display: block;
     width: 100px;
     height: 35px;
-    margin: 0 0 0 5px;
     color: #fff;
     background: #60626c;
     border: none;
@@ -803,6 +803,7 @@ input[name=addr2] {
     width: 200px;
     height: 50px;
     border: none;
+    background: #e5e5e5;
 }
 
 .join_tap > div > button:nth-child(1).on {
@@ -849,7 +850,6 @@ input[name=addr2] {
 .register_business_table tr > td:nth-child(2) > input:nth-child(1) {
     width: 400px;
     padding: 10px;
-    margin-right: 5px;
     border: 1px solid #e5e5e5;
     box-sizing: border-box;
 }
@@ -1004,4 +1004,68 @@ input[name=addr2] {
     font-size: 15px;
     color: #666;
     font-weight: bold;
+}
+
+/* register Medical */
+
+button[name=btnPhar].on {
+    color: #fff;
+    font-weight: 700;
+    background-image: linear-gradient(90deg,#1dc6f7,#00e5c2);
+    margin-left: 10px;
+}
+
+button[name=btnHos] {
+    background: #f0f0f0;
+}
+
+.medical_select {
+    padding-top: 12px;
+    margin-left: 25px;
+
+}
+
+.medical_select > select {
+    float: left;
+    border: 1px solid #e5e5e5;
+    width: 200px;
+    height: 50px;
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #999;
+    box-sizing: border-box;
+}
+
+.selectMedical > select > option {
+
+}
+
+#search {
+    float: left;
+    width: 300px;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+#search > input {
+    position: relative;
+    top: -3px;
+    max-width: 400px;
+    width: 100%;
+    height: 55px;
+    font-size: 16px;
+    text-indent: 8px;
+    margin-left: 10px;
+    background-image: url(../img/eeee.png);
+    background-repeat: no-repeat;
+    background-position: 97% 50%;
+    background-size: 40px 40px;
+    border: 3px solid #1dc6f7;
+}
+
+#search > input::placeholder {
+    font-weight: bold;
+    color: #0dbcaf;
 }
