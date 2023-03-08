@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,8 +13,19 @@
         <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
         <link async="" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../css/style.css">
-        
+        <link rel="stylesheet" th:href="@{/css/community.css}">
+        <script>
+            $(function(){
+                $('.view_delete').click(function(){
+                    if(!confirm('정말 삭제하시겠습니까?')){
+                        return false;
+                    }
+                    alert('삭제되었습니다.');
+                });
+            });
+
+            
+        </script>
     </head>
 <body>
     <div id="wrapper">
@@ -31,7 +42,7 @@
                     <ul>
                         <li><a href="#">증상별질병찾기</a></li>
                         <li><a href="#">병원/약국찾기</a></li>
-                        <li class="logo"><a href="/index.html"><img src="/img/ci.png" alt="logo"></a></li>
+                        <li class="logo"><a th:href="@{/index}"><img th:src="@{/img/ci.png}" alt="logo"></a></li>
                         <li><a href="#">커뮤니티</a></li>
                         <li><a href="#">고객센터</a></li>
                     </ul>
@@ -44,20 +55,20 @@
             </div>
             <div class="tab">
                 <ul>
-                    <li class="on"><a href="#">반려동물 꿀팁</a></li>
-                    <li><a href="#">반려동물 톡톡</a></li>
+                    <li class="on"><a th:href="@{/community/tip/list}">반려동물 꿀팁</a></li>
+                    <li><a th:href="@{/community/talktalk/list}">반려동물 톡톡</a></li>
                 </ul>
             </div>
             <div class="tip_view_title">
                 <h3>고양이 유전질환 비대성 심근증(HCM)</h3>
-                <span class="tip_view_nick"><div class="tipIcon" style="background: url(../img/favicon_x32.png);"></div>&nbsp헬로펫</span>
+                <span class="tip_view_nick"><div class="tipIcon" th:style="'background: url('+ @{/img/favicon_x32.png}+');'"></div>&nbsp헬로펫</span>
             </div>
             <div class="tip_view_content">
                 <div class="tip_view_hit">
                     조회0ㅣ2023-00-00
                 </div>
                 <div class="view_img_div">
-                <div class="view_img" style="background: url(../img/tip_table1.png) center center / cover no-repeat">
+                <div class="view_img" th:style="'background: url('+ @{/img/tip_table1.png}+') center center / cover no-repeat;'">
                 </div>
                 </div>
                 <div class="tip_view_text">
@@ -128,8 +139,8 @@
 
                 </div>
                 <div class="view_link">
-                    <a href="./list.html"><button class="view_list">목록</button></a>
-                    <a href="./modify.html"><button class="view_modify">수정</button></a>
+                    <a th:href="@{/community/tip/list}"><button class="view_list">목록</button></a>
+                    <a th:href="@{/community/tip/modify}"><button class="view_modify">수정</button></a>
                     <a href="#"><button class="view_delete">삭제</button></a>
                 </div>
             </div>

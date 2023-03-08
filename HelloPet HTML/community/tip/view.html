@@ -14,7 +14,18 @@
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
         <link async="" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../css/style.css">
-        
+        <script>
+            $(function(){
+                $('.view_delete').click(function(){
+                    if(!confirm('정말 삭제하시겠습니까?')){
+                        return false;
+                    }
+                    alert('삭제되었습니다.');
+                });
+            });
+
+            
+        </script>
     </head>
 <body>
     <div id="wrapper">
@@ -44,8 +55,8 @@
             </div>
             <div class="tab">
                 <ul>
-                    <li class="on"><a href="#">반려동물 꿀팁</a></li>
-                    <li><a href="#">반려동물 톡톡</a></li>
+                    <li class="on"><a href="./list.html">반려동물 꿀팁</a></li>
+                    <li><a href="../talktalk/list.html">반려동물 톡톡</a></li>
                 </ul>
             </div>
             <div class="tip_view_title">
@@ -130,7 +141,7 @@
                 <div class="view_link">
                     <a href="./list.html"><button class="view_list">목록</button></a>
                     <a href="./modify.html"><button class="view_modify">수정</button></a>
-                    <a href="#"><button class="view_delete">삭제</button></a>
+                    <a href="./list.html"><button class="view_delete">삭제</button></a>
                 </div>
             </div>
         </main>

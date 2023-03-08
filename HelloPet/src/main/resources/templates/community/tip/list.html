@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,7 @@
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link async="" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" th:href="@{/css/community.css}">
     
 </head>
 
@@ -33,7 +33,7 @@
                     <ul>
                         <li><a href="#">증상별질병찾기</a></li>
                         <li><a href="#">병원/약국찾기</a></li>
-                        <li class="logo"><a href="/index.html"><img src="/img/ci.png" alt="logo"></a></li>
+                        <li class="logo"><a th:href="@{/index}"><img th:src="@{/img/ci.png}" alt="logo"></a></li>
                         <li><a href="#">커뮤니티</a></li>
                         <li><a href="#">고객센터</a></li>
                     </ul>
@@ -47,7 +47,7 @@
             <div class="tab">
                 <ul>
                     <li class="on"><a href="#">반려동물 꿀팁</a></li>
-                    <li><a href="../talktalk/list.html">반려동물 톡톡</a></li>
+                    <li><a th:href="@{/community/talktalk/list}">반려동물 톡톡</a></li>
                 </ul>
             </div>
             <section id="tipMain">
@@ -56,17 +56,17 @@
                         <table border="0">
                             <tr>
                                 <td class="tipImg">
-                                    <span style="background: url(../img/tip_table1.png) center center / cover no-repeat"></span>
+                                    <span th:style="'background: url('+@{/img/tip_table1.png}+')  center center / cover no-repeat ; '"></span>
                                 </td>
                                 <td>
-                                    <div class="tipTitle"><a href="./view.html">고양이 유전질환 비대성 심근증(HCM)</a></div><br>
+                                    <div class="tipTitle"><a th:href="@{/community/tip/view}">고양이 유전질환 비대성 심근증(HCM)</a></div><br>
                                     <span class="tipNick">
-                                        <div class="tipIcon" style="background: url(../img/favicon_x32.png);"></div>&nbsp헬로펫
+                                        <div class="tipIcon" th:style="'background: url('+@{/img/favicon_x32.png}+');'"></div>&nbsp헬로펫
                                     </span>
                                 </td>
                                 <td class="tipInfo">
                                     <div class="tipLike">
-                                        <div class="tipHeart" style="background: url(../img/icon-heart-mint.png);"></div>
+                                        <div class="tipHeart"  th:style="'background: url('+@{/img/icon-heart-mint.png}+');'"></div>
                                         &nbsp좋아요&nbsp<strong>3</strong>
                                     </div><br>
                                     <div class="tipHit">조회64ㅣ2023.00.00</div>
@@ -74,17 +74,17 @@
                             </tr>
                             <tr>
                                 <td class="tipImg">
-                                    <span style="background: url(../img/tip_table1.png) center center / cover no-repeat"></span>
+                                    <span th:style="'background: url('+@{/img/tip_table1.png}+')  center center / cover no-repeat ; '"></span>
                                 </td>
                                 <td>
                                     <div class="tipTitle"><a href="./view.html">고양이 유전질환 비대성 심근증(HCM)</a></div><br>
                                     <span class="tipNick">
-                                        <div class="tipIcon" style="background: url(../img/favicon_x32.png);"></div>&nbsp헬로펫
+                                        <div class="tipIcon" th:style="'background: url('+@{/img/favicon_x32.png}+');'"></div>&nbsp헬로펫
                                     </span>
                                 </td>
                                 <td class="tipInfo">
                                     <div class="tipLike">
-                                        <div class="tipHeart" style="background: url(../img/icon-heart-mint.png);"></div>
+                                        <div class="tipHeart"  th:style="'background: url('+@{/img/icon-heart-mint.png}+');'"></div>
                                         &nbsp좋아요&nbsp<strong>3</strong>
                                     </div><br>
                                     <div class="tipHit">조회64ㅣ2023.00.00</div>
@@ -92,17 +92,17 @@
                             </tr>
                             <tr>
                                 <td class="tipImg">
-                                    <span style="background: url(../img/tip_table1.png) center center / cover no-repeat"></span>
+                                    <span th:style="'background: url('+@{/img/tip_table1.png}+')  center center / cover no-repeat ; '"></span>
                                 </td>
                                 <td>
                                     <div class="tipTitle"><a href="./view.html">고양이 유전질환 비대성 심근증(HCM)</a></div><br>
                                     <span class="tipNick">
-                                        <div class="tipIcon" style="background: url(../img/favicon_x32.png);"></div>&nbsp헬로펫
+                                        <div class="tipIcon" th:style="'background: url('+@{/img/favicon_x32.png}+');'"></div>&nbsp헬로펫
                                     </span>
                                 </td>
                                 <td class="tipInfo">
                                     <div class="tipLike">
-                                        <div class="tipHeart" style="background: url(../img/icon-heart-mint.png);"></div>
+                                        <div class="tipHeart"  th:style="'background: url('+@{/img/icon-heart-mint.png}+');'"></div>
                                         &nbsp좋아요&nbsp<strong>3</strong>
                                     </div><br>
                                     <div class="tipHit">조회64ㅣ2023.00.00</div>
@@ -110,17 +110,17 @@
                             </tr>
                             <tr>
                                 <td class="tipImg">
-                                    <span style="background: url(../img/tip_table1.png) center center / cover no-repeat"></span>
+                                	<span th:style="'background: url('+@{/img/tip_table1.png}+')  center center / cover no-repeat ; '"></span>
                                 </td>
                                 <td>
                                     <div class="tipTitle"><a href="./view.html">고양이 유전질환 비대성 심근증(HCM)</a></div><br>
                                     <span class="tipNick">
-                                        <div class="tipIcon" style="background: url(../img/favicon_x32.png);"></div>&nbsp헬로펫
+                                        <div class="tipIcon" th:style="'background: url('+@{/img/favicon_x32.png}+');'"></div>&nbsp헬로펫
                                     </span>
                                 </td>
                                 <td class="tipInfo">
                                     <div class="tipLike">
-                                        <div class="tipHeart" style="background: url(../img/icon-heart-mint.png);"></div>
+                                        <div class="tipHeart"  th:style="'background: url('+@{/img/icon-heart-mint.png}+');'"></div>
                                         &nbsp좋아요&nbsp<strong>3</strong>
                                     </div><br>
                                     <div class="tipHit">조회64ㅣ2023.00.00</div>
@@ -128,17 +128,17 @@
                             </tr>
                             <tr>
                                 <td class="tipImg">
-                                    <span style="background: url(../img/tip_table1.png) center center / cover no-repeat"></span>
+									<span th:style="'background: url('+@{/img/tip_table1.png}+')  center center / cover no-repeat ; '"></span>
                                 </td>
                                 <td>
                                     <div class="tipTitle"><a href="./view.html">고양이 유전질환 비대성 심근증(HCM)</a></div><br>
                                     <span class="tipNick">
-                                        <div class="tipIcon" style="background: url(../img/favicon_x32.png);"></div>&nbsp헬로펫
+                                        <div class="tipIcon" th:style="'background: url('+@{/img/favicon_x32.png}+');'"></div>&nbsp헬로펫
                                     </span>
                                 </td>
                                 <td class="tipInfo">
                                     <div class="tipLike">
-                                        <div class="tipHeart" style="background: url(../img/icon-heart-mint.png);"></div>
+                                        <div class="tipHeart"  th:style="'background: url('+@{/img/icon-heart-mint.png}+');'"></div>
                                         &nbsp좋아요&nbsp<strong>3</strong>
                                     </div><br>
                                     <div class="tipHit">조회64ㅣ2023.00.00</div>
@@ -146,17 +146,17 @@
                             </tr>
                             <tr>
                                 <td class="tipImg">
-                                    <span style="background: url(../img/tip_table1.png) center center / cover no-repeat"></span>
+                                    <span th:style="'background: url('+@{/img/tip_table1.png}+')  center center / cover no-repeat ; '"></span>
                                 </td>
                                 <td>
                                     <div class="tipTitle"><a href="./view.html">고양이 유전질환 비대성 심근증(HCM)</a></div><br>
                                     <span class="tipNick">
-                                        <div class="tipIcon" style="background: url(../img/favicon_x32.png);"></div>&nbsp헬로펫
+                                        <div class="tipIcon" th:style="'background: url('+@{/img/favicon_x32.png}+');'"></div>&nbsp헬로펫
                                     </span>
                                 </td>
                                 <td class="tipInfo">
                                     <div class="tipLike">
-                                        <div class="tipHeart" style="background: url(../img/icon-heart-mint.png);"></div>
+                                        <div class="tipHeart"  th:style="'background: url('+@{/img/icon-heart-mint.png}+');'"></div>
                                         &nbsp좋아요&nbsp<strong>3</strong>
                                     </div><br>
                                     <div class="tipHit">조회64ㅣ2023.00.00</div>
@@ -164,17 +164,17 @@
                             </tr>
                             <tr>
                                 <td class="tipImg">
-                                    <span style="background: url(../img/tip_table1.png) center center / cover no-repeat"></span>
+                                    <span th:style="'background: url('+@{/img/tip_table1.png}+')  center center / cover no-repeat ; '"></span>
                                 </td>
                                 <td>
                                     <div class="tipTitle"><a href="./view.html">고양이 유전질환 비대성 심근증(HCM)</a></div><br>
                                     <span class="tipNick">
-                                        <div class="tipIcon" style="background: url(../img/favicon_x32.png);"></div>&nbsp헬로펫
+                                        <div class="tipIcon" th:style="'background: url('+@{/img/favicon_x32.png}+');'"></div>&nbsp헬로펫
                                     </span>
                                 </td>
                                 <td class="tipInfo">
                                     <div class="tipLike">
-                                        <div class="tipHeart" style="background: url(../img/icon-heart-mint.png);"></div>
+                                        <div class="tipHeart"  th:style="'background: url('+@{/img/icon-heart-mint.png}+');'"></div>
                                         &nbsp좋아요&nbsp<strong>3</strong>
                                     </div><br>
                                     <div class="tipHit">조회64ㅣ2023.00.00</div>
@@ -182,17 +182,17 @@
                             </tr>
                             <tr>
                                 <td class="tipImg">
-                                    <span style="background: url(../img/tip_table1.png) center center / cover no-repeat"></span>
+                                    <span th:style="'background: url('+@{/img/tip_table1.png}+')  center center / cover no-repeat ; '"></span>
                                 </td>
                                 <td>
                                     <div class="tipTitle"><a href="./view.html">고양이 유전질환 비대성 심근증(HCM)</a></div><br>
                                     <span class="tipNick">
-                                        <div class="tipIcon" style="background: url(../img/favicon_x32.png);"></div>&nbsp헬로펫
+                                        <div class="tipIcon" th:style="'background: url('+@{/img/favicon_x32.png}+');'"></div>&nbsp헬로펫
                                     </span>
                                 </td>
                                 <td class="tipInfo">
                                     <div class="tipLike">
-                                        <div class="tipHeart" style="background: url(../img/icon-heart-mint.png);"></div>
+                                        <div class="tipHeart"  th:style="'background: url('+@{/img/icon-heart-mint.png}+');'"></div>
                                         &nbsp좋아요&nbsp<strong>3</strong>
                                     </div><br>
                                     <div class="tipHit">조회64ㅣ2023.00.00</div>
@@ -200,17 +200,17 @@
                             </tr>
                             <tr>
                                 <td class="tipImg">
-                                    <span style="background: url(../img/tip_table1.png) center center / cover no-repeat"></span>
+                                    <span th:style="'background: url('+@{/img/tip_table1.png}+')  center center / cover no-repeat ; '"></span>
                                 </td>
                                 <td>
                                     <div class="tipTitle"><a href="./view.html">고양이 유전질환 비대성 심근증(HCM)</a></div><br>
                                     <span class="tipNick">
-                                        <div class="tipIcon" style="background: url(../img/favicon_x32.png);"></div>&nbsp헬로펫
+                                        <div class="tipIcon" th:style="'background: url('+@{/img/favicon_x32.png}+');'"></div>&nbsp헬로펫
                                     </span>
                                 </td>
                                 <td class="tipInfo">
                                     <div class="tipLike">
-                                        <div class="tipHeart" style="background: url(../img/icon-heart-mint.png);"></div>
+                                        <div class="tipHeart"  th:style="'background: url('+@{/img/icon-heart-mint.png}+');'"></div>
                                         &nbsp좋아요&nbsp<strong>3</strong>
                                     </div><br>
                                     <div class="tipHit">조회64ㅣ2023.00.00</div>
@@ -218,17 +218,17 @@
                             </tr>
                             <tr>
                                 <td class="tipImg">
-                                    <span style="background: url(../img/tip_table1.png) center center / cover no-repeat"></span>
+                                    <span th:style="'background: url('+@{/img/tip_table1.png}+')  center center / cover no-repeat ; '"></span>
                                 </td>
                                 <td>
                                     <div class="tipTitle"><a href="./view.html">펫트라슈 회원들이 선정한 양심 동물 병원 리스트 (세종특별자치시 편)</a></div><br>
                                     <span class="tipNick">
-                                        <div class="tipIcon" style="background: url(../img/favicon_x32.png);"></div>&nbsp헬로펫
+                                        <div class="tipIcon" th:style="'background: url('+@{/img/favicon_x32.png}+');'"></div>&nbsp헬로펫
                                     </span>
                                 </td>
                                 <td class="tipInfo">
                                     <div class="tipLike">
-                                        <div class="tipHeart" style="background: url(../img/icon-heart-mint.png);"></div>
+                                        <div class="tipHeart"  th:style="'background: url('+@{/img/icon-heart-mint.png}+');'"></div>
                                         &nbsp좋아요&nbsp<strong>3</strong>
                                     </div><br>
                                     <div class="tipHit">조회64ㅣ2023.00.00</div>
@@ -237,7 +237,7 @@
                         </table>
                     </div>
                     <div class="write">
-                        <a href="./write.html"><button>글쓰기</button></a>
+                        <a th:href="@{/community/tip/write}"><button>글쓰기</button></a>
                     </div>
                     <div class="paging">
                         <a href="#" class="prev">←</a>

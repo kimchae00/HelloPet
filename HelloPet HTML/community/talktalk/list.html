@@ -15,7 +15,22 @@
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link async="" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    
+    <script>
+        $(function(){
+                $('.gallery_delete').click(function(){
+                    if(!confirm('정말 삭제하시겠습니까?')){
+                        return false;
+                    }
+                    alert('삭제되었습니다.');
+                });
+            });
+
+        $(function(){
+                $('.gallery_item').click(function(){
+                    $('#modal').css('display','flex');
+                });
+            });
+    </script>
 </head>
 
 <body>
