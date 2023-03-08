@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,8 +13,23 @@
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link async="" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    
+    <link rel="stylesheet" th:href="@{/css/community.css}">
+    <script>
+        $(function(){
+                $('.gallery_delete').click(function(){
+                    if(!confirm('정말 삭제하시겠습니까?')){
+                        return false;
+                    }
+                    alert('삭제되었습니다.');
+                });
+            });
+
+        $(function(){
+                $('.gallery_item').click(function(){
+                    $('#modal').css('display','flex');
+                });
+            });
+    </script>
 </head>
 
 <body>
@@ -33,7 +47,7 @@
                     <ul>
                         <li><a href="#">증상별질병찾기</a></li>
                         <li><a href="#">병원/약국찾기</a></li>
-                        <li class="logo"><a href="/index.html"><img src="/img/ci.png" alt="logo"></a></li>
+                        <li class="logo"><a th:href="@{/index}"><img th:src="@{/img/ci.png}" alt="logo"></a></li>
                         <li><a href="#">커뮤니티</a></li>
                         <li><a href="#">고객센터</a></li>
                     </ul>
@@ -46,7 +60,7 @@
             </div>
             <div class="tab">
                 <ul>
-                    <li><a href="../tip/list.html">반려동물 꿀팁</a></li>
+                    <li><a th:href="@{/community/tip/list}">반려동물 꿀팁</a></li>
                     <li class="on"><a href="#">반려동물 톡톡</a></li>
                 </ul>
             </div>
@@ -55,7 +69,7 @@
                     <div class="talk_title">
                         <h3>내가 올린 사진</h3>
                         <div class="talk_write">
-                            <a href="./write.html"><div>사진 올리기</div></a>
+                            <a th:href="@{/community/talktalk/write}"><div>사진 올리기</div></a>
                         </div>
                     </div>
                     <div class="talk_head">
@@ -75,22 +89,22 @@
                     </div>
                     <div class="talk_rank">
                         <div class="rank_img">
-                            <img src="../img/congratulate_img.png" alt="랭킹이미지">
+                            <img th:src="@{/img/congratulate_img.png}" alt="랭킹이미지">
                         </div>
                         <div class="gallery_items">
                             <div class="gallery_item">
-                                <div class="gallery_item_con1" style="background-image: url(../img/talk_rank_thumb1.jpg);"></div>
+                                <div class="gallery_item_con1"></div>
                                 <div class="gallery_item_con2">
                                     <div class="gallery_info1">
                                         <div class="gallery_title">마이펫 제2기 모델(로이 밍밍 2살)</div>
                                         <div class="gallery_like_comment">
-                                            <div class="gallery_like"><span class="gallery_like_icon" style="background-image: url(../img/icon-heart.png);"></span>23</div>
-                                            <div class="gallery_comment"><span class="gallery_comment_icon" style="background-image: url(../img/icon-talk.png);"></span>21</div>
+                                            <div class="gallery_like"><span class="gallery_like_icon"></span>23</div>
+                                            <div class="gallery_comment"><span class="gallery_comment_icon"></span>21</div>
                                         </div>
                                     </div>
                                     <div class="gallery_info2">
                                         <div class="rank_nick_inner">
-                                            <div class="rank_nick"><span class="rank_nick_icon"  style="background-image: url(../img/로이밍밍프사.jpg);"></span>로이밍밍</div>
+                                            <div class="rank_nick"><span class="rank_nick_icon"></span>로이밍밍</div>
                                         </div>    
                                         <div class="rank_date">2023-03-05</div>
                                     </div>
@@ -98,7 +112,7 @@
                             </div>
 
                             <div class="gallery_item">
-                                <div class="gallery_item_con1" style="background-image: url(../img/talk_rank_thumb2.jpg);"></div>
+                                <div class="gallery_item_con1"></div>
                                 <div class="gallery_item_con2">
                                     <div class="gallery_info1">
                                         <div class="gallery_title">2기 모델 지원합니다</div>
@@ -117,7 +131,7 @@
                             </div>
 
                             <div class="gallery_item">
-                                <div class="gallery_item_con1" style="background-image: url(../img/talk_rank_thumb3.jpg);"></div>
+                                <div class="gallery_item_con1"></div>
                                 <div class="gallery_item_con2">
                                     <div class="gallery_info1">
                                         <div class="gallery_title">마이펫 2기모델 4살 반달과 3살 포비</div>
@@ -483,7 +497,7 @@
                                             </div>
                                             <div class="gallery_content_txt">지원합니다.</div>
                                             <div class="gallery_modify_delete">
-                                                <div class="gallery_modify"><a href="./modify.html">수정</a></div>ㅣ
+                                                <div class="gallery_modify"><a th:href="@{/community/talktalk/modify}">수정</a></div>ㅣ
                                                 <div class="gallery_delete"><a href="#">삭제</a></div>
                                             </div>
                                         </div>
