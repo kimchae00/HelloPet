@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.hellopet.dao.MemberDAO">
+
+
+	<!-- 일반회원 type level 은 추후 수정 예정 -->
+	<insert id="insertMember">
+		insert into `pet_owner` set
+			`uid` 	= #{uid} ,
+			`pass` 	= #{pass} ,
+			`name` 	= #{name} ,
+			`hp` 	= #{hp} ,
+			`nick` 	= #{pass} ,
+			`type` 	= 1 ,
+			`level` = 1 ,
+			`zip` 	= #{zip} ,
+			`addr1` = #{addr1} ,
+			`addr2` = #{addr2} ,
+			`regip` = #{regip} ,
+			`rdate` = now();
+	</insert>
+
+
+
+</mapper>
