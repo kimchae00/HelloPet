@@ -20,9 +20,9 @@ public class CommunityVO {
 	private String group;
 	private String title;
 	private String content;
-	private MultipartFile img1;
-	private MultipartFile img2;
-	private MultipartFile img3;
+	private String img1;
+	private String img2;
+	private String img3;
 	private int hit;
 	private int heart;
 	private String regip;

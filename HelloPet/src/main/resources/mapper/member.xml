@@ -5,22 +5,66 @@
 <mapper namespace="kr.co.hellopet.dao.MemberDAO">
 
 
-	<!-- 일반회원 type level 은 추후 수정 예정 -->
+	<!-- 일반회원 type, level 은 추후 수정 예정 -->
 	<insert id="insertMember">
 		insert into `pet_owner` set
 			`uid` 	= #{uid} ,
-			`pass` 	= #{pass} ,
-			`name` 	= #{name} ,
 			`hp` 	= #{hp} ,
-			`nick` 	= #{pass} ,
+			`name` 	= #{name} ,
+			`email` 	= #{email} ,
+			`pass` 	= #{pass} ,
 			`type` 	= 1 ,
 			`level` = 1 ,
+			`nick` = #{nick} ,
 			`zip` 	= #{zip} ,
 			`addr1` = #{addr1} ,
 			`addr2` = #{addr2} ,
 			`regip` = #{regip} ,
 			`rdate` = now();
 	</insert>
+	
+	<!-- 병원/약국 type, level 은 추후 수정 예정 -->
+	<insert id="insertMedical">
+		insert into `pet_hospital_pharmacy` set
+			`uid` 		  = #{uid} ,
+			`hp` 		  = #{hp} ,
+			`name` 		  = #{name} ,
+			`email` 	  = #{email} ,
+			`pass` 		  = #{pass} ,
+			`type` 		  = 1 ,
+			`level` 	  = 1 ,
+			`medicalName` = #{medicalName} ,
+			`ceo` 		  = #{ceo} ,
+			`tel` 		  = #{tel} ,
+			`ceoHp` 	  = #{ceoHp} ,
+			`zip` 		  = #{zip} ,
+			`addr1` 	  = #{addr1} ,
+			`addr2` 	  = #{addr2} ,
+			`reserve`     = #{reserve},
+			`reserveOk`   = #{reserveOk},
+			`regip` 	  = #{regip} ,
+			`rdate` 	  = now();
+	</insert>
+	
+	<!-- register uid 중복조회 -->
+	<select id="countUid" resultType="int">
+		SELECT COUNT(`uid`) FROM `pet_owner` WHERE `uid` = #{uid};
+	</select>
+	
+	<!-- register hp 중복조회 -->
+	<select id="countHp" resultType="int">
+		SELECT COUNT(`hp`) FROM `pet_owner` WHERE `hp` = #{hp};
+	</select>
+	
+	<!-- register email 중복조회 -->
+	<select id="countEmail" resultType="int">
+		SELECT COUNT(`email`) FROM `pet_owner` WHERE `email` = #{email};
+	</select>
+	
+	<!-- register nick 중복조회 -->
+	<select id="countNick" resultType="int">
+		SELECT COUNT(`nick`) FROM `pet_owner` WHERE `nick` = #{nick};
+	</select>
 
 
 

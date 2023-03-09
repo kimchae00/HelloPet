@@ -472,7 +472,7 @@ color: #fff;
 
 
 
-.write_table input{
+.write_table .write_title > input{
     width: 1060px;
     height: 40px;
     font-size: 18px;
@@ -504,6 +504,17 @@ color: #fff;
     border: 1px solid #333;
 }
 
+
+
+
+.write_file > span {
+	display:block;
+	font-size: 14px;
+}
+
+.write_file > input {
+	margin-bottom:20px;	
+}
 
 .write_font{
     width: 150px;
@@ -805,16 +816,7 @@ color: #fff;
     
 }
 
-#talkMain > .container > .talk_rank > .gallery_items > .gallery_item:first-child > .gallery_item_con1{
-	background-image: url(../img/talk_rank_thumb1.jpg);
-}
 
-#talkMain > .container > .talk_rank > .gallery_items > .gallery_item:nth-child(2) > .gallery_item_con1{
-	background-image: url(../img/talk_rank_thumb2.jpg);
-	}
-#talkMain > .container > .talk_rank > .gallery_items > .gallery_item:nth-child(3) > .gallery_item_con1{
-	background-image: url(../img/talk_rank_thumb3.jpg);
-	}	
 
 
 #talkMain > .container > .talk_rank > .gallery_items > .gallery_item > .gallery_item_con1::before{
@@ -904,7 +906,6 @@ color: #fff;
     background-repeat: no-repeat;
     background-position: 50%;
     margin-right: 5px;
-    background-image: url(../img/icon-heart.png);
 }
 
 #talkMain > .container > .talk_rank > .gallery_items > .gallery_item > .gallery_item_con2 > .gallery_info1 > .gallery_like_comment > .gallery_comment{
@@ -922,7 +923,6 @@ color: #fff;
     background-repeat: no-repeat;
     background-position: 50%;
     margin-right: 5px;
-    background-image: url(../img/icon-talk.png);
 }
 
 #talkMain > .container > .talk_rank > .gallery_items > .gallery_item > .gallery_item_con2 > .gallery_info1 > .gallery_title{
@@ -971,7 +971,6 @@ color: #fff;
     background-size: cover;
     background-color: #eee;
     border-radius: 100%;
-    background-image: url(../img/로이밍밍프사.jpg);
  }
 
  #talkMain > .container > .talk_rank > .gallery_items > .gallery_item > .gallery_item_con2 > .gallery_info2 > .rank_date{
@@ -1199,6 +1198,7 @@ color: #fff;
     top: 0;
     right: 0;
     background: url(../img/close-modal.png) no-repeat 50%;
+    cursor: pointer;
 }
 
 #modal > .modal_active > .modal_gallery_view > .modal_body{
@@ -1322,7 +1322,7 @@ color: #fff;
     border-radius: 100%;
 }
 
-.active{
+.bullet_active{
     opacity: 1;
     background: #32a69f!important;
 }
@@ -1331,6 +1331,7 @@ color: #fff;
     display: flex;
     flex-direction: column;
     width: 600px;
+    height: 437.5px;
     border-left: 1px solid #ddd;
     max-width: 50%;
     overflow: hidden;
@@ -1809,6 +1810,35 @@ color: #fff;
     margin-left: 10px;
     background-image: linear-gradient(45deg,#1dc6f7,#00e5c2);
     cursor: pointer;
+}
+
+.v-overlay{
+	align-items: center;
+    border-radius: inherit;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .3s cubic-bezier(.25,.8,.5,1),z-index 1ms;
+}
+
+.v-overlay_scrim{
+	border-radius: inherit;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: inherit;
+    width: 100%;
+    will-change: opacity;
+}
+.v-overlay_content{
+	position: relative;
 }
 
 /* community_talktalkWrite */
