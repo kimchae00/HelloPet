@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.co.hellopet.dao.MemberDAO;
+import kr.co.hellopet.vo.Api_HospitalVO;
 import kr.co.hellopet.vo.MedicalVO;
 import kr.co.hellopet.vo.MemberVO;
 
@@ -53,6 +54,10 @@ public class MemberService {
 	public void deleteMember() {
 		dao.deleteMember(null);
 	};
+	
+	public List<Api_HospitalVO> selectName(String trial, String county, String name){
+		return dao.selectName(trial, county, name);
+	}
 	
 	
 	public int countUid(String uid) {
