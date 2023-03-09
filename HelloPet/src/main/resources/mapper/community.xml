@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  
+ * 날짜 : 2023/03/09
+ * 이름 : 김경준
+ * 설명 : HelloPet 커뮤니티 페이지 기능구현
+ -->
+ 
+<mapper namespace="kr.co.hellopet.dao.CommunityDAO">
+
+	<insert id="insertTipArticle">
+		insert into `community_article` set 
+		`group`= #{group}, 
+		`title`= #{title}, 
+		`content`= #{content}, 
+		<!--`img1`= null,--><!-- 파일 업로드 미구현 -->
+		`uid`= #{uid}, 
+		`regip`= #{regip}, 
+		`rdate`= NOW();
+	</insert>
+
+
+
+
+</mapper>
