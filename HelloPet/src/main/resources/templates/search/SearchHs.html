@@ -1,4 +1,38 @@
 <th:block th:include="@{search/_header.html}"/>
+<!-- 
+날짜 : 2023-03-09
+이름 : 장인화
+내용 : 동물병원 검색하고 결과를0 목록 ajax로 구현하기
+ -->
+<script>
+	$(function(){
+		$('#btnSh').click(function(){
+			//alert('욜');
+			
+			let search = $('input[name=search]').val();
+	    	   console.log(search);
+	    	   
+	    	   if(search){
+	    		   $.ajax({
+		    	          url : '/HelloPet/search/SearchHs',
+		    	          type : 'POST',
+		    	          data : {"search": search},
+		    	          success : function(data) {
+							if(data != null){
+								console.log(data);
+								location.href="/HelloPet/search/SearchHs?keyword="+search;
+							}
+		    	        	  
+		    	          }
+		    	    });
+	    	   }else{
+	    		   alert('검색어를 입력하세요');
+	    		   return false;
+	    	   }
+		});
+	});
+
+</script>
         <div class="SearchHs">
           <div class="contents">
             <div class="search-top">
@@ -9,7 +43,7 @@
                     <div class="search-head">
                       <div class="search-box-container">
                          <div class="inner">
-                             <input type="text">
+                             <input type="text" name="search">
                              <button type="button" id="btnSh"></button>
                          </div>    
                       </div>      

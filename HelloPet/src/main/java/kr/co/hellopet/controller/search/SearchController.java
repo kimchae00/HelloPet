@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class SearchController {
 	
-	@GetMapping("search/index")
+	@GetMapping(value = {"search/", "search/index"})
 	public String index() {
 		return "search/index";
 	}
@@ -35,5 +35,7 @@ public class SearchController {
 	public String SearchPm() {
 		return "search/SearchPm";
 	}
+	
+	
 	
 }
