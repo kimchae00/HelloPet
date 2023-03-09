@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!-- 
+ 	날짜 : 2023/03/09 ~
+ 	이름 : 김채영
+ 	내용 : HelloPet CS 페이지 기능구현
+  -->
+<mapper namespace="kr.co.hellopet.dao.CsDAO">
+
+	<select id="selectNotices" resultType="kr.co.hellopet.vo.CsVO">
+		 select a.*, b.`nick` from `cs_article` as a
+            join `pet_owner` as b on a.uid=b.uid
+            where `parent`=0 and `group`='notice'
+            order by `no` desc
+            limit #{start},10;
+	</select>
+	<select id="selectCountTotalNotice" resultType="int" parameterType="map">
+        select count(`no`) from `cs_article` where `parent`=0 and `group`='notice';
+    </select>
+
+	<insert id="insertNotice">
+		insert into `cs_article` set 
+		    `group`='notice', 
+		    `uid`='admin',
+		    `title`=#{title}, 
+		    `content`=#{content},
+		    `img`=#{img},
+		    `regip`=#{regip},
+		    `rdate`=NOW();
+	</insert>
+
+	
+
+
+
+</mapper>

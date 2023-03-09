@@ -116,7 +116,7 @@ main > section > .Slider {
 .section-topic {
     padding: 60px 0 0;
 }
-.container {
+section > .container {
     margin: auto;
     width: 1200px;
     padding: 0;
@@ -645,7 +645,7 @@ img {max-width: 100%;}
 /* footer */
 footer {
     margin-top: 100px;
-    height: 180px;
+    height: 200px;
     background: #b4e8e3;
     padding: 43px 0 75px;
 }
