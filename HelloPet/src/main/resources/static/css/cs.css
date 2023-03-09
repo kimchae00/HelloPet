@@ -16,7 +16,7 @@ img {border-style: none; max-width: 100%;}
 button {outline: none; border: none;}
 #wrapper {
     width: 100%;
-    min-width: 1200px;
+   min-width: 1200px;
 }
 
 header {
@@ -85,9 +85,9 @@ header > .menu > div > ul > li:nth-child(3) {
     top: -22px;
 }
 main {
-    width: 100%;
     min-width: 1200px;
-    min-height: 800px;
+    width: 100%;
+    height: auto;
     margin: 0 auto;
 }
 .top {
@@ -137,7 +137,7 @@ main {
 
 footer {
     margin-top: 100px;
-    height: 180px;
+    height: 200px;
     background: #b4e8e3;
     padding: 43px 0 75px;
 }
@@ -183,6 +183,7 @@ footer {
 
 /*///////// notice ///////////*/
 /* notice list */
+
 #notice > #list {padding: 60px 0 0 ;}
 #notice > #list > .container {
     position: relative;
@@ -398,12 +399,14 @@ footer {
     width: 100%;
     height: 35px;
     font-size: 17px;
+    border: 2px solid #ddd; 
 }
 #notice > #write .writeTable textarea {
     width: 100%;
     height: 280px;
     resize: none;
-    font-size: 20px;
+    font-size: 17px;
+    border: 2px solid #ddd; 
 }
 #notice > #write .button {
     display: flex;
@@ -422,12 +425,14 @@ footer {
     margin: 5px;
 }
 #notice > #write .button > .btnWrite {
-    width: 50px;
+    width: 100px;
     text-align: center;
     padding: 8px;
     background: #32a69f;
     color: #fff;
     margin: 5px;
+    border: none;
+    font-size: 17px;
 }
 /* notice modify */
 #notice > #modify {padding: 60px 0 0 ;}
@@ -473,12 +478,14 @@ footer {
     width: 100%;
     height: 35px;
     font-size: 17px;
+    border: 2px solid #ddd;
 }
 #notice > #modify .modifyTable textarea {
     width: 100%;
     height: 280px;
     resize: none;
     font-size: 20px;
+    border: 2px solid #ddd;
 }
 #notice > #modify .button {
     display: flex;
@@ -487,7 +494,7 @@ footer {
     float: right;
     
 }
-#notice > #modify .button > .btnList {
+#notice > #modify .button > .btnCancel {
     width: 50px;
     text-align: center;
     padding: 8px;
@@ -497,12 +504,13 @@ footer {
     margin: 5px;
 }
 #notice > #modify .button > .btnModify {
-    width: 50px;
+    width: 70px;
     text-align: center;
     padding: 8px;
     background: #32a69f;
     color: #fff;
     margin: 5px;
+    font-size: 16px;
 }
 /*///////// faq ///////////*/
 /* faq list */
@@ -685,12 +693,14 @@ footer {
     width: 100%;
     height: 35px;
     font-size: 20px;
+    border: 2px solid #ddd;
 }
 #faq > #write .writeTable textarea {
     width: 100%;
     height: 280px;
     resize: none;
     font-size: 20px;
+    border: 2px solid #ddd;
 }
 #faq > #write .button {
     display: flex;
@@ -700,7 +710,7 @@ footer {
     
 }
 #faq > #write .button > .btnList {
-    width: 60px;
+    width: 50px;
     text-align: center;
     padding: 8px;
     border: 1px solid #ddd;
@@ -710,7 +720,7 @@ footer {
     font-size: 18px;
 }
 #faq > #write .button > .btnWrite {
-    width: 60px;
+    width: 70px;
     text-align: center;
     padding: 8px;
     background: #32a69f;
@@ -762,12 +772,14 @@ footer {
     width: 100%;
     height: 35px;
     font-size: 20px;
+    border: 2px solid #ddd;
 }
 #faq > #modify .modifyTable textarea {
     width: 100%;
     height: 280px;
     resize: none;
     font-size: 20px;
+    border: 2px solid #ddd;
 }
 #faq > #modify .button {
     display: flex;
@@ -776,24 +788,24 @@ footer {
     float: right;
     
 }
-#faq > #modify .button > .btnList {
-    width: 60px;
+#faq > #modify .button > .btnCancel {
+    width: 50px;
     text-align: center;
     padding: 8px;
     border: 1px solid #ddd;
     background: #fbfbfb;
     color: #555;
     margin: 5px;
-    font-size: 18px;
+    font-size: 17px;
 }
 #faq > #modify .button > .btnModify {
-    width: 60px;
+    width: 70px;
     text-align: center;
     padding: 8px;
     background: #32a69f;
     color: #fff;
     margin: 5px;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 /*///////// qna ///////////*/
@@ -1050,12 +1062,14 @@ footer {
     width: 100%;
     height: 35px;
     font-size: 17px;
+    border: 2px solid #ddd;
 }
 #qna > #write .writeTable textarea {
     width: 100%;
     height: 280px;
     resize: none;
-    font-size: 20px;
+    font-size: 17px;
+    border: 2px solid #ddd;
 }
 #qna > #write .button {
     display: flex;
@@ -1074,7 +1088,7 @@ footer {
     margin: 5px;
 }
 #qna > #write .button > .btnWrite {
-    width: 50px;
+    width: 70px;
     text-align: center;
     padding: 8px;
     background: #32a69f;
