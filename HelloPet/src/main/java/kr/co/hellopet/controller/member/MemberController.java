@@ -1,10 +1,12 @@
 package kr.co.hellopet.controller.member;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.hellopet.service.MemberService;
+import kr.co.hellopet.vo.Api_HospitalVO;
 import kr.co.hellopet.vo.MedicalVO;
 import kr.co.hellopet.vo.MemberVO;
 
@@ -79,6 +82,24 @@ public class MemberController {
 		
 		service.insertMedical(vo);
 		return "redirect:/member/login";
+	}
+	
+	@ResponseBody
+	@GetMapping("member/SearchName")
+	public Map<String, List<Api_HospitalVO>> search(@RequestParam("trial") String trial, @RequestParam("county") String county, @RequestParam("name") String name) {
+		
+		/*System.out.println("trial : " + trial);
+		System.out.println("county : " + county);
+		System.out.println("name : " + name);*/
+		
+		List<Api_HospitalVO> vo = service.selectName(trial, county, name);
+		
+		Map<String, List<Api_HospitalVO>> map = new HashMap<>();
+		
+		map.put("result", vo);
+		System.out.println("size : " + vo.size());
+		
+		return map;
 	}
 	
 	// 아이디 비밀번호 찾기

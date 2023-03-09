@@ -46,6 +46,15 @@
 			`rdate` 	  = now();
 	</insert>
 	
+	<!-- register Medical 병원 약국 조회하기 -->
+	<select id="selectName" resultType="kr.co.hellopet.vo.Api_HospitalVO">
+		SELECT * FROM `api_hospital` 
+								WHERE 
+									`hosAddr` LIKE concat('%', #{trial}, '%') AND 
+									`hosAddr` LIKE concat('%', #{county}, '%') AND 
+									`hosName` LIKE concat('%', #{name}, '%'); 
+	</select>
+	
 	<!-- register uid 중복조회 -->
 	<select id="countUid" resultType="int">
 		SELECT COUNT(`uid`) FROM `pet_owner` WHERE `uid` = #{uid};
