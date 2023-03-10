@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.hellopet.service.DiseaseService;
+import kr.co.hellopet.vo.DiseaseResultMapVO;
 import kr.co.hellopet.vo.DiseaseVO;
 import kr.co.hellopet.vo.Disease_cate1VO;
 import kr.co.hellopet.vo.Disease_cate2VO;
@@ -33,7 +34,10 @@ public class DiseaseController {
 	@GetMapping("disease/index")
 	public String index(Model model) {
 		
+		String group = "dog";
 		
+		List<DiseaseResultMapVO> resultMaps = service.selectDisease(group);
+		model.addAttribute("resultMaps", resultMaps);
 		
 		return "disease/index";
 		

@@ -1,6 +1,12 @@
 package kr.co.hellopet.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import kr.co.hellopet.dao.DiseaseDAO;
+import kr.co.hellopet.vo.DiseaseResultMapVO;
 
 /*
  * 날짜 : 2023/03/09
@@ -10,4 +16,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class DiseaseService {
 
+	@Autowired
+	private DiseaseDAO dao;
+	
+	public List<DiseaseResultMapVO> selectDisease(String group) {
+		return dao.selectDisease(group);
+	}
+	
 }

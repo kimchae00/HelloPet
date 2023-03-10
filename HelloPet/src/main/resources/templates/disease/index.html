@@ -94,7 +94,7 @@
         }
 
         .search-category-list .name a {
-            display: inline-block;
+            display: block;
             position: relative;
             padding: 5px 8px;
             line-height: 1;
@@ -168,15 +168,7 @@
             font-size: 0;
         }
 
-        .search-category-list .name a {
-            display: inline-block;
-            position: relative;
-            padding: 5px 8px;
-            line-height: 1;
-            font-size: 20px;
-            color: #777;
-            font-weight: 300
-        }
+        
 
 
 
@@ -231,103 +223,19 @@
                 <h4 class="title">아래의 증상 중 한가지를 선택하세요!</h4>
             </div>
             <section class="section-grid">
-                <article>
+                
+                <article th:each="resultMap : ${resultMaps}">
                     <dl class="search-category-list">
                         <dt class="title">
-                            눈이상
-                        </dt>
-                        <dd class="name">
-                            <a href="#" class>눈꺼풀이 벌겋게 붓는다</a>
-                        </dd>
-                        <dd class="name">
-                            <a href="#" class>눈꺼풀이 벌겋게 붓는다</a>
-                        </dd>
-                        <dd class="name">
-                            <a href="#" class>눈꺼풀이 벌겋게 붓는다</a>
-                        </dd>
-                    </dl>
-
-                </article>
-                <article>
-                    <dl class="search-category-list">
-                        <dt class="title">
-                            행동이상
-                        </dt>
-                        <dd class="name">
-                            <a href="#" class>기지개를 켠다</a>
-                        </dd>
-                        <dd class="name">
-                            <a href="#" class>기지개를 켠다</a>
-                        </dd>
-                        <dd class="name">
-                            <a href="#" class>기지개를 켠다</a>
-                        </dd>
+                            [[${resultMap.c1Name}]]
+                        </dt>    
+                 
+                       	<dd class="name">
+                            <a href="#" th:each="cate2VO:${resultMap.cate2VOList}">[[${cate2VO.c2Name}]]</a>
+                       	</dd>
                     </dl>
                 </article>
-                <article> 
-                    <dl class="search-category-list">
-                        <dt class="title">
-                            코이상
-                        </dt>
-                        <dd class="name">
-                            <a href="#" class>콧물을 많이 흘린다</a>
-                        </dd>
-                        <dd class="name">
-                            <a href="#" class>콧물을 많이 흘린다</a>
-                        </dd>
-                        <dd class="name">
-                            <a href="#" class>콧물을 많이 흘린다</a>
-                        </dd>
-                    </dl>
-                </article>
-                <article>
-                    <dl class="search-category-list">
-                        <dt class="title">
-                            음식 섭취 이상
-                        </dt>
-                        <dd class="name">
-                            <a href="#" class>밥을 잘 먹지 않는다</a>
-                        </dd>
-                        <dd class="name">
-                            <a href="#" class>밥을 잘 먹지 않는다</a>
-                        </dd>
-                        <dd class="name">
-                            <a href="#" class>밥을 잘 먹지 않는다</a>
-                        </dd>
-                    </dl>
-                </article>
-                <article>
-                    <dl class="search-category-list">
-                        <dt class="title">
-                            다리이상
-                        </dt>
-                        <dd class="name">
-                            <a href="#" class>다리를 절룩거리다</a>
-                        </dd>
-                        <dd class="name">
-                            <a href="#" class>다리를 절룩거리다</a>
-                        </dd>
-                        <dd class="name">
-                            <a href="#" class>다리를 절룩거리다</a>
-                        </dd>
-                    </dl>
-                </article>
-                <article>
-                    <dl class="search-category-list">
-                        <dt class="title">
-                            숨소리이상
-                        </dt>
-                        <dd class="name">
-                            <a href="#" class>숨을 헐떡인다</a>
-                        </dd>
-                        <dd class="name">
-                            <a href="#" class>숨을 헐떡인다</a>
-                        </dd>
-                        <dd class="name">
-                            <a href="#" class>숨을 헐떡인다</a>
-                        </dd>
-                    </dl>
-                </article>                    
+                                   
             </section>
         </div>
 
