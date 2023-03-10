@@ -27,4 +27,12 @@ public class CommunityVO {
 	private int heart;
 	private String regip;
 	private String rdate;
+	
+	// 파일 업로드
+	private MultipartFile fileImg1;
+	private MultipartFile fileImg2;
+	private MultipartFile fileImg3;
+	
+	// 닉네임 join
+	private String nick;
 }

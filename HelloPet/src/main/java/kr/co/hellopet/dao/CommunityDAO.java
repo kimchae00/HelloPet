@@ -1,5 +1,7 @@
 package kr.co.hellopet.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +20,10 @@ public interface CommunityDAO {
 	// tip 글쓰기
 	public int insertTipArticle(CommunityVO vo);
 	
+	// tip 글목록
+	public List<CommunityVO> selectTipArticles(int start);
+	
+	// tip 글목록 갯수
+	public int selectTipCount();
 	
 }
