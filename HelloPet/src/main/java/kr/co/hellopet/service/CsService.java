@@ -15,6 +15,12 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.co.hellopet.dao.CsDAO;
 import kr.co.hellopet.vo.CsVO;
 
+/* 
+ *  날짜 : 2023/03/09
+ *  이름 : 김채영
+ *  설명 : HelloPet CS 페이지 기능구현
+ */
+
 @Service
 public class CsService {
 	
@@ -26,22 +32,49 @@ public class CsService {
 		// 썸네일 이미지 경로 지정
 		String newFile = imgUpload(vo);
 		
-		if(newFile != null) {
-			vo.setImg("/HelloPet/file/"+newFile);
-		}else {
-			vo.setImg(null);
-		}
+		if(newFile == null) {
+	        vo.setImg(null);
+	    } else {
+	        vo.setImg("/HelloPet/file/" + newFile);
+	    }
 		
 		result = dao.insertNotice(vo);
 		return result;
 	}
 	
-	public List<CsVO> selectNotices(int start){
-		return dao.selectNotices(start);
+	public List<CsVO> selectNotices(int start, int pageSize){
+		return dao.selectNotices(start, pageSize);
 	}
 	public int selectCountTotalNotice() {
 		return dao.selectCountTotalNotice();
 	}
+	public CsVO selectArticle(int no) {
+		return dao.selectArticle(no);
+	}
+	
+	public CsVO getPrev(String rdate) {
+		return dao.getPrev(rdate);
+	}
+	public CsVO getNext( String rdate) {
+		return dao.getNext(rdate);
+	}
+	
+	public int insertFaq(CsVO vo) {
+		return dao.insertFaq(vo);
+	}
+	public List<CsVO> selectFaqs(){
+		return dao.selectFaqs();
+	}
+	
+	public int updateArticleHit(int no) {
+		return dao.updateArticleHit(no);
+	}
+	public int updateArticle(CsVO vo) {
+		return dao.updateArticle(vo);
+	}
+    public int deleteArticle(int no) {
+    	return dao.deleteArticle(no);
+    }
 	
 	// 파일 이미지
 	@Value("${spring.servlet.multipart.location}")

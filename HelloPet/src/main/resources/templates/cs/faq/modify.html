@@ -1,4 +1,12 @@
 <th:block th:include="@{cs/_header.html}"/>
+<script>
+	$(function(){
+		
+		var urlParams = new URL(location.href).searchParams;
+		var index = urlParams.get('index');
+		console.log(index);
+	});
+</script>
 	<main id="faq">
 		    <div class="top">
 		        <h3>고객센터</h3>
