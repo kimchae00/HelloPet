@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.hellopet.dao.MemberDAO;
 import kr.co.hellopet.vo.Api_HospitalVO;
+import kr.co.hellopet.vo.Api_PharmacyVO;
 import kr.co.hellopet.vo.MedicalVO;
 import kr.co.hellopet.vo.MemberVO;
 
@@ -55,10 +56,13 @@ public class MemberService {
 		dao.deleteMember(null);
 	};
 	
-	public List<Api_HospitalVO> selectName(String trial, String county, String name){
-		return dao.selectName(trial, county, name);
+	public List<Api_HospitalVO> selectMedical(String trial, String county, String name){
+		return dao.selectMedical(trial, county, name);
 	}
 	
+	public List<Api_PharmacyVO> selectPharmacy(String trial, String county, String name){
+		return dao.selectPharmacy(trial, county, name);
+	}
 	
 	public int countUid(String uid) {
 		int result = dao.countUid(uid);

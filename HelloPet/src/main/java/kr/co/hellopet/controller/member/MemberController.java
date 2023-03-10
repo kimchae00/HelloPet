@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.hellopet.service.MemberService;
 import kr.co.hellopet.vo.Api_HospitalVO;
+import kr.co.hellopet.vo.Api_PharmacyVO;
 import kr.co.hellopet.vo.MedicalVO;
 import kr.co.hellopet.vo.MemberVO;
 
@@ -85,14 +86,14 @@ public class MemberController {
 	}
 	
 	@ResponseBody
-	@GetMapping("member/SearchName")
-	public Map<String, List<Api_HospitalVO>> search(@RequestParam("trial") String trial, @RequestParam("county") String county, @RequestParam("name") String name) {
+	@GetMapping("member/SearchHospital")
+	public Map<String, List<Api_HospitalVO>> searchHospital(@RequestParam("trial") String trial, @RequestParam("county") String county, @RequestParam("name") String name) {
 		
 		/*System.out.println("trial : " + trial);
 		System.out.println("county : " + county);
 		System.out.println("name : " + name);*/
 		
-		List<Api_HospitalVO> vo = service.selectName(trial, county, name);
+		List<Api_HospitalVO> vo = service.selectMedical(trial, county, name);
 		
 		Map<String, List<Api_HospitalVO>> map = new HashMap<>();
 		
@@ -101,6 +102,26 @@ public class MemberController {
 		
 		return map;
 	}
+	
+	@ResponseBody
+	@GetMapping("member/SearchPharmacy")
+	public Map<String, List<Api_PharmacyVO>> searchPharmacy(@RequestParam("trial") String trial, @RequestParam("county") String county, @RequestParam("name") String name) {
+		
+		/*System.out.println("trial : " + trial);
+		System.out.println("county : " + county);
+		System.out.println("name : " + name);*/
+		
+		List<Api_PharmacyVO> vo = service.selectPharmacy(trial, county, name);
+		
+		Map<String, List<Api_PharmacyVO>> map = new HashMap<>();
+		
+		map.put("result", vo);
+		System.out.println("size : " + vo.size());
+		
+		return map;
+	}
+	
+	
 	
 	// 아이디 비밀번호 찾기
 	@GetMapping("member/find")

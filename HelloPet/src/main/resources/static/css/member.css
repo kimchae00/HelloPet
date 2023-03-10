@@ -1052,7 +1052,8 @@ button[name=btnHos] {
      background: #fff;
      border: 1px solid;
      width: 800px;
-     height: 250px;
+     min-height: 350px;
+     height : auto;
      position: relative;
      top: -100px;
      padding: 10px;

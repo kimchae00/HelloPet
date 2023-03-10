@@ -29,7 +29,7 @@
 	    	
 	    	if(trial == '서울'){
 	    		$('.county').empty();
-	    		$('.county').append("<option>시·군·구</option>");
+	    		$('.county').append("<option value='0'>시·군·구</option>");
 	    		for(let values of seoul){
 	    			let tags = "<option>"+values+"</option>";
 	    			$('.county').append(tags);
@@ -38,7 +38,7 @@
 	    	
 	    	if(trial == '부산'){
 	    		$('.county').empty();
-	    		$('.county').append("<option>시·군·구</option>");
+	    		$('.county').append("<option value='0'>시·군·구</option>");
 	    		for(let values of busan){
 	    			let tags = "<option>"+values+"</option>";
 	    			$('.county').append(tags);
@@ -47,7 +47,7 @@
 	    	
 	    	if(trial == '광주'){
 	    		$('.county').empty();
-	    		$('.county').append("<option>시·군·구</option>");
+	    		$('.county').append("<option value='0'>시·군·구</option>");
 	    		for(let values of gwangju){
 	    			let tags = "<option>"+values+"</option>";
 	    			$('.county').append(tags);
@@ -56,12 +56,17 @@
 	    });
 	    
 	    
-	    $('button[name=btnSearch]').click(function(){
+	    $('button[name=btnSearch-Hospital]').click(function(){
 	    	
 	    	let trial = $('.trial').val();
 		    let county = $('.county').val();
 		    let name = $('.SearchName').val();
 		    
+		    if(trial == 0){
+		    	alert('지역을 선택');
+		    }else if(name == ''){
+		    	alert('이름을 입력하세요.');
+		    }else{
 		    //alert('trial : ' + trial + ' county : ' + county);
 		    
 		    let jsonData = {
@@ -71,16 +76,89 @@
 		    };
 		    
 		    $.ajax({
-		    	url : '/HelloPet/member/SearchName',
+		    	url : '/HelloPet/member/SearchHospital',
 		    	method : 'GET',
 		    	data : jsonData,
 		    	dataType : 'json',
 		    	success : function(data){
+		    		$('.medical-result').empty();
+		    		
+		    		let size = data.result.length;
+		    		
+		    		if(size == 0){
+		    			alert('조회 결과가 없습니다.'); //왜 안되지?		 
+		    		}
+		    		
 		    		for(let i = 0; i < data.result.length; i++){
-		    			console.log(data.result[i].hosName);
+		    			let tags  = "<table class='medical-result-table'>";
+			    			tags += "<tr>";
+		    				tags += "<th>번호</th>"
+		    				tags += "<th>병원이름</th>"
+		    				tags += "<th>병원주소</th>"
+		    				tags += "<th></th>"
+		    				tags += "</tr>";
+		    				tags += "<tr>";
+		    				tags += "<td>"+(i+1)+"</td>"
+		    				tags += "<td><input type='hidden' class='input-hosName' value='"+data.result[i].hosName+"'>"+data.result[i].hosName+"</td>"
+		    				tags += "<td><input type='hidden' class='input-hosAddr' value='"+data.result[i].hosAddr+"'>"+data.result[i].hosAddr+"</td>"
+		    				tags += "<td><button class='btnMedicalSelect'>선택하기</button></td>"
+		    				tags += "</tr>";
+		    				tags += "</table>";
+		    			$('.medical-result').append(tags);
 		    		}
 		    	}
 		    });
+		   }
+	    });
+	    
+	    $('button[name=btnSearch-Pharmacy]').click(function(){
+	    //$('select[class=trial]').change(function(){
+	    	let trial = $('#pharmacy-trial').val();
+	    	let county = $('#pharmacy-county').val();
+	    	let name = $('#pharmacy-name').val();
+	    	
+	    	/*let trial = $('.trial').val();
+		    let county = $('.county').val();
+		    let name = $('.SearchName').val();*/
+		    
+		    alert('trial : ' + trial + ' county : ' + county);
+	    	
+	    	let jsonData = {
+	    					'trial'  : trial, 
+			    			'county' : county, 
+			    			'name'   : name
+   			};
+	    	
+	    	$.ajax({
+	    		url : '/HelloPet/member/SearchPharmacy',
+	    		method : 'GET',
+	    		data : jsonData,
+	    		dataType : 'json',
+	    		success : function(data){
+	    			
+    			}
+    		});
+	    });
+	    
+	    //버튼 클릭시 table 내용 비우기
+	    $('.medical-result').on('click','.btnMedicalSelect',function(){
+	    	let hosName = $(this).closest('tr').find('.input-hosName').val();
+	    	let hosAddr = $(this).closest('tr').find('.input-hosAddr').val();
+	    	
+	    	$('input[name=medicalName]').val(hosName);
+	    	$('#addr1').val(hosAddr);
+	    	$('#modal-medical').fadeOut(100,function(){
+				$('.trial').val(0);
+				$('.county').empty();
+				$('.county').append("<option value='0'>시·군·구</option>");
+				$('.SearchName').val('');
+				$('.medical-result-table tr').empty();   
+    		});
+	    });
+	    
+	    //버튼태그 클릭시 파일찾기 실행
+	    $('.btnFile').click(function(){
+	    	$('input[name=reserve]').click();	
 	    });
 	});
 
@@ -127,6 +205,39 @@
 	    padding: 5px 10px;
 	    cursor: pointer;
 	}
+	
+	.medical-result {
+		max-width: 750px;
+		max-height: 200px;
+		float:left;
+		margin-top: 20px;
+		margin-left: 20px;
+		margin-bottom : 20px;
+		overflow: auto;
+	}
+	
+	.result_table {
+		
+	}
+	
+	.medical-result-table > tr {padding: 10px;}
+	.medical-result-table > tr > th {}
+	.medical-result-table tr > th:nth-child(1){width: 50px;}
+	.medical-result-table tr > th:nth-child(2){width: 200px;}
+	.medical-result-table tr > th:nth-child(3){width: 300px;}
+	.medical-result-table tr > th:nth-child(4){width: 200px;}
+	.medical-result-table tr > td {text-align: center; padding: 8px; margin-bottom: 5px; border-bottom: 1px solid #e5e5e5;}
+	
+	.btnMedicalSelect {
+		width:120px;
+		height:30px;
+		border: 1px solid;
+		cursor: pointer;
+		background: #0dbcaf;
+		color: #fff;
+	}
+	
+	
 </style>
 <main class="business_main">
     <div class="business_div">
@@ -225,7 +336,7 @@
                         <td>사업자등록증</td>
                         <td>
                             <input type="file" id="Business_Registration" name="reserve" placeholder="선택된 파일없음">
-                            <input type="button" value="파일찾기">
+                            <input type="button" class="btnFile" value="파일찾기">
                         </td>
                     </tr>
                     <tr id="radio">
@@ -253,7 +364,7 @@
             <div class="close-area">X</div>
             <div class="medical_select">
                 <select name="trial" class="trial">
-                    <option value="">시·도</option>
+                    <option value="0">시·도</option>
                     <option value="서울">서울특별시</option>
                     <option value="부산">부산광역시</option>
                     <option value="대구">대구광역시</option>
@@ -274,16 +385,16 @@
                 </select>
         
                 <select name="county" class="county">
-                    <option value="">시·군·구</option>
+                    <option value="0">시·군·구</option>
                 </select>
         
                <div class="search">
                   <div class="input-wrapper">
                       <input type="text" class="SearchName" placeholder="병원이름 검색">
-                      <button type="submit" name="btnSearch">검색</button>
+                      <button type="submit" name="btnSearch-Hospital">검색</button>
                   </div>
               </div>
-              <div class="result">
+              <div class="medical-result">
               </div>
             </div>
         </div>
@@ -295,7 +406,7 @@
             </div>
             <div class="close-area">X</div>
             <div class="medical_select">
-                <select name="trial" class="trial">
+                <select name="trial" class="trial" id="pharmacy-trial">
                     <option value="">시·도</option>
                     <option value="서울">서울특별시</option>
                     <option value="부산">부산광역시</option>
@@ -316,13 +427,15 @@
                     <option value="제주">제주특별자치도</option>
                 </select>
         
-                <select name="county" class="county">
-                    <option value="">시·군·구</option>
+                <select name="county" class="county" id="pharmacy-county">
+                    <option value="0">시·군·구</option>
                 </select>
                 <div class="search">
                   <div class="input-wrapper">
-                      <input type="text" placeholder="병원이름 검색">
-                      <button type="submit" name="btnSearch">검색</button>
+                      <input type="text" class="SearchName" id="pharmacy-name" placeholder="병원이름 검색">
+                      <button type="submit" name="btnSearch-Pharmacy">검색</button>
+                  </div>
+                  <div class="result">
                   </div>
               	</div>
             </div>

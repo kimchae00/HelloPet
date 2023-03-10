@@ -46,13 +46,24 @@
 			`rdate` 	  = now();
 	</insert>
 	
-	<!-- register Medical 병원 약국 조회하기 -->
-	<select id="selectName" resultType="kr.co.hellopet.vo.Api_HospitalVO">
+	<!-- register Medical 병원 조회하기 -->
+	<select id="selectMedical" resultType="kr.co.hellopet.vo.Api_HospitalVO">
 		SELECT * FROM `api_hospital` 
 								WHERE 
 									`hosAddr` LIKE concat('%', #{trial}, '%') AND 
 									`hosAddr` LIKE concat('%', #{county}, '%') AND 
-									`hosName` LIKE concat('%', #{name}, '%'); 
+									`hosName` LIKE concat('%', #{name}, '%') and
+									`tel`     LIKE '%-%-%';
+	</select>
+	
+	<!-- register Medical 약국 조회하기 -->
+	<select id="selectPharmacy" resultType="kr.co.hellopet.vo.Api_PharmacyVO">
+		SELECT * FROM `api_pharmacy` 
+							WHERE 
+								`pharAddr` LIKE concat('%', #{trial}, '%') AND 
+								`pharAddr` LIKE concat('%', #{county}, '%') AND 
+								`pharName` LIKE concat('%',#{name},'%')
+								`tel` LIKE concat('%-%-%');
 	</select>
 	
 	<!-- register uid 중복조회 -->
