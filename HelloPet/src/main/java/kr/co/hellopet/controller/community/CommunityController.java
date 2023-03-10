@@ -1,5 +1,7 @@
 package kr.co.hellopet.controller.community;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,30 @@ public class CommunityController {
 	
 	// tip 목록
 	@GetMapping("community/tip/list")
-	public String tipList() {
+	public String tipList(String pg, Model model) {
+		
+		//페이징 
+    	int currentPage = service.getCurrentPage(pg); // 현재 페이지 번호
+		int total = 0;
+		
+		total = service.selectTipCount();
+		
+		int lastPageNum = service.getLastPageNum(total);// 마지막 페이지 번호
+		int[] result = service.getPageGroupNum(currentPage, lastPageNum); // 페이지 그룹번호
+		int pageStartNum = service.getPageStartNum(total, currentPage); // 페이지 시작번호
+		int start = service.getStartNum(currentPage); // 시작 인덱스
+		
+		model.addAttribute("lastPageNum", lastPageNum);		
+		model.addAttribute("currentPage", currentPage);		
+		model.addAttribute("pageGroupStart", result[0]);
+		model.addAttribute("pageGroupEnd", result[1]);
+		model.addAttribute("pageStartNum", pageStartNum+1);
+    			
+		//전체 목록 가져오기
+		List<CommunityVO> articles = service.selectTipArticles(start);
+		
+		model.addAttribute("articles", articles);
+		
 		return "community/tip/list";
 	}
 	

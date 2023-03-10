@@ -13,15 +13,27 @@
 
 	<insert id="insertTipArticle">
 		insert into `community_article` set 
-		`group`= #{group}, 
-		`title`= #{title}, 
-		`content`= #{content}, 
-		<!--`img1`= null,--><!-- 파일 업로드 미구현 -->
-		`uid`= #{uid}, 
-		`regip`= #{regip}, 
-		`rdate`= NOW();
+			`group`= #{group}, 
+			`title`= #{title}, 
+			`content`= #{content}, 
+			`img1`= #{img1},
+			`uid`= #{uid}, 
+			`regip`= #{regip}, 
+			`rdate`= NOW();
 	</insert>
+	
+	<select id="selectTipArticles" resultType="kr.co.hellopet.vo.CommunityVO">
+		 select * from `community_article` 
+			where `group`='tip'
+			order by `no` desc
+			limit #{start},10;
+	</select>
 
+	<select id="selectTipCount" resultType="int">
+    	select count(`no`) from `community_article` 
+    		where `group`='tip';
+    </select>
+	
 
 
 
