@@ -31,8 +31,8 @@
 			`name` 		  = #{name} ,
 			`email` 	  = #{email} ,
 			`pass` 		  = #{pass} ,
-			`type` 		  = 1 ,
-			`level` 	  = 1 ,
+			`type` 		  = 2 ,
+			`level` 	  = #{level} ,
 			`medicalName` = #{medicalName} ,
 			`ceo` 		  = #{ceo} ,
 			`tel` 		  = #{tel} ,
@@ -62,8 +62,8 @@
 							WHERE 
 								`pharAddr` LIKE concat('%', #{trial}, '%') AND 
 								`pharAddr` LIKE concat('%', #{county}, '%') AND 
-								`pharName` LIKE concat('%',#{name},'%')
-								`tel` LIKE concat('%-%-%');
+								`pharName` LIKE concat('%',#{name},'%') AND
+								`tel`      LIKE '%-%-%';
 	</select>
 	
 	<!-- register uid 중복조회 -->
