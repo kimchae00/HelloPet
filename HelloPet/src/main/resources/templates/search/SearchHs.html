@@ -6,7 +6,19 @@
  -->
 <script>
 	$(function(){
+		
+		var currentPage = 1;
+		
+		
+		 $('input[name=search]').keypress(function(event) {
+		        if (event.which == 13) { // Enter 키 누름
+		            $('#btnSh').click(); // 검색 버튼 클릭 이벤트 실행
+		        }
+		    });
+		
 		$('#btnSh').click(function(){
+			
+			
 			//alert('욜');
 			
 			let search = $('input[name=search]').val();
@@ -18,11 +30,34 @@
 		    	          type : 'POST',
 		    	          data : {"search": search},
 		    	          success : function(data) {
-							if(data != null){
-								console.log(data);
-								location.href="/HelloPet/search/SearchHs?keyword="+search;
-							}
+		    	        	  console.log(data);
 		    	        	  
+		    	        	  if(data != null){
+		    	        		  // #section2 보이기
+		    	        		  $('#section2').show();
+									
+		    	        		  console.log(data);
+			    	              var html = "";
+			    	              $.each(data.hss, function(index, hs) {
+			    	            	  var hosAddr = hs.hosAddr !== null ? hs.hosAddr : " "; // hosAddr가 null이면 공백 처리
+			    	            	  var tel = hs.tel !== null ? hs.tel : " "; // teldl null이면 공백 처리
+			    	                  html += "<li><span class='titleHs'><a href='#'>" + hs.hosName + "</a></span>"
+			    	                  html += "<span class='infoHs'><span>" + hosAddr + "</span>"
+			    	                  html += "<span>" + tel + "</span></span>"
+			    	                  html += "<span class='button-wrap'>"
+			    	                  html += "<a th:href='@{/search/view}'><button type='button' id='btnDt'>자세히</button></a>"
+			    	                  html += "<a th:href='@{/search/reserve}'><button type='button' id='btnga'>예약가능</button></a></span></li>";
+			    	              });
+			    	              
+			    	            
+			    	              
+			    	              
+			    	              $('.lists ul li').empty();
+			    	              $('.lists ul').append(html);
+			    	              
+			    	              
+			    	              
+								}
 		    	          }
 		    	    });
 	    	   }else{
@@ -50,7 +85,7 @@
                    </div>  
                  </div>
             </section>
-            <section id="section2">
+            <section id="section2" style="display: none;">
                 <div class="mapContainer">
                     <ul>
                         <li>
@@ -65,44 +100,10 @@
                 </div>
                 <div class="lists">
                     <ul>
-                        <li>
-                            <span class="titleHs"><a href="#">부산가루병원</a></span>
-                            <span class="infoHs">
-                                <span>부산 연제구</span>
-                                <span>051-111-1234</span>
-                            </span>
-                            <span class="button-wrap">
-                                <a th:href="@{/search/view}"><button type="button" id="btnDt">자세히</button></a>
-                                <a th:href="@{/search/reserve}"><button type="button" id="btnga">예약가능</button></a>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="titleHs"><a href="#">부산이나병원</a></span>
-                            <span class="infoHs">
-                                <span>부산 금정구</span>
-                                <span>051-222-1234</span>
-                            </span>
-                            <span class="button-wrap">
-                                <a th:href="@{/search/view}"><button type="button" id="btnDt">자세히</button></a>
-                                <a th:href="@{/search/reserve}"><button type="button" id="btnga">예약가능</button></a>
-                            </span>
-                        </li>
+                       
                     </ul>
                 </div>
-                <!-- 검색목록 페이지 번호 -->
-                <div class="paging">
-                    <span class="prev">
-                        <a href="#"><&nbsp;이전</a>
-                    </span>
-                    <span class="num">
-                        <a href="#" class="on">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                    </span>
-                    <span class="next">
-                        <a href="#">다음&nbsp;></a>
-                    </span>
-                </div>
+         
 
             </section>
             
