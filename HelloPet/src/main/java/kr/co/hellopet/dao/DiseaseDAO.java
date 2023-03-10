@@ -1,7 +1,11 @@
 package kr.co.hellopet.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import kr.co.hellopet.vo.DiseaseResultMapVO;
 
 /*
  * 날짜 : 2023/03/09
@@ -10,6 +14,7 @@ import org.springframework.stereotype.Repository;
  */
 @Mapper
 @Repository
-public class DiseaseDAO {
+public interface DiseaseDAO {
+	public List<DiseaseResultMapVO> selectDisease(String group);
 
 }
