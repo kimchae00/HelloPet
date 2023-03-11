@@ -1,5 +1,9 @@
 package kr.co.hellopet.controller.search;
-
+/*
+ * 날짜 : 2023/03/11 ~
+ * 내용 : searchController 작성
+ * 이름 : 장인화
+ * */
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +46,10 @@ public class SearchController {
 	}
 	
 	@GetMapping("search/view")
-	public String view() {
+	public String view(Model model, String hosNo) {
+		SearchVO a = service.selectView(hosNo);
+		model.addAttribute("a",a);
+		
 		return "search/view";
 	}
 	
@@ -54,20 +61,31 @@ public class SearchController {
 	
 	@ResponseBody
 	@PostMapping("search/SearchHs")
-	public Map<String, List<SearchVO>> SearchHs(Model model, @RequestParam("search") String search, HttpSession sess, HttpServletResponse resp, String pg) throws IOException {
+	public Map<String, List<SearchVO>> SearchHs(Model model, @RequestParam("search") String search, @RequestParam("searchType") String searchType, HttpSession sess, HttpServletResponse resp, String pg) throws IOException {
 		Map<String, List<SearchVO>> map = new HashMap<>();
-		List<SearchVO> hss = service.selectSearchHs(search);
-		map.put("hss", hss);
 		
-		if(!hss.isEmpty()) {
-			sess.setAttribute("hss", hss);
-		}
-		
-		int result = service.selectSearchHsTotal(search);
-		
-		model.addAttribute("search", search);
-		model.addAttribute("hss", hss);
-		model.addAttribute("result", result);
+		 List<SearchVO> hss = null; // hss 변수 선언
+
+		    if ("name".equals(searchType)) {
+		        hss = service.SearchHsName(search);
+		        map.put("hss", hss);
+		    } else if ("addr".equals(searchType)) {
+		        hss = service.SearchHsAddr(search);
+		        map.put("hss", hss);
+		    } else {
+		        hss = service.SearchHs(search);
+		        map.put("hss", hss);
+		    }
+
+		    if (hss != null && !hss.isEmpty()) { // hss 변수가 존재할 경우에 세션에 추가
+		        sess.setAttribute("hss", hss);
+		    }
+
+		    int result = service.selectSearchHsTotal(search);
+
+		    model.addAttribute("search", search);
+		    model.addAttribute("hss", hss);
+		    model.addAttribute("result", result);
 		
 		// 페이징 처리
 		int currentPage = 1;

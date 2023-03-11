@@ -9,12 +9,24 @@
   -->
 <mapper namespace="kr.co.hellopet.dao.SearchDAO">
 
-	<select id="selectSearchHs" resultType="kr.co.hellopet.vo.SearchVO">
+	<select id="SearchHsName" resultType="kr.co.hellopet.vo.SearchVO">
 		SELECT * FROM `api_hospital` WHERE `hosName` LIKE concat('%', #{search}, '%');
+	</select>
+	
+	<select id="SearchHsAddr" resultType="kr.co.hellopet.vo.SearchVO">
+		SELECT * FROM `api_hospital` WHERE `hosAddr` LIKE concat('%', #{search}, '%');
+	</select>
+	
+	<select id="SearchHs" resultType="kr.co.hellopet.vo.SearchVO">
+		SELECT * FROM `api_hospital` WHERE `hosName` LIKE concat('%', #{search}, '%') or `hosAddr` LIKE concat('%', #{search}, '%');
 	</select>
 	
 	<select id="selectSearchHsTotal" resultType="int" parameterType="map">
 	 	Select Count(`hosName`) from `api_hospital` WHERE `hosName` Like concat('%', #{search}, '%');
+	</select>
+	
+	<select id="selectView" resultType="kr.co.hellopet.vo.SearchVO">
+		SELECT * FROM `api_hospital` WHERE `hosNo` =#{hosNo};
 	</select>
 
 
