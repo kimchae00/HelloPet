@@ -83,4 +83,12 @@ public class MemberService {
 		int result = dao.countNick(nick);
 		return result;
 	}
+	
+	public MemberVO selectFindId(String name, String hp) {
+		return dao.selectFindId(name, hp);
+	}
+	
+	public MemberVO selectChangePass(String email, String name, String hp) {
+		return dao.selectChangePass(email, name, hp);
+	}
 }

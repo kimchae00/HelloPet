@@ -1,10 +1,9 @@
 <th:block th:include="/member/_header.html"/>
 <script>
-
     $(document).ready(function(){
         $('button[name=btnFindEmail]').click(function(){
-            let name = $('input[name=findEmailName]').val();
-            let hp = $('input[name=findEmailHp]').val();
+            let name = $('input[name=name]').val();
+            let hp = $('input[name=hp]').val();
             let includes = hp.includes('-');
             let count = hp.split('-').length-1;
             
@@ -15,7 +14,23 @@
             }else if(count < 2){
                 alert('- 포함하여 입력해주세요.');
             }else{
-                alert('고객님의 아이디는 leemh4390 입니다.');
+            	let jsonData = {'name' : name, 'hp' : hp};
+            	
+                $.ajax({
+                	url : '/HelloPet/member/findId',
+                	method : 'GET',
+                	data : jsonData,
+                	dataType : 'json',
+                	success : function(data){
+                		if(data.result != null){
+                			alert('고객님의 아이디는 '+data.result.uid + ' 입니다.');
+                			emailSend();
+                		}else{
+                			alert('일치하는 정보가 없습니다.');
+                			emailSend();
+                		}
+                	}
+                });
             };
         });
 
@@ -34,9 +49,61 @@
             }else if(count < 2){
                 alert('- 포함하여 입력해주세요.');
             }else{
-                alert('고객님의 아이디는 leemh4390 입니다.');
-            }
+            	let jsonData = {'email': email, 'name' : name, 'hp' : hp};
+            	console.log('here1');
+            	$.ajax({
+            		url : '/HelloPet/member/changePass',
+                	method : 'GET',
+                	data : jsonData,
+                	dataType : 'json',
+                	success : function(data){
+                		console.log('here2');
+                		if(data.result != null){
+                			alert('고객님 비밀번호는~');
+                		}else{
+                			alert('일치하는 정보가 없습니다.');
+                		}
+                	}       		
+            	});
+            }                
         });
+        
+        function emailSend(){
+        	let serialNo = generateRandomCode(6);
+        	let subject = "test"
+        	let body = "테스트입니다." + serialNo + "입니다.";
+        	
+        	
+        	let params = {
+        			userId : $("#userId").val()
+                    ,subject : subject
+                    ,body : body
+        	}
+        	
+        	if(serialNo == ""){
+                alert("인증번호를 입력해주세요.");
+                return false;
+            }
+        	
+        	$.ajax({
+                url: "/auth/sendEmail"
+                ,type: "POST"
+                ,accept: "application/json"
+                ,contentType: "application/json; charset=utf-8"
+                ,data: JSON.stringify(params)
+                ,dataType: "json"
+                ,success: function(data) {
+
+                    //시리얼번호 db에 저장
+                    saveSerialNo(serialNo)
+                },
+                error: function(jqXHR,textStatus,errorThrown) {
+                    alert("이메일 전송에 실패하였습니다.");
+                }    
+            });
+        }
+        
+        
     });
 
 </script>
@@ -45,8 +112,9 @@
         <div class="findEmail">
             <h3>이메일 찾기</h3>
             <div>
-                <input type="text" name="findEmailName" placeholder="이름">
-                <input type="text" name="findEmailHp" placeholder="010-0000-0000">
+            	<input type="text" id="userID" value="leemh4390@naver.com">
+                <input type="text" name="name" placeholder="이름">
+                <input type="text" name="hp" placeholder="010-0000-0000">
                 <button type="button" name="btnFindEmail">이메일찾기</button>
             </div>
         </div>

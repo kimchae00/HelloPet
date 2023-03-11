@@ -1,5 +1,6 @@
 package kr.co.hellopet.controller.member;
 
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,11 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.hellopet.config.TestPassword;
+import kr.co.hellopet.service.MailSendService;
 import kr.co.hellopet.service.MemberService;
 import kr.co.hellopet.vo.Api_HospitalVO;
 import kr.co.hellopet.vo.Api_PharmacyVO;
@@ -34,6 +38,9 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	@Autowired
+	private MailSendService mailService;
+	
 	// 로그인
 	@GetMapping("member/login")
 	public String login() {
@@ -48,7 +55,10 @@ public class MemberController {
 	
 	// 약관
 	@GetMapping("member/terms")
-	public String terms() {
+	public String terms(@RequestParam(value="type") String type, Model model) {
+		
+		model.addAttribute("type",type);
+		
 		return "member/terms";
 	}
 	
@@ -121,14 +131,48 @@ public class MemberController {
 		return map;
 	}
 	
-	
-	
 	// 아이디 비밀번호 찾기
 	@GetMapping("member/find")
 	public String find() {
 		return "member/find";
 	}
 	
+	@ResponseBody
+	@GetMapping("member/findId")
+	public Map<String, MemberVO> findId(@RequestParam("name") String name, @RequestParam("hp") String hp) {
+		
+		MemberVO vo = service.selectFindId(name, hp);
+		Map<String, MemberVO> map = new HashMap<>();
+		map.put("result", vo);
+		
+		//System.out.println("map : " + map );
+		
+		return map;
+	}
+	
+	@ResponseBody
+	@GetMapping("member/changePass")
+	public Map<String, MemberVO> changePass(@RequestParam("email") String email, @RequestParam("name") String name, @RequestParam("hp") String hp) {
+		
+		System.out.println("email : " + email);
+		System.out.println("name : " + name);
+		System.out.println("hp : " + hp);
+		
+		MemberVO vo = service.selectChangePass(email, name, hp);
+		Map<String, MemberVO> map = new HashMap<>();
+		map.put("result", vo);
+		
+		SecureRandom random = new SecureRandom();
+		
+		return map;
+	}
+	
+	private int TestPassword() {
+		return 0;
+		// TODO Auto-generated method stub
+		
+	}
+
 	// uid 중복체크
 	@ResponseBody
 	@GetMapping("member/countUid")
@@ -170,4 +214,22 @@ public class MemberController {
 		
 		return map;
 	}
+	
+	@GetMapping("member/emailTest")
+	public String test() {
+		return null;
+	}
+	
+	//회원가입 이메일 인증
+	@ResponseBody
+	@GetMapping("member/registerAuth")
+	public String test(@RequestParam("email") String email) {
+		
+		System.out.println("이메일 들어오기 확인!!");
+		System.err.println("이메일 확인하기 : " + email);
+		
+		return mailService.joinEmail(email);
+	}
+	
+	//회원가입 이메일 인증
 }

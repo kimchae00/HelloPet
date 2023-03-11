@@ -86,6 +86,12 @@
 		SELECT COUNT(`nick`) FROM `pet_owner` WHERE `nick` = #{nick};
 	</select>
 
-
+	<select id="selectFindId" resultType="kr.co.hellopet.vo.MemberVO">
+		SELECT * FROM `pet_owner` WHERE `name` = #{name} AND `hp` = #{hp};
+	</select>
+	
+	<select id="selectChangePass" resultType="kr.co.hellopet.vo.MemberVO">
+		SELECT * FROM `pet_owner` WHERE `email`= #{email} AND `name` = #{name} AND `hp` = #{hp};
+	</select>
 
 </mapper>
