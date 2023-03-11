@@ -32,7 +32,7 @@ public class MailSendService {
 		String toMail = email;
 		String title = "이건 테스트입니다.";
 		String content = 
-						"홈페이지를 방문해주셔서 감사합니다." + 	//html 형식으로 작성 ! 
+						"HelloPet TEST." + 	//html 형식으로 작성 ! 
 		                "<br><br>" + 
 					    "인증 번호는 " + authNumber + "입니다." + 
 					    "<br>" + 

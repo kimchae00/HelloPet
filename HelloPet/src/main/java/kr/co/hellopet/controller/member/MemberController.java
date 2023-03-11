@@ -151,26 +151,32 @@ public class MemberController {
 	}
 	
 	@ResponseBody
-	@GetMapping("member/changePass")
-	public Map<String, MemberVO> changePass(@RequestParam("email") String email, @RequestParam("name") String name, @RequestParam("hp") String hp) {
-		
-		System.out.println("email : " + email);
-		System.out.println("name : " + name);
-		System.out.println("hp : " + hp);
+	@GetMapping("member/password")
+	public Map<String, MemberVO> password(@RequestParam("email") String email, @RequestParam("name") String name, @RequestParam("hp") String hp) {
 		
 		MemberVO vo = service.selectChangePass(email, name, hp);
 		Map<String, MemberVO> map = new HashMap<>();
 		map.put("result", vo);
 		
-		SecureRandom random = new SecureRandom();
-		
 		return map;
 	}
 	
-	private int TestPassword() {
-		return 0;
-		// TODO Auto-generated method stub
+	@ResponseBody
+	@GetMapping("member/changePass")
+	public Map<String, MemberVO> changePass(@RequestParam("email") String email, @RequestParam("name") String name, @RequestParam("hp") String hp, MemberVO vo) {
 		
+		System.out.println("email : " + email);
+		System.out.println("name : " + name);
+		System.out.println("hp : " + hp);
+		
+		
+		int code = service.makeRandomPass();
+		
+		System.out.println(code);
+		
+		service.updatePetOwnerPasswordByCodeAndInfo(code, email, name, hp);
+		
+		return null;
 	}
 
 	// uid 중복체크

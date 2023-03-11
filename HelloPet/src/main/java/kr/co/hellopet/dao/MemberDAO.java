@@ -52,6 +52,9 @@ public interface MemberDAO {
 	// find ID 찾기
 	public MemberVO selectFindId(@Param("name") String name, @Param("hp") String hp);
 	
-	// find 비밀번호 변경
+	// find paswword 
 	public MemberVO selectChangePass(@Param("email") String email, @Param("name") String name, @Param("hp") String hp);
+	
+	// find password update
+	public void updatePetOwnerPasswordByCodeAndInfo(int code, @Param("email") String email, @Param("name") String name, @Param("hp") String hp);
 }

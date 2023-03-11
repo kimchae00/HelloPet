@@ -1,6 +1,7 @@
 package kr.co.hellopet.service;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -90,5 +91,18 @@ public class MemberService {
 	
 	public MemberVO selectChangePass(String email, String name, String hp) {
 		return dao.selectChangePass(email, name, hp);
+	}
+	
+	public int makeRandomPass() {
+		Random random = new Random();
+		int code = random.nextInt(88888)  + 11111;
+		System.out.println("인증번호는 :  " + code);
+		
+		return code;
+	}
+	
+	public void updatePetOwnerPasswordByCodeAndInfo(int code, String email, String name, String hp) {
+		dao.updatePetOwnerPasswordByCodeAndInfo(code, email, name, hp);
+		
 	}
 }

@@ -52,14 +52,26 @@
             	let jsonData = {'email': email, 'name' : name, 'hp' : hp};
             	console.log('here1');
             	$.ajax({
-            		url : '/HelloPet/member/changePass',
+            		url : '/HelloPet/member/password',
                 	method : 'GET',
                 	data : jsonData,
                 	dataType : 'json',
                 	success : function(data){
                 		console.log('here2');
                 		if(data.result != null){
-                			alert('고객님 비밀번호는~');
+                			let email = $('input[name=findEamil]').val();
+                            let name = $('input[name=findPassName]').val();
+                            let hp = $('input[name=findPassHp]').val();
+                            
+                            let jsonData = {'email': email, 'name' : name, 'hp' : hp};
+                            
+                			$.ajax({
+								url : '/HelloPet/member/changePass',
+								method : 'GET',
+								data : jsonData,
+								success : function(data){
+								}
+                			});
                 		}else{
                 			alert('일치하는 정보가 없습니다.');
                 		}
@@ -67,43 +79,6 @@
             	});
             }                
         });
-        
-        function emailSend(){
-        	let serialNo = generateRandomCode(6);
-        	let subject = "test"
-        	let body = "테스트입니다." + serialNo + "입니다.";
-        	
-        	
-        	let params = {
-        			userId : $("#userId").val()
-                    ,subject : subject
-                    ,body : body
-        	}
-        	
-        	if(serialNo == ""){
-                alert("인증번호를 입력해주세요.");
-                return false;
-            }
-        	
-        	$.ajax({
-                url: "/auth/sendEmail"
-                ,type: "POST"
-                ,accept: "application/json"
-                ,contentType: "application/json; charset=utf-8"
-                ,data: JSON.stringify(params)
-                ,dataType: "json"
-                ,success: function(data) {
-
-                    //시리얼번호 db에 저장
-                    saveSerialNo(serialNo)
-                },
-                error: function(jqXHR,textStatus,errorThrown) {
-                    alert("이메일 전송에 실패하였습니다.");
-                }    
-            });
-        }
-        
-        
     });
 
 </script>
