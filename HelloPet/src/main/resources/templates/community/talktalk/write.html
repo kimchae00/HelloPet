@@ -28,8 +28,10 @@
                 <h3 class="write_talktalk">반려동물 톡톡 작성</h3>
             </div>
             <div>
-                <form action="#" class="write_form">
+                <form action="#" class="write_form" method="post" enctype="multipart/form-data">
                     <table class="write_table">
+                    	<input type="hidden" name="uid" value="admin">
+                    	<input type="hidden" name="group" value="talktalk">
                         <tr>
                             <td class="write_font">제목</td>
                             <td class="write_title"><input type="text" name="title" placeholder="제목을 입력하세요."></td>
@@ -41,9 +43,9 @@
                         <tr>
                             <td class="write_font" style="border-bottom: none;">파일선택</td>
                             <td  class="write_file" style="border-bottom: none;">
-	                            <span>첫번째 이미지</span> <input type="file" name="img1">
-	                            <span>두번째 이미지</span> <input type="file" name="img2">
-	                            <span>세번째 이미지</span> <input type="file" name="img3">
+	                            <span>첫번째 이미지</span> <input type="file" name="fileImg1">
+	                            <span>두번째 이미지</span> <input type="file" name="fileImg2">
+	                            <span>세번째 이미지</span> <input type="file" name="fileImg3">
                             </td>
                         </tr>
                     </table>
