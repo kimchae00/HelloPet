@@ -95,8 +95,7 @@
 	</select>
 	
 	<update id="updatePetOwnerPasswordByCodeAndInfo">
-		update `pet_owner` set `pass` = #{code} where `email` = #{email} AND `name` = #{name} AND `hp` = #{hp}; 
-	
+		update `pet_owner` set `pass` = SHA2(#{code},256) where `email` = #{email} AND `name` = #{name} AND `hp` = #{hp}; 
 	</update>
 
 </mapper>

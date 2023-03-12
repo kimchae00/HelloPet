@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.co.hellopet.config.TestPassword;
 import kr.co.hellopet.service.MailSendService;
 import kr.co.hellopet.service.MemberService;
 import kr.co.hellopet.vo.Api_HospitalVO;
@@ -163,20 +162,15 @@ public class MemberController {
 	
 	@ResponseBody
 	@GetMapping("member/changePass")
-	public Map<String, MemberVO> changePass(@RequestParam("email") String email, @RequestParam("name") String name, @RequestParam("hp") String hp, MemberVO vo) {
-		
-		System.out.println("email : " + email);
-		System.out.println("name : " + name);
-		System.out.println("hp : " + hp);
-		
+	public Map<String, Integer> changePass(@RequestParam("email") String email, @RequestParam("name") String name, @RequestParam("hp") String hp, MemberVO vo) {
 		
 		int code = service.makeRandomPass();
-		
 		System.out.println(code);
-		
 		service.updatePetOwnerPasswordByCodeAndInfo(code, email, name, hp);
+		Map<String, Integer> map = new HashMap<>();
+		map.put("result", code);
 		
-		return null;
+		return map;
 	}
 
 	// uid 중복체크
