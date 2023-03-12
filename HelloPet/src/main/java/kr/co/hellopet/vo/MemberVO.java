@@ -29,5 +29,4 @@ public class MemberVO {
 	}
 	
 	//추가필드
-
 }

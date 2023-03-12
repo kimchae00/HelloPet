@@ -812,6 +812,13 @@ input[name=addr2] {
     margin-right: 10px;
 }
 
+.join_tap > div > button:nth-child(2).on {
+    color: #fff;
+    font-weight: 700;
+    background-image: linear-gradient(90deg,#1dc6f7,#00e5c2);
+    margin-right: 10px;
+}
+
 .register_business {}
 
 .register_business_form {}
@@ -1011,15 +1018,15 @@ input[name=addr2] {
 }
 
 
-button[name=btnPhar].on {
+.join_tap button.on {
      color: #fff;
      font-weight: 700;
      background-image: linear-gradient(90deg,#1dc6f7,#00e5c2);
      margin-left: 10px;
  }
 
-button[name=btnHos] {
-     background: #f0f0f0;
+.join_tap button:nth-of-type(2) {
+  background: #f0f0f0;
 }
 
 #modal-medical {
@@ -1127,4 +1134,104 @@ button[name=btnHos] {
 #search > input::placeholder {
     font-weight: bold;
     color: #0dbcaf;
+}
+
+.search {
+    float: left;
+    width: 300px;
+    height: 40px;
+    box-sizing: border-box;
+    margin-top: -4px;
+}
+
+.input-wrapper {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    text-indent: 8px;
+    margin-left: 10px;
+    border: 3px solid #1dc6f7;
+    padding: 5px;
+}
+
+.input-wrapper input[type="text"] {
+    height: 100%;
+    border: none;
+    outline: none;
+    margin-left: -5px;
+}
+
+.input-wrapper input::placeholder {
+    line-height: 100%;
+}
+
+.input-wrapper button {
+    float: right;
+    width: 50px;
+    height: 30px;
+    margin-top: 5px;
+    background: gray;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.medical-result {
+	max-width: 750px;
+	max-height: 200px;
+	float:left;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-bottom : 20px;
+	overflow: auto;
+}
+
+.result_table {
+	
+}
+
+.medical-result-table tr {padding: 10px;}
+.medical-result-table tr > th {}
+.medical-result-table tr > th:nth-child(1){width: 50px;}
+.medical-result-table tr > th:nth-child(2){width: 200px;}
+.medical-result-table tr > th:nth-child(3){width: 350px;}
+.medical-result-table tr > th:nth-child(4){width: 150px;}
+.medical-result-table tr > td {text-align: center; padding: 8px; margin-bottom: 5px; border-bottom: 1px solid #e5e5e5;}
+
+.btnMedicalSelect {
+	width:120px;
+	height:30px;
+	border: 1px solid;
+	cursor: pointer;
+	background: #0dbcaf;
+	color: #fff;
+}
+
+.pharmacy-result{
+	max-width: 750px;
+	max-height: 200px;
+	float:left;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-bottom : 20px;
+	overflow: auto;
+}
+
+.result_table {}
+
+.pharmacy-result .pharmacy-result-table tr > th:nth-child(1){width: 50px;}
+.pharmacy-result .pharmacy-result-table tr > th:nth-child(2){width: 200px;}
+.pharmacy-result .pharmacy-result-table tr > th:nth-child(3){width: 350px;}
+.pharmacy-result .pharmacy-result-table tr > th:nth-child(4){width: 150px;}
+.pharmacy-result .pharmacy-result-table tr > td {text-align: center; padding: 8px; margin-bottom: 5px; border-bottom: 1px solid #e5e5e5;}
+
+.btnPharmacySelect {
+	width:120px;
+	height:30px;
+	border: 1px solid;
+	cursor: pointer;
+	background: #0dbcaf;
+	color: #fff;
 }

@@ -1,10 +1,9 @@
 <th:block th:include="/member/_header.html"/>
 <script>
-
     $(document).ready(function(){
         $('button[name=btnFindEmail]').click(function(){
-            let name = $('input[name=findEmailName]').val();
-            let hp = $('input[name=findEmailHp]').val();
+            let name = $('input[name=name]').val();
+            let hp = $('input[name=hp]').val();
             let includes = hp.includes('-');
             let count = hp.split('-').length-1;
             
@@ -15,7 +14,23 @@
             }else if(count < 2){
                 alert('- 포함하여 입력해주세요.');
             }else{
-                alert('고객님의 아이디는 leemh4390 입니다.');
+            	let jsonData = {'name' : name, 'hp' : hp};
+            	
+                $.ajax({
+                	url : '/HelloPet/member/findId',
+                	method : 'GET',
+                	data : jsonData,
+                	dataType : 'json',
+                	success : function(data){
+                		if(data.result != null){
+                			alert('고객님의 아이디는 '+data.result.uid + ' 입니다.');
+                			emailSend();
+                		}else{
+                			alert('일치하는 정보가 없습니다.');
+                			emailSend();
+                		}
+                	}
+                });
             };
         });
 
@@ -34,8 +49,36 @@
             }else if(count < 2){
                 alert('- 포함하여 입력해주세요.');
             }else{
-                alert('고객님의 아이디는 leemh4390 입니다.');
-            }
+            	let jsonData = {'email': email, 'name' : name, 'hp' : hp};
+            	console.log('here1');
+            	$.ajax({
+            		url : '/HelloPet/member/password',
+                	method : 'GET',
+                	data : jsonData,
+                	dataType : 'json',
+                	success : function(data){
+                		console.log('here2');
+                		if(data.result != null){
+                			let email = $('input[name=findEamil]').val();
+                            let name = $('input[name=findPassName]').val();
+                            let hp = $('input[name=findPassHp]').val();
+                            
+                            let jsonData = {'email': email, 'name' : name, 'hp' : hp};
+                            
+                			$.ajax({
+								url : '/HelloPet/member/changePass',
+								method : 'GET',
+								data : jsonData,
+								success : function(data){
+									alert("변경된 password 는 "+ data.result + "입니다.");
+								}
+                			});
+                		}else{
+                			alert('일치하는 정보가 없습니다.');
+                		}
+                	}       		
+            	});
+            }                
         });
     });
 
@@ -45,8 +88,9 @@
         <div class="findEmail">
             <h3>이메일 찾기</h3>
             <div>
-                <input type="text" name="findEmailName" placeholder="이름">
-                <input type="text" name="findEmailHp" placeholder="010-0000-0000">
+            	<input type="text" id="userID" value="leemh4390@naver.com">
+                <input type="text" name="name" placeholder="이름">
+                <input type="text" name="hp" placeholder="010-0000-0000">
                 <button type="button" name="btnFindEmail">이메일찾기</button>
             </div>
         </div>

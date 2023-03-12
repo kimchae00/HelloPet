@@ -1,8 +1,16 @@
 $(document).ready(function(){
-	    $('button[name=btnPhar]').click(function(){
+	    $('button[name=btnTap]:eq(1)').click(function(){
+			$('input[name=medicalName]').val('');
+			$('input[name=tel]').val('');
+			$('input[name=zip]').val('');
+			$('input[name=addr1]').val('');
+			$('input[name=addr2]').val('');
+			$('#pharmacy-trial').val(0);
+			$('#pharmacy-county').empty();
+			$('#pharmacy-county').append("<option value='0'>시·군·구</option>");
 	        $('.change').remove();
 	        $(this).addClass('on');
-	        $('button[name=btnHos]').removeClass('on');
+	        $('button[name=btnTap]:eq(0)').removeClass('on');
 	        $('.change').remove();
 	        let tags = "<tr class='change'>";
 	            tags += "<td>약국명</td>";
@@ -20,10 +28,18 @@ $(document).ready(function(){
 	        $('#pass').after(tags);
 	    });
 	
-	    $('button[name=btnHos]').click(function(){
+	    $('button[name=btnTap]:eq(0)').click(function(){
+			$('input[name=medicalName]').val('');
+			$('input[name=tel]').val('');
+			$('input[name=zip]').val('');
+			$('input[name=addr1]').val('');
+			$('input[name=addr2]').val('');
+			$('.trial').val(0);
+			$('.county').empty();
+			$('.county').append("<option value='0'>시·군·구</option>");
 	        $('.change').remove();
 	        $(this).addClass('on');
-	        $('button[name=btnPhar]').removeClass('on');
+	        $('button[name=btnTap]:eq(1)').removeClass('on');
 	        $('#change').remove();
 	        let tags = "<tr class='change'>";
 	            tags += "<td>병원명</td>";

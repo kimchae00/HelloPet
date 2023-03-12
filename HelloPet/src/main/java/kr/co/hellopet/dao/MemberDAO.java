@@ -48,4 +48,13 @@ public interface MemberDAO {
 	
 	// nick 중복체크
 	public int countNick(String nick); 
+	
+	// find ID 찾기
+	public MemberVO selectFindId(@Param("name") String name, @Param("hp") String hp);
+	
+	// find paswword 
+	public MemberVO selectChangePass(@Param("email") String email, @Param("name") String name, @Param("hp") String hp);
+	
+	// find password update
+	public void updatePetOwnerPasswordByCodeAndInfo(int code, @Param("email") String email, @Param("name") String name, @Param("hp") String hp);
 }

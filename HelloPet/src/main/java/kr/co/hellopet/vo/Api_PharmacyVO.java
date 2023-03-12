@@ -13,5 +13,6 @@ public class Api_PharmacyVO {
 	private double x;
 	private double y;
 	private String tel;
+	private String zip;
 
 }

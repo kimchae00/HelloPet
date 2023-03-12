@@ -1,5 +1,75 @@
 <th:block th:include="/member/_header.html"/>
 <script th:src="@{/js/register.js}"></script>
+<script>
+$(document).ready(function(){
+	$('input[name=btnEmailCheck]').click(function(){
+		
+		let email = $('input[name=email]').val();
+				
+		if(email.match(regEmail)){
+			
+			let jsonData = {'email' : email};
+			
+			$.ajax({
+				url : '/HelloPet/member/countEmail',
+				method : 'GET',
+				data : jsonData,
+				dataType : 'json',
+				success : function(data){
+					if(data.result < 1){
+						alert('인증번호가 전송되었습니다.');
+						$('.Email-auth').css('display','table-row','block');
+						$('.auth-Code').focus();
+						let email = $('input[name=email]').val();
+						let jsonData = {'email' : email};
+						let check = $('.auth-Code') //인증번호 입력받는곳
+						$.ajax({
+							url : '/HelloPet/member/registerAuth',
+							method : 'GET',
+							data : jsonData,
+							success : function(data) {
+								check.attr('disabled',false);
+								code = data;
+							}
+						});
+						
+					}else{
+						isEmailOk = false;
+						alert('사용중인 이메일입니다.');
+					}
+				}
+			});
+		}else{
+			isEmailOk = false;
+			alert('유효하지 않은 이메일입니다.');
+		}
+	});
+	
+	$('button[name=btn-authEmail]').click(function(){
+		let inputCode = $('.auth-Code').val();
+		//alert("보낸 코드는 : " + code);
+		
+		if(inputCode === code){
+			alert('인증번호 일치');
+			$('.Email-auth').css('display','none');
+			isEmailOk = true;
+		}else{
+			alert('인증번호가 일치하지 않습니다.');
+			isEmailOk = false;
+		}
+	});
+});
+</script>
+<style>
+	button[name=btn-authEmail] {
+		width: 100px;
+	    height: 35px;
+	    margin: 0 0 0 5px;
+	    color: #fff;
+	    background: #60626c;
+	    border: none;
+	}
+</style>
         <main class="register_main">
             <div class="register_div">
                 <div class="register_top">
@@ -17,7 +87,7 @@
 	                        <tr>
                                 <td>아이디</td>
                                 <td>
-                                    <input type="text" name="uid" required="required">
+                                    <input type="text" name="uid" required="required" placeholder="아이디를 입력">
                                     <input type="button" name="btnUidCheck" value="중복확인">
                                 </td>
                             </tr>
@@ -40,6 +110,13 @@
                                     <input type="email" name="email" required="required" placeholder="이메일">
                                     <input type="button" name="btnEmailCheck" value="중복확인">
                                 </td>
+                            </tr>
+                            <tr class="Email-auth" style="display: none;">
+                            	<td>이메일 인증하기</td>
+                            	<td>
+                            		<input type="text" class="auth-Code" placeholder="입력받은 인증코드를 입력" required="required">
+                            		<button name="btn-authEmail">인증하기</button>
+                            	</td>
                             </tr>
                             <tr>
                                 <td>비밀번호</td>
