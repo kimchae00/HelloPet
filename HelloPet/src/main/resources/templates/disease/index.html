@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
-    <link async="" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/disease.css}">
+<th:block th:include="@{disease/_header.html}"/>
     <style>
            
     
@@ -170,43 +153,9 @@
 
         
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
 <body>
-    <div id="wrapper">
-        <header class="header">
-            <div class="headerTop">
-                <div>
-                    <a href="#">로그인</a>
-                    <a href="#">회원가입</a>
-                    <a href="#">마이페이지</a>
-                </div>
-            </div>
-            <div class="menu">
-                <div>
-                    <ul>
-                        <li><a href="#">증상별질병찾기</a></li>
-                        <li><a href="#">병원/약국찾기</a></li>
-                        <li class="logo"><a href="/index.html"><img src="../img/ci.png" alt="logo"></a></li>
-                        <li><a href="#">커뮤니티</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-                </div>
-            </div>
-        </header>
+    
         <main>
             <div id="sub-wrap">
                 <div class="top">
@@ -214,8 +163,8 @@
                 </div>
                 <div class="tab">
                     <ul>
-                        <li class="on"><a href="#">반려견</a></li>
-                        <li><a href="#">반려묘</a></li>
+                        <li class="on"><a th:href="@{/disease/index}">반려견</a></li>
+                        <li><a th:href="@{/disease/index}">반려묘</a></li>
                     </ul>
                     
                 </div>
@@ -235,38 +184,38 @@
                        	</dd>
                     </dl>
                 </article>
+                
+                <!-- 
+               <div class="tab">
+               		<ul>
+               			<li class="on"><a th:hred="@{/disease/index}">반려묘</a></li>
+               			<li><a th:href="@{disease/index}">반려견</a></li>
+               		</ul>
+               		
+               		  <div class="top-round">
+                <h4 class="title">아래의 증상 중 한가지를 선택하세요!</h4>
+            </div>
+            <section class="section-grid">
+                
+               
+                <article th:each="resultMap : ${resultMaps}">
+                    <dl class="search-category-list">
+                        <dt class="title">
+                            [[${resultMap.c1Name}]]
+                        </dt>    
+                 
+                       	<dd class="name">
+                            <a href="#" th:each="cate2VO:${resultMap.cate2VOList}">[[${cate2VO.c2Name}]]</a>
+                       	</dd>
+                    </dl>
+                </article>
+               		-->
+               		
+               </div>
                                    
             </section>
         </div>
 
         </main>
-        <footer>
-            <div>
-                <div class="footer_info">
-                    <p>
-                        <strong>HELLOPET</strong>
-                        <br>
-                        부산시 남구 수영로 299 10층
-                        <br>
-                        대표이사 : 김헬로
-                        <br>
-                        사업자등록번호 : 220-81-83676 사업자정보확인
-                        <br>
-                        통신판매업신고 : 부산 10630호 Fax : 051-589-8842
-                    </p>
-                </div>
-                <div class="footer_link">
-                    <ul>
-                        <li><a href="#">회사소개</a></li>
-                        <li><a href="#">서비스이용약관</a></li>
-                        <li><a href="#">개인정보처리방침</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-    </div>
-</body>
-</html>
-
-        
+     
+<th:block th:include="@{disease/_footer.html}"/>        
