@@ -26,4 +26,24 @@ public interface CommunityDAO {
 	// tip 글목록 갯수
 	public int selectTipCount();
 	
+	// tip 글보기
+	public CommunityVO selectTipArticle(int no);
+	
+	// tip 글수정
+	public int updateTipArticle(CommunityVO vo);
+	
+	// talk 글쓰기
+	public int insertTalkArticle(CommunityVO vo);
+	
+	// talk 글목록
+	public List<CommunityVO> selectTalkArticles(int start);
+	
+	// talk 글목록 갯수
+	public int selectTalkCount();
+	
+	// talk 글보기
+	public CommunityVO selectTalkArticle(int no);
+	
+	// talk 글수정
+	public int updateTalkArticle(CommunityVO vo);
 }

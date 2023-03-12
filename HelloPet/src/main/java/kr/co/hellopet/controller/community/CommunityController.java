@@ -56,7 +56,15 @@ public class CommunityController {
 	
 	// tip 글보기
 	@GetMapping("community/tip/view")
-	public String tipView() {
+	public String tipView(int no, Model model) {
+		
+		CommunityVO article = service.selectTipArticle(no);
+		
+		
+
+		
+		model.addAttribute("article", article);
+		
 		return "community/tip/view";
 	}
 	
@@ -70,7 +78,7 @@ public class CommunityController {
 	
 	// tip 글쓰기 폼
 	@PostMapping("community/tip/write")
-	public String tipWrite(CommunityVO vo, Model model, HttpServletRequest req) {
+	public String tipWrite(CommunityVO vo, HttpServletRequest req) {
 		
 		
 		String regip = req.getRemoteAddr();
@@ -83,13 +91,51 @@ public class CommunityController {
 	
 	// tip 글수정
 	@GetMapping("community/tip/modify")
-	public String tipModify() {
+	public String tipModify(Model model, CommunityVO vo, int no) {
+		
+		CommunityVO article = service.selectTipArticle(no);
+		model.addAttribute("article", article);
+		
 		return "community/tip/modify";
+	}
+	
+	// tip 글수정 폼
+	@PostMapping("community/tip/modify")
+	public String tipModify(CommunityVO vo) {
+		
+		service.updateTipArticle(vo);
+		
+		
+		return "redirect:/community/tip/view?no="+vo.getNo();
 	}
 	
 	// talktalk 목록
 	@GetMapping("community/talktalk/list")
-	public String talkList() {
+	public String talkList(String pg, Model model) {
+		
+		//페이징 
+    	int currentPage = service.getCurrentPage(pg); // 현재 페이지 번호
+		int total = 0;
+		
+		total = service.selectTalkCount();
+		
+		int lastPageNum = service.getLastPageNum(total);// 마지막 페이지 번호
+		int[] result = service.getPageGroupNum(currentPage, lastPageNum); // 페이지 그룹번호
+		int pageStartNum = service.getPageStartNum(total, currentPage); // 페이지 시작번호
+		int start = service.getStartNum(currentPage); // 시작 인덱스
+		
+		model.addAttribute("lastPageNum", lastPageNum);		
+		model.addAttribute("currentPage", currentPage);		
+		model.addAttribute("pageGroupStart", result[0]);
+		model.addAttribute("pageGroupEnd", result[1]);
+		model.addAttribute("pageStartNum", pageStartNum+1);
+    			
+		//전체 목록 가져오기
+		List<CommunityVO> articles = service.selectTalkArticles(start);
+		
+		model.addAttribute("articles", articles);
+		
+		
 		return "community/talktalk/list";
 	}
 	
@@ -99,9 +145,35 @@ public class CommunityController {
 		return "community/talktalk/write";
 	}
 	
+	// talktalk 글쓰기 폼
+	@PostMapping("community/talktalk/write")
+	public String talkWrite(CommunityVO vo, HttpServletRequest req) {
+		String regip = req.getRemoteAddr();
+		vo.setRegip(regip);
+		
+		service.insertTalkArticle(vo);
+		
+		return "redirect:/community/talktalk/list";
+	}
+	
 	// talktalk 글수정
 	@GetMapping("community/talktalk/modify")
-	public String talkModify() {
+	public String talkModify(Model model, CommunityVO vo, int no) {
+		
+		CommunityVO article = service.selectTalkArticle(no);
+		model.addAttribute("article", article);
+		
 		return "community/talktalk/modify";
 	}
+	
+	// talktalk 글수정 폼
+	@PostMapping("community/talktalk/modify")
+	public String talkModify(CommunityVO vo) {
+		
+		
+		service.updateTalkArticle(vo);
+		return "redirect:/community/talktalk/list";
+	}
+	
+	
 }
