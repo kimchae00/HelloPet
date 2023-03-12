@@ -13,11 +13,13 @@ import lombok.ToString;
 @ToString
 public class SearchVO {
 	
+	private String hosNo;
 	private String hosName;
 	private String hosAddr;
 	private String x;
 	private String y;
 	private String tel;
+	private String zip;
 	
 	private String search;
 	private int total;

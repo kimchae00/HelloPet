@@ -14,14 +14,30 @@ public class SearchService {
 	@Autowired
 	private SearchDAO dao;
 	
-	//SearchHs
-	public List<SearchVO> selectSearchHs(String search){
-		return dao.selectSearchHs(search);
+	//SearchHs 검색기능
+	public List<SearchVO> SearchHs(String search){
+		return dao.SearchHs(search);
+	}
+	
+	public List<SearchVO> SearchHsAddr(String search){
+		return dao.SearchHsAddr(search);
+	}
+	
+	public List<SearchVO> SearchHsName(String search){
+		return dao.SearchHsName(search);
 	}
 	
 	public int selectSearchHsTotal(String search) {
 		return dao.selectSearchHsTotal(search);
 	}
+	
+	
+	
+	// view
+	public SearchVO selectView(String hosNo){
+		return dao.selectView(hosNo);
+	}
+	
 	
 	// 페이징 처리 시작 ///////////////////////////////////////////////////////
 	// 현재 페이지 번호
