@@ -16,6 +16,14 @@
 	       	$('.question4').click(function() {
 	       	    $('.answer4').toggle();
 	       	});
+	       	
+	       	$('.btnDel').click(function(){
+				if(confirm('정말 삭제하시겠습니까?')){
+					return true;
+				}else{
+					return false;
+				}
+			});
        });
 </script>            
          <main id="faq">
@@ -53,8 +61,8 @@
                                         </div>
                                     </div>
                                     <div class="button">
-                                        <a th:href="@{/cs/faq/modify(index=${i.index})}" class="btnModify">수정</a>    
-                                        <a href="#" class="btnDel">삭제</a>
+                                        <a th:href="@{/cs/faq/modify(no=${faq.no})}" class="btnModify">수정</a>    
+                                        <a th:href="@{/cs/faq/delete(no=${faq.no})}" class="btnDel">삭제</a>
                                     </div>
                                 </div>
                             </li>
