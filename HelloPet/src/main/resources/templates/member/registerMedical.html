@@ -2,6 +2,79 @@
 <script th:src="@{/js/medical.js}"></script>
 <script th:src="@{/js/modal.js}"></script>
 <script th:src="@{/js/registerMedical.js}"></script>
+<script>
+$(document).ready(function(){
+	$('input[name=btnEmailCheck]').click(function(){
+		
+		let email = $('input[name=email]').val();
+				
+		if(email.match(regEmail)){
+			
+			let jsonData = {'email' : email};
+			
+			$.ajax({
+				url : '/HelloPet/member/countEmail',
+				method : 'GET',
+				data : jsonData,
+				dataType : 'json',
+				success : function(data){
+					if(data.result == 0){
+						alert('인증번호가 전송되었습니다.');
+						$('.Email-auth').css('display','table-row','block');
+						$('.auth-Code').focus();
+						let email = $('input[name=email]').val();
+						let jsonData = {'email' : email};
+						let check = $('.auth-Code') //인증번호 입력받는곳
+						
+						$.ajax({
+							url : '/HelloPet/member/registerAuth',
+							method : 'GET',
+							data : jsonData,
+							success : function(data) {
+								check.attr('disabled',false);
+								code = data;
+							}
+						});
+					}else{
+						isEmailOk = false;
+						alert('사용중인 이메일입니다.');
+					}
+				}
+			});
+		}else{
+			isEmailOk = false;
+			alert('유효하지 않은 이메일입니다.');
+		}
+	});
+	
+	$('button[name=btn-authEmail]').click(function(){
+		let inputCode = $('.auth-Code').val();
+		//alert("보낸 코드는 : " + code);
+		
+		if(inputCode === code){
+			alert('인증번호 일치');
+			$('.Email-auth').css('display','none');
+			isEmailOk = true;
+			$('#pass1').focus();
+		}else{
+			alert('인증번호가 일치하지 않습니다.');
+			isEmailOk = false;
+		}
+	});
+	
+});	
+
+</script>
+<<style>
+	button[name=btn-authEmail] {
+		width: 100px;
+	    height: 35px;
+	    margin: 0 0 0 5px;
+	    color: #fff;
+	    background: #60626c;
+	    border: none;
+	}
+</style>
 <main class="business_main">
     <div class="business_div">
         <div class="business_top">
@@ -26,21 +99,21 @@
 	                <tr>
 	                    <td>아이디</td>
 	                    <td>
-	                        <input type="text" name="uid" required="required" placeholder="아이디를 입력">
+	                        <input type="text" name="uid" placeholder="아이디를 입력">
 	                        <input type="button" name="btnUidCheck" value="중복확인">
 	                    </td>
 	                </tr>
                     <tr>
                         <td>휴대폰</td>
                         <td>
-                            <input type="text" name="hp" required="required" placeholder="- 포함 13자리">
+                            <input type="text" name="hp" placeholder="- 포함 13자리">
                             <input type="button" name="btnHpCheck" value="본인확인">
                         </td>
                     </tr>
                     <tr>
                         <td>이름</td>
                         <td>
-                            <input type="text" name="name" required="required" placeholder="이름">
+                            <input type="text" name="name" placeholder="이름">
                         </td>
                     </tr>
                     <tr>
@@ -50,22 +123,30 @@
                             <input type="button" name="btnEmailCheck" value="중복확인">
                         </td>
                     </tr>
+                   <tr class="Email-auth" style="display: none;">
+                   	<td>이메일 인증하기</td>
+                   	<td>
+                   		<input type="text" class="auth-Code" placeholder="입력받은 인증코드를 입력" required="required">
+                   		<button name="btn-authEmail">인증하기</button>
+                   	</td>
+                   </tr>
                     <tr>
                         <td>비밀번호</td>
                         <td>
-                            <input type="password" name="pass1" required="required" placeholder="숫자, 영어, 특수문자 포함 5자 이상 패스워드">
+                            <input type="password" id="pass1" name="pass1" required="required" placeholder="숫자, 영어, 특수문자 포함 5자 이상 패스워드">
                         </td>
                     </tr>
                     <tr id="pass">
                         <td>비밀번호 확인</td>
                         <td>
-                            <input type="password" name="pass2" required="required" placeholder="숫자, 영어, 특수문자 포함 5자 이상 패스워드">
+                            <input type="password" name="pass2" placeholder="숫자, 영어, 특수문자 포함 5자 이상 패스워드">
+                            <span style="margin-left: 10px; font-size: 12px" class="passwordMsg"></span>
                         </td>
                     </tr>
                     <tr class="change">
                         <td>병원명</td>
                         <td>
-                            <input type="text" name="medicalName" required="required" placeholder="정보 입력하기 전에 미리 찾아보세요.">
+                            <input type="text" name="medicalName" placeholder="정보 입력하기 전에 미리 찾아보세요.">
                             <input type="button" name="searchHos" id="btn-modal" value="병원찾기">
                         </td>
                     </tr>

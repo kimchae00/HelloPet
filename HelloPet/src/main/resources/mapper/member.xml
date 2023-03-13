@@ -71,14 +71,29 @@
 		SELECT COUNT(`uid`) FROM `pet_owner` WHERE `uid` = #{uid};
 	</select>
 	
+	<!-- register Medical 중복조회 -->
+	<select id="countMedicalUid" resultType="int">
+		select count(`uid`) from `pet_hospital_pharmacy` where `uid` = #{uid};
+	</select>
+	
 	<!-- register hp 중복조회 -->
 	<select id="countHp" resultType="int">
 		SELECT COUNT(`hp`) FROM `pet_owner` WHERE `hp` = #{hp};
 	</select>
 	
+	<!-- register Medical hp 중복조회 -->
+	<select id="countMedicalHp" resultType="int">
+		SELECT COUNT(`hp`) FROM `pet_hospital_pharmacy` WHERE `hp` = #{hp};
+	</select>
+	
 	<!-- register email 중복조회 -->
 	<select id="countEmail" resultType="int">
 		SELECT COUNT(`email`) FROM `pet_owner` WHERE `email` = #{email};
+	</select>
+	
+		<!-- register Medical email 중복조회 -->
+	<select id="countMedicalEmail" resultType="int">
+		SELECT COUNT(`email`) FROM `pet_hospital_pharmacy` WHERE `email` = #{email};
 	</select>
 	
 	<!-- register nick 중복조회 -->
@@ -90,12 +105,22 @@
 		SELECT * FROM `pet_owner` WHERE `name` = #{name} AND `hp` = #{hp};
 	</select>
 	
-	<select id="selectChangePass" resultType="kr.co.hellopet.vo.MemberVO">
-		SELECT * FROM `pet_owner` WHERE `email`= #{email} AND `name` = #{name} AND `hp` = #{hp};
+	<select id="selectCountMemberForChangePass" resultType="int">
+		SELECT COUNT(`uid`) FROM `pet_owner` WHERE `email`= #{email} AND `name` = #{name} AND `hp` = #{hp};
+	</select>
+	
+	<select id="selectGetUserInfo" resultType="kr.co.hellopet.vo.MemberVO">
+		SELECT * FROM `pet_owner` WHERE `email`; = #{email} AND `name` = #{name} AND `hp` = #{hp};
 	</select>
 	
 	<update id="updatePetOwnerPasswordByCodeAndInfo">
-		update `pet_owner` set `pass` = SHA2(#{code},256) where `email` = #{email} AND `name` = #{name} AND `hp` = #{hp}; 
+		update `pet_owner` set `pass` = #{pass} where `email` = #{email} AND `name` = #{name} AND `hp` = #{hp}; 
 	</update>
+	
+	<update id="updateUser">
+		UPDATE `pet_owner` SET `pass` = #{pass} where `email` = #{email} AND `name` = #{name} AND `hp` = #{hp};
+	</update>
+	
+	
 
 </mapper>

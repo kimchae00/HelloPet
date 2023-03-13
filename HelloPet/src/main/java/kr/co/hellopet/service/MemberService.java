@@ -66,8 +66,13 @@ public class MemberService {
 	}
 	
 	public int countUid(String uid) {
-		int result = dao.countUid(uid);
-		return result;
+		int owner = dao.countUid(uid);
+		return owner;
+	}
+	
+	public int countMedicalUid(String uid) {
+		int medical = dao.countMedicalUid(uid);
+		return medical;
 	}
 	
 	public int countHp(String hp) {
@@ -75,8 +80,18 @@ public class MemberService {
 		return result;
 	}
 	
+	public int countMedicalHp(String hp) {
+		int result = dao.countMedicalHp(hp);
+		return result;
+	}
+	
 	public int countEmail(String email) {
 		int result = dao.countEmail(email);
+		return result;
+	}
+	
+	public int countMedicalEmail(String email) {
+		int result = dao.countMedicalEmail(email);
 		return result;
 	}
 	
@@ -89,20 +104,18 @@ public class MemberService {
 		return dao.selectFindId(name, hp);
 	}
 	
-	public MemberVO selectChangePass(String email, String name, String hp) {
-		return dao.selectChangePass(email, name, hp);
+	public int selectCountMemberForChangePass(String email, String name, String hp) {
+		return dao.selectCountMemberForChangePass(email, name, hp);
 	}
 	
-	public int makeRandomPass() {
+	public String makeRandomPass() {
 		Random random = new Random();
-		int code = random.nextInt(88888)  + 11111;
-		System.out.println("인증번호는 :  " + code);
-		
+		String code = String.valueOf(random.nextInt(88888)  + 11111);
 		return code;
 	}
 	
-	public void updatePetOwnerPasswordByCodeAndInfo(int code, String email, String name, String hp) {
-		dao.updatePetOwnerPasswordByCodeAndInfo(code, email, name, hp);
-		
+	public void updatePetOwnerPasswordByCodeAndInfo(String code, String email, String name, String hp) {
+		String pass = passwordEncoder.encode(code);
+		dao.updatePetOwnerPasswordByCodeAndInfo(pass, email, name, hp);
 	}
 }

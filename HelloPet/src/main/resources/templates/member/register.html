@@ -1,64 +1,10 @@
 <th:block th:include="/member/_header.html"/>
 <script th:src="@{/js/register.js}"></script>
 <script>
-$(document).ready(function(){
-	$('input[name=btnEmailCheck]').click(function(){
-		
-		let email = $('input[name=email]').val();
-				
-		if(email.match(regEmail)){
-			
-			let jsonData = {'email' : email};
-			
-			$.ajax({
-				url : '/HelloPet/member/countEmail',
-				method : 'GET',
-				data : jsonData,
-				dataType : 'json',
-				success : function(data){
-					if(data.result < 1){
-						alert('인증번호가 전송되었습니다.');
-						$('.Email-auth').css('display','table-row','block');
-						$('.auth-Code').focus();
-						let email = $('input[name=email]').val();
-						let jsonData = {'email' : email};
-						let check = $('.auth-Code') //인증번호 입력받는곳
-						$.ajax({
-							url : '/HelloPet/member/registerAuth',
-							method : 'GET',
-							data : jsonData,
-							success : function(data) {
-								check.attr('disabled',false);
-								code = data;
-							}
-						});
-						
-					}else{
-						isEmailOk = false;
-						alert('사용중인 이메일입니다.');
-					}
-				}
-			});
-		}else{
-			isEmailOk = false;
-			alert('유효하지 않은 이메일입니다.');
-		}
-	});
 	
-	$('button[name=btn-authEmail]').click(function(){
-		let inputCode = $('.auth-Code').val();
-		//alert("보낸 코드는 : " + code);
-		
-		if(inputCode === code){
-			alert('인증번호 일치');
-			$('.Email-auth').css('display','none');
-			isEmailOk = true;
-		}else{
-			alert('인증번호가 일치하지 않습니다.');
-			isEmailOk = false;
-		}
-	});
-});
+	
+	
+
 </script>
 <style>
 	button[name=btn-authEmail] {
@@ -128,6 +74,7 @@ $(document).ready(function(){
                                 <td>비밀번호 확인</td>
                                 <td>
                                     <input type="password" name="pass2" required="required" placeholder="숫자, 영어, 특수문자 포함 5자 이상 패스워드">
+                                    <span style="margin-left: 10px; font-size: 12px" class="passwordMsg"></span>
                                 </td>
                             </tr>
                             <tr>
