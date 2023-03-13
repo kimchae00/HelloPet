@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.co.hellopet.service.MailSendService;
+//import kr.co.hellopet.service.MailSendService;
 import kr.co.hellopet.service.MemberService;
 import kr.co.hellopet.vo.Api_HospitalVO;
 import kr.co.hellopet.vo.Api_PharmacyVO;
@@ -38,7 +38,7 @@ public class MemberController {
 	private MemberService service;
 	
 	@Autowired
-	private MailSendService mailService;
+	//private MailSendService mailService;
 	
 	// 로그인
 	@GetMapping("member/login")
@@ -221,7 +221,7 @@ public class MemberController {
 	}
 	
 	//회원가입 이메일 인증
-	@ResponseBody
+	/*@ResponseBody
 	@GetMapping("member/registerAuth")
 	public String test(@RequestParam("email") String email) {
 		
@@ -229,7 +229,7 @@ public class MemberController {
 		System.err.println("이메일 확인하기 : " + email);
 		
 		return mailService.joinEmail(email);
-	}
+	}*/
 	
 	//회원가입 이메일 인증
 }

@@ -111,13 +111,13 @@ public class CommunityController {
 	
 	// talktalk 목록
 	@GetMapping("community/talktalk/list")
-	public String talkList(String pg, Model model) {
+	public String talkList(String pg, Model model, String cate, String sort) {
 		
 		//페이징 
     	int currentPage = service.getCurrentPage(pg); // 현재 페이지 번호
 		int total = 0;
 		
-		total = service.selectTalkCount();
+		total = service.selectTalkCount(cate);
 		
 		int lastPageNum = service.getLastPageNum(total);// 마지막 페이지 번호
 		int[] result = service.getPageGroupNum(currentPage, lastPageNum); // 페이지 그룹번호
@@ -131,7 +131,7 @@ public class CommunityController {
 		model.addAttribute("pageStartNum", pageStartNum+1);
     			
 		//전체 목록 가져오기
-		List<CommunityVO> articles = service.selectTalkArticles(start);
+		List<CommunityVO> articles = service.selectTalkArticles(start, cate, sort);
 		
 		model.addAttribute("articles", articles);
 		
@@ -168,11 +168,11 @@ public class CommunityController {
 	
 	// talktalk 글수정 폼
 	@PostMapping("community/talktalk/modify")
-	public String talkModify(CommunityVO vo) {
+	public String talkModify(CommunityVO vo,String pg, String cate, String sort) {
 		
 		
 		service.updateTalkArticle(vo);
-		return "redirect:/community/talktalk/list";
+		return "redirect:/community/talktalk/list?cate";
 	}
 	
 	
