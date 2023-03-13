@@ -106,21 +106,18 @@ public class CsController {
 	}
 	
 	@GetMapping("cs/notice/delete")
-    public String delete(CsVO vo,String pg, HttpServletRequest req){
+    public String noticeDelete(CsVO vo,String pg, HttpServletRequest req){
         int currentPage = service.getCurrentPage(pg);
         service.deleteArticle(vo.getNo());
 
         return "redirect:/cs/notice/list?pg="+currentPage;
     }
 
-
 	/* faq */
 	@GetMapping("cs/faq/list")
 	public String faqList(Model model) {
 		List<CsVO> faqs = service.selectFaqs();
-		
 		model.addAttribute("faqs",faqs);
-		
 		return "cs/faq/list";
 	}
 	
@@ -137,24 +134,108 @@ public class CsController {
 		return "redirect:/cs/faq/list";
 	}
 	
-	
 	@GetMapping("cs/faq/modify")
-	public String faqModify() {
+	public String faqModify(Model model,int no) {
+		CsVO vo = service.selectArticle(no);
+		
+		model.addAttribute("vo", vo);
 		return "cs/faq/modify";
 	}
+	@PostMapping("cs/faq/modify")
+	public String faqModify(CsVO vo) {
+		service.updateArticle(vo);
+		return "redirect:/cs/faq/list";
+	}
+	
+	@GetMapping("cs/faq/delete")
+    public String faqDelete(CsVO vo, HttpServletRequest req){
+        service.deleteArticle(vo.getNo());
+        return "redirect:/cs/faq/list";
+    }
 	
 	/* qna */
 	@GetMapping("cs/qna/list")
-	public String qnaList() {
+	public String qnaList(Model model, String pg) {
+		int currentPage = service.getCurrentPage(pg);
+		int pageSize = 10;
+        int start = service.getLimitStart(currentPage);
+
+        int total = service.selectCountTotalQna();
+        int lastPageNum = service.getLastPageNum(total);
+        int pageStartNum = service.getpageStartNum(total, start);
+        int groups[] = service.getPageGroup(currentPage, lastPageNum);
+		
+		List<CsVO> articles = service.selectQnas(start, pageSize);
+		
+		int idx = 1;
+		for(CsVO vo : articles) {
+			vo.setId(start + idx++);
+		}
+		model.addAttribute("articles", articles);
+		model.addAttribute("currentPage", currentPage);
+        model.addAttribute("lastPageNum", lastPageNum);
+        model.addAttribute("pageStartNum", pageStartNum);
+        model.addAttribute("groups", groups);
+		
 		return "cs/qna/list";
 	}
 	@GetMapping("cs/qna/write")
 	public String qnaWrite() {
 		return "cs/qna/write";
 	}
+	@PostMapping("cs/qna/write")
+	public String qnaWrite(CsVO vo, HttpServletRequest req) {
+		String regip = req.getRemoteAddr();
+        vo.setRegip(regip);
+        service.insertQna(vo);
+        return "redirect:/cs/qna/list";
+
+	}
+	
 	@GetMapping("cs/qna/view")
-	public String faqView() {
+	public String qnaView(Model model,int no, String pg) {
+		/* 문의하기 글 정보 */
+		int currentPage = service.getCurrentPage(pg);
+		service.updateArticleHit(no);
+		
+		CsVO vo = service.selectArticle(no);
+		model.addAttribute("vo", vo);
+		model.addAttribute("currentPage", currentPage);
+		
+		
+		
+		List<CsVO> replys = service.selectReply(no);
+		model.addAttribute("replys", replys);
+		
+		
 		return "cs/qna/view";
 	}
+	
+	@PostMapping("cs/qna/view")
+	public String qnaView(CsVO vo, String pg, HttpServletRequest req) {
+		int currentPage = service.getCurrentPage(pg);
+		
+		/* 답변 */
+		String regip = req.getRemoteAddr();
+        vo.setRegip(regip);
+		service.insertReply(vo);
+		
+		return "redirect:/cs/qna/view?no="+vo.getNo()+"&pg="+currentPage;
+	}
+	@GetMapping("cs/qna/delete")
+    public String qnaDelete(CsVO vo,String pg, HttpServletRequest req){
+        int currentPage = service.getCurrentPage(pg);
+        service.deleteArticle(vo.getNo());
+
+        return "redirect:/cs/qna/list?pg="+currentPage;
+    }
+	
+	@GetMapping("cs/qnaReply/delete")
+    public String qnaReplyDelete(CsVO vo,String pg, HttpServletRequest req){
+        int currentPage = service.getCurrentPage(pg);
+        service.deleteReply(vo.getNo());
+
+        return "redirect:/cs/qna/view?no="+vo.getNo()+"&pg="+currentPage;
+    }
 
 }

@@ -87,7 +87,17 @@ header > .menu > div > ul > li img {width: 80%;}
 header > .menu > div > ul > li:nth-child(1) {
     position: relative;
     top: 3px;
-    left: -50px;
+    left: 300px;
+}
+header > .menu > div > ul > li:nth-child(2) {
+    position: relative;
+    top: 3px;
+    left: 340px;
+}
+header > .menu > div > ul > li:nth-child(3) {
+    position: relative;
+    top: 3px;
+    left: 300px;
 }
 main {
     width: 100%;

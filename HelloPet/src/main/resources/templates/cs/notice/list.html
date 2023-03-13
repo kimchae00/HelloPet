@@ -36,8 +36,10 @@
                 <th:block th:if="${groups[0]>1}">
                     <li><a th:href="@{/cs/notice/list(pg=${groups[0]-1})}" class="prev">←</a></li>
                 </th:block>
+                <th:block th:if="${groups[1] != 0}">
                 <th:block th:each="num:${#numbers.sequence(groups[0],groups[1])}">
                     <li><a th:href="@{/cs/notice/list(pg=${num})}" th:class="${num == currentPage?'num on':'num'}">[[${num}]]</a></li>
+                </th:block>
                 </th:block>
                 <th:block th:if="${groups[1]<lastPageNum}">
                     <li><a th:href="@{/cs/notice/list(pg=${groups[1]+1})}" class="next">→</a></li>
