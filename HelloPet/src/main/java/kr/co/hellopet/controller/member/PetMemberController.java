@@ -34,7 +34,7 @@ import kr.co.hellopet.vo.MemberVO;
  */
 
 @Controller
-public class MemberController {
+public class PetMemberController {
 	
 	@Autowired
 	private MemberService service;

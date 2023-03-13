@@ -19,13 +19,13 @@
 <div id="wrapper">
    <header class="header">
        <div class="headerTop">
-           <div th:if="${#authentication.name == null}">
+           <div th:if="${#authentication.principal == null}">
                <a th:href="@{/member/login}" >로그인</a>
                <a th:href="@{/member/join}">회원가입</a>
                <a href="#">마이페이지</a>
            </div>
-           <div th:if="${#authentication.name != null}">
-           	   <span class="nick" sec:authentication="principal"></span>님 반갑습니다.
+           <div th:unless="${#authentication.principal != null}">
+           	   <span class="nick" sec:authentication="principal.member.name"></span>님 반갑습니다.
            	   <a th:href="@{/member/logout}">로그아웃</a>
                <a href="#">마이페이지</a>
            </div>
