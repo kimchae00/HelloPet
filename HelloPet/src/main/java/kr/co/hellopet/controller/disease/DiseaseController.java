@@ -33,9 +33,11 @@ public class DiseaseController {
 	/*dog*/
 	
 	@GetMapping("disease/index")
-	public String index(Model model) {
+	public String index(Model model, String group) {
 		
-		String group = "dog";
+		if(group == null) {
+			group = "dog";
+		}
 		
 		List<DiseaseResultMapVO> resultMaps = service.selectDisease(group);
 		model.addAttribute("resultMaps", resultMaps);
@@ -51,23 +53,9 @@ public class DiseaseController {
 	
 	
 	
-	/*
-	@GetMapping("disease/index")
-	public String index(Model model) {
-		
-		String group = "cat";
-		
-		List<DiseaseResultMapVO> resultMaps = service.selectDisease(group);
-		model.addAttribute("resultMaps", resultMaps);
-		
-		return "disease/index";
-	}
-	
-	@GetMapping("disease/index")
-	public String view() {
-		return "disease/view";
-	
+	/*cat*/
 
-	*/	
-	}
+	
+	
+}
 
