@@ -38,6 +38,9 @@ public interface CommunityDAO {
 	// talk 글목록
 	public List<CommunityVO> selectTalkArticles(int start, String cate, String sort);
 	
+	// talk 글 좋아요순 3위까지 목록
+	public List<CommunityVO> selectTalkRanks(String cate);
+	
 	// talk 글목록 갯수
 	public int selectTalkCount(String cate);
 	

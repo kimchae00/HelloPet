@@ -62,6 +62,23 @@
 			`rdate`= NOW();
 	</insert>
 	
+	<select id="selectTalkRanks" resultType="kr.co.hellopet.vo.CommunityVO">
+		 select a.*, b.nick from `community_article` as a
+		 	join `pet_owner` as b on a.uid = b.uid
+			where `group`='talktalk'
+			and 
+				<choose>
+					<when test="cate == null">
+					`cate`='contest2'
+					</when>
+					<when test="cate != null">
+					`cate`=#{cate}
+					</when>
+				</choose>
+			order by `heart` desc
+			limit 3;
+	</select>
+	
 	<select id="selectTalkArticles" resultType="kr.co.hellopet.vo.CommunityVO">
 		 select a.*, b.nick from `community_article` as a
 		 	join `pet_owner` as b on a.uid = b.uid
@@ -78,10 +95,10 @@
 			order by 
 				<choose>
 					<when test="sort == null">
-					`no` desc
+					`rdate` desc
 					</when>
 					<when test="sort == 1">
-					`no` desc
+					`rdate` desc
 					</when>
 					<when test="sort == 2">
 					`heart` desc
@@ -108,8 +125,18 @@
     
     <select id="selectTalkCount" resultType="int">
     	select count(`no`) from `community_article` 
-    		where `group`='talk'
-    		and `cate`=#{cate};
+    		where `group`='talktalk'
+    		and 
+    			<choose>
+					<when test="cate == null">
+					`cate`='contest2'
+					</when>
+					<when test="cate != null">
+					`cate`=#{cate};
+					</when>
+				</choose>
+				
+    				
     </select>
     
     

@@ -132,8 +132,13 @@ public class CommunityController {
     			
 		//전체 목록 가져오기
 		List<CommunityVO> articles = service.selectTalkArticles(start, cate, sort);
+		//좋아요 랭킹 3위 목록 가져오기
+		List<CommunityVO> ranks = service.selectTalkRanks(cate);
 		
 		model.addAttribute("articles", articles);
+		model.addAttribute("ranks",ranks);
+		model.addAttribute("sort", sort);
+		model.addAttribute("cate", cate);
 		
 		
 		return "community/talktalk/list";
