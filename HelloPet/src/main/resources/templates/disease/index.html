@@ -1,4 +1,5 @@
 <th:block th:include="@{disease/_header.html}"/>
+
     <style>
            
     
@@ -32,21 +33,7 @@
             margin-inline-start: 0px;
             margin-inline-end: 0px;
         }
-
-        .section-grid {
-            width: 1200px;
-            min-height: 100px;
-            margin: 80px auto;
-            overflow: hidden;
-        }
-
-        .section-grid > article {
-            float: left;
-            width: 33.33%;
-            min-height: 400px;
-            padding: 10px;
-            box-sizing: border-box;
-        }
+        
 
 
         .search-category-list .title {
@@ -85,7 +72,13 @@
             color: #777;
             font-weight: 300
         }
-
+		
+		.search-category-list .name a:hover {
+            color:#3c83dc;
+            font-weight: 600;
+        }
+		
+		
         .top-round {
             z-index: 2;
             position: relative;
@@ -122,6 +115,9 @@
             padding: 10px;
             box-sizing: border-box;
         }
+        .section-grid > article:nth-child(3n+1) {
+        	clear: left;
+        }
 
 
         .search-category-list .title {
@@ -154,68 +150,46 @@
         
 
 </style>
-<body>
-    
-        <main>
-            <div id="sub-wrap">
-                <div class="top">
-                    <h3>증상별 질병검색</h3>
-                </div>
-                <div class="tab">
-                    <ul>
-                        <li class="on"><a th:href="@{/disease/index}">반려견</a></li>
-                        <li><a th:href="@{/disease/index}">반려묘</a></li>
-                    </ul>
-                    
-                </div>
-                <div class="top-round">
-                <h4 class="title">아래의 증상 중 한가지를 선택하세요!</h4>
-            </div>
-            <section class="section-grid">
-                
-                <article th:each="resultMap : ${resultMaps}">
-                    <dl class="search-category-list">
-                        <dt class="title">
-                            [[${resultMap.c1Name}]]
-                        </dt>    
-                 
-                       	<dd class="name">
-                            <a href="#" th:each="cate2VO:${resultMap.cate2VOList}">[[${cate2VO.c2Name}]]</a>
-                       	</dd>
-                    </dl>
-                </article>
-                
-                <!-- 
-               <div class="tab">
-               		<ul>
-               			<li class="on"><a th:hred="@{/disease/index}">반려묘</a></li>
-               			<li><a th:href="@{disease/index}">반려견</a></li>
-               		</ul>
-               		
-               		  <div class="top-round">
-                <h4 class="title">아래의 증상 중 한가지를 선택하세요!</h4>
-            </div>
-            <section class="section-grid">
-                
-               
-                <article th:each="resultMap : ${resultMaps}">
-                    <dl class="search-category-list">
-                        <dt class="title">
-                            [[${resultMap.c1Name}]]
-                        </dt>    
-                 
-                       	<dd class="name">
-                            <a href="#" th:each="cate2VO:${resultMap.cate2VOList}">[[${cate2VO.c2Name}]]</a>
-                       	</dd>
-                    </dl>
-                </article>
-               		-->
-               		
-               </div>
-                                   
-            </section>
-        </div>
+<script>
+	$(function(){
+		var urlParams = new URL(location.href).searchParams;
+		var group= urlParams.get('group');
+		console.log(group);
+	});
+</script>
 
-        </main>
+    
+    <main>
+        <div id="sub-wrap">
+            <div class="top">
+                <h3>증상별 질병검색</h3>
+            </div>
+            <div class="tab">
+                <ul> 
+                	<li class="dog on"><a th:href="@{/disease/index(group=dog)}">반려견</a></li> 
+                	<li class="cat"><a th:href="@{/disease/index(group=cat)}">반려묘</a></li> 
+                </ul> 
+                
+            </div>
+            <div class="top-round">
+             <h4 class="title">아래의 증상 중 한가지를 선택하세요!</h4>
+         </div>
+         <section class="section-grid">
+             
+             <article th:each="resultMap : ${resultMaps}">
+                 <dl class="search-category-list">
+                     <dt class="title">
+                         [[${resultMap.c1Name}]]
+                     </dt>    
+              
+                    	<dd class="name">
+                         <a href="#" th:each="cate2VO:${resultMap.cate2VOList}">[[${cate2VO.c2Name}]]</a>
+                    	</dd>
+                 </dl>
+             </article>
+             
+			</section>
+		</div>
+    </main>
      
 <th:block th:include="@{disease/_footer.html}"/>        
