@@ -3,6 +3,9 @@
 <script th:src="@{/js/modal.js}"></script>
 <script th:src="@{/js/registerMedical.js}"></script>
 <script>
+let isMedicalNameOk = false;
+let isCeoOk = false;
+
 $(document).ready(function(){
 	$('input[name=btnEmailCheck]').click(function(){
 		
@@ -19,6 +22,7 @@ $(document).ready(function(){
 				dataType : 'json',
 				success : function(data){
 					if(data.result == 0){
+						isEmailOk = false;
 						alert('인증번호가 전송되었습니다.');
 						$('.Email-auth').css('display','table-row','block');
 						$('.auth-Code').focus();
@@ -49,20 +53,56 @@ $(document).ready(function(){
 	
 	$('button[name=btn-authEmail]').click(function(){
 		let inputCode = $('.auth-Code').val();
-		//alert("보낸 코드는 : " + code);
-		
-		if(inputCode === code){
-			alert('인증번호 일치');
-			$('.Email-auth').css('display','none');
-			isEmailOk = true;
-			$('#pass1').focus();
+		if(inputCode != ''){
+			if(inputCode == code){
+				alert('인증번호 일치');
+				$('.Email-auth').css('display','none');
+				isEmailOk = true;
+			}else{
+				alert('인증번호가 일치하지 않습니다.');
+				isEmailOk = false;
+			}
 		}else{
-			alert('인증번호가 일치하지 않습니다.');
+			alert('인증번호를 입력해주세요.');
 			isEmailOk = false;
 		}
+		
+		
 	});
 	
-});	
+	$('input[type=submit]').click(function(){
+		let HospitalName = $('input[name=medicalName]').val();
+		let ceo = $('input[name=ceo]').val();
+		let ceoHp = $('input[name=ceoHp]').val();
+			
+		if(HospitalName != ''){
+			isMedicalNameOk = true;
+			
+		}else if(HospitalName == ''){
+			isMedicalNameOk = false;
+			alert('병원 이름을 입력해주세요.');
+			
+		}else if(ceo != ''){
+			isCeoOk = true;
+			
+		}else if(ceo == ''){
+			isCeoOk = false;
+			alert('병원장 이름을 입력해주세요.');
+			
+		}else if(tel != ''){
+			isTelOk = true;
+			
+		}else if(ceoHp != ''){
+			isCeoHpOk = true;
+			
+		}else if(ceoHp != ''){
+			isCeoHpOk = false;
+		}
+		
+	});
+});
+
+
 
 </script>
 <<style>
