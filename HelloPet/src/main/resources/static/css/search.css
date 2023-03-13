@@ -525,20 +525,19 @@ padding: 0 15px;
 }
 
 
-
-.SearchHs #section2 > .pagination {
+.SearchHs #section2 > .paging {
     width: 100%;
     padding: 40px 0;
     text-align: center;
 }
 
-.SearchHs #section2 > .pagination > span > a {
+.SearchHs #section2 > .paging > span > a {
     color: #777;
     font-size: 11px;
     letter-spacing: -1px;
 }
 
-.SearchHs #section2 > .pagination > .num > a {
+.SearchHs #section2 > .paging > .num > a {
     display: inline-block;
     min-width: 14px;
     margin: 0 2px;
@@ -551,20 +550,21 @@ padding: 0 15px;
     text-decoration: none;
 }
 
-.SearchHs #section2 > .pagination > .num > a.on {
+.SearchHs #section2 > .paging > .num > a.on {
     color: #39d9c8;
      font-weight: bold;
      border: 1px solid #39d9c8;
 }
 
-.SearchHs #section2 > .pagination > span > a:hover{
+.SearchHs #section2 > .paging > span > a:hover{
     color: #39d9c8;
 }
 
-.SearchHs #section2 > .pagination > .num > a:hover {
+.SearchPm #section2 > .paging > .num > a:hover {
     border: 1px solid #39d9c8;
     text-decoration: none;
 }
+
 
 .SearchHs .kt {
             overflow: hidden;

@@ -10,7 +10,7 @@
 <mapper namespace="kr.co.hellopet.dao.SearchDAO">
 
 	<select id="SearchHsName" resultType="kr.co.hellopet.vo.SearchVO">
-		SELECT * FROM `api_hospital` WHERE `hosName` LIKE concat('%', #{search}, '%');
+		SELECT * FROM `api_hospital` WHERE `hosName` LIKE concat('%', #{search}, '%') limit #{start},10;
 	</select>
 	
 	<select id="SearchHsAddr" resultType="kr.co.hellopet.vo.SearchVO">
