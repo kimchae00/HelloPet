@@ -23,4 +23,6 @@ public class SearchVO {
 	
 	private String search;
 	private int total;
+	private int pg;
+	private int currentPage;
 }

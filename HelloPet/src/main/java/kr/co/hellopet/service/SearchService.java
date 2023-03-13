@@ -23,8 +23,8 @@ public class SearchService {
 		return dao.SearchHsAddr(search);
 	}
 	
-	public List<SearchVO> SearchHsName(String search){
-		return dao.SearchHsName(search);
+	public List<SearchVO> SearchHsName(String search, int start){
+		return dao.SearchHsName(search, start);
 	}
 	
 	public int selectSearchHsTotal(String search) {

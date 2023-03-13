@@ -18,7 +18,7 @@ public interface SearchDAO {
 	
 	//searchHs 검색 후 목록 출력하기
 	public List<SearchVO> SearchHs(String search);
-	public List<SearchVO> SearchHsName(String search);
+	public List<SearchVO> SearchHsName(String search, int start);
 	public List<SearchVO> SearchHsAddr(String search);
 	public int selectSearchHsTotal(String search);
 	
