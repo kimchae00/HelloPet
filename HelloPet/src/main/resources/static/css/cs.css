@@ -258,6 +258,9 @@ footer {
 #notice > #list > .container > .paging .num:hover {
     color: #32a69f;
 }
+#notice > #list > .container > .paging .on:hover {
+    color: #fff;
+}
 
 #notice > #list > .container > .btnWrite {
     position: absolute;
@@ -302,6 +305,7 @@ footer {
     padding: 20px 15px;
     height: 150px;
 }
+#notice > #view > .container > .viewTable .content > img {width: 35%;}
 #notice > #view > .container > .viewTable p {
     margin-top: 20px;
     margin-bottom: 80px;
@@ -484,7 +488,7 @@ footer {
     width: 100%;
     height: 280px;
     resize: none;
-    font-size: 20px;
+    font-size: 17px;
     border: 2px solid #ddd;
 }
 #notice > #modify .button {
@@ -503,14 +507,15 @@ footer {
     color: #555;
     margin: 5px;
 }
-#notice > #modify .button > .btnModify {
-    width: 70px;
+#notice > #modify .button .btnModify {
+    width: 80px;
     text-align: center;
     padding: 8px;
     background: #32a69f;
     color: #fff;
     margin: 5px;
     font-size: 16px;
+    border: none;
 }
 /*///////// faq ///////////*/
 /* faq list */
@@ -720,13 +725,14 @@ footer {
     font-size: 18px;
 }
 #faq > #write .button > .btnWrite {
-    width: 70px;
+    width: 80px;
     text-align: center;
     padding: 8px;
     background: #32a69f;
     color: #fff;
     margin: 5px;
     font-size: 18px;
+    border: none;
 }
 /* faq modify */
 #faq > #modify {padding: 60px 0 0 ;}
@@ -883,6 +889,9 @@ footer {
 }
 #qna > #list > .container > .paging .num:hover {
     color: #32a69f;
+}
+#qna > #list > .container > .paging .on:hover {
+    color: #fff;
 }
 
 #qna > #list > .container > .btnWrite {

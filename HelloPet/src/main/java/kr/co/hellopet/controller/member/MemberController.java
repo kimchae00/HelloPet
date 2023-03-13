@@ -1,5 +1,6 @@
 package kr.co.hellopet.controller.member;
 
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,13 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.hellopet.service.MailSendService;
 import kr.co.hellopet.service.MemberService;
 import kr.co.hellopet.vo.Api_HospitalVO;
+import kr.co.hellopet.vo.Api_PharmacyVO;
 import kr.co.hellopet.vo.MedicalVO;
 import kr.co.hellopet.vo.MemberVO;
 
@@ -33,6 +37,9 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	@Autowired
+	private MailSendService mailService;
+	
 	// 로그인
 	@GetMapping("member/login")
 	public String login() {
@@ -47,7 +54,10 @@ public class MemberController {
 	
 	// 약관
 	@GetMapping("member/terms")
-	public String terms() {
+	public String terms(@RequestParam(value="type") String type, Model model) {
+		
+		model.addAttribute("type",type);
+		
 		return "member/terms";
 	}
 	
@@ -85,16 +95,34 @@ public class MemberController {
 	}
 	
 	@ResponseBody
-	@GetMapping("member/SearchName")
-	public Map<String, List<Api_HospitalVO>> search(@RequestParam("trial") String trial, @RequestParam("county") String county, @RequestParam("name") String name) {
+	@GetMapping("member/SearchHospital")
+	public Map<String, List<Api_HospitalVO>> searchHospital(@RequestParam("trial") String trial, @RequestParam("county") String county, @RequestParam("name") String name) {
 		
 		/*System.out.println("trial : " + trial);
 		System.out.println("county : " + county);
 		System.out.println("name : " + name);*/
 		
-		List<Api_HospitalVO> vo = service.selectName(trial, county, name);
+		List<Api_HospitalVO> vo = service.selectMedical(trial, county, name);
 		
 		Map<String, List<Api_HospitalVO>> map = new HashMap<>();
+		
+		map.put("result", vo);
+		System.out.println("size : " + vo.size());
+		
+		return map;
+	}
+	
+	@ResponseBody
+	@GetMapping("member/SearchPharmacy")
+	public Map<String, List<Api_PharmacyVO>> searchPharmacy(@RequestParam("trial") String trial, @RequestParam("county") String county, @RequestParam("name") String name) {
+		
+		/*System.out.println("trial : " + trial);
+		System.out.println("county : " + county);
+		System.out.println("name : " + name);*/
+		
+		List<Api_PharmacyVO> vo = service.selectPharmacy(trial, county, name);
+		
+		Map<String, List<Api_PharmacyVO>> map = new HashMap<>();
 		
 		map.put("result", vo);
 		System.out.println("size : " + vo.size());
@@ -108,6 +136,43 @@ public class MemberController {
 		return "member/find";
 	}
 	
+	@ResponseBody
+	@GetMapping("member/findId")
+	public Map<String, MemberVO> findId(@RequestParam("name") String name, @RequestParam("hp") String hp) {
+		
+		MemberVO vo = service.selectFindId(name, hp);
+		Map<String, MemberVO> map = new HashMap<>();
+		map.put("result", vo);
+		
+		//System.out.println("map : " + map );
+		
+		return map;
+	}
+	
+	@ResponseBody
+	@GetMapping("member/password")
+	public Map<String, MemberVO> password(@RequestParam("email") String email, @RequestParam("name") String name, @RequestParam("hp") String hp) {
+		
+		MemberVO vo = service.selectChangePass(email, name, hp);
+		Map<String, MemberVO> map = new HashMap<>();
+		map.put("result", vo);
+		
+		return map;
+	}
+	
+	@ResponseBody
+	@GetMapping("member/changePass")
+	public Map<String, Integer> changePass(@RequestParam("email") String email, @RequestParam("name") String name, @RequestParam("hp") String hp, MemberVO vo) {
+		
+		int code = service.makeRandomPass();
+		System.out.println(code);
+		service.updatePetOwnerPasswordByCodeAndInfo(code, email, name, hp);
+		Map<String, Integer> map = new HashMap<>();
+		map.put("result", code);
+		
+		return map;
+	}
+
 	// uid 중복체크
 	@ResponseBody
 	@GetMapping("member/countUid")
@@ -149,4 +214,22 @@ public class MemberController {
 		
 		return map;
 	}
+	
+	@GetMapping("member/emailTest")
+	public String test() {
+		return null;
+	}
+	
+	//회원가입 이메일 인증
+	@ResponseBody
+	@GetMapping("member/registerAuth")
+	public String test(@RequestParam("email") String email) {
+		
+		System.out.println("이메일 들어오기 확인!!");
+		System.err.println("이메일 확인하기 : " + email);
+		
+		return mailService.joinEmail(email);
+	}
+	
+	//회원가입 이메일 인증
 }

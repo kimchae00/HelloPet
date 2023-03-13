@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		//로그아웃 설정
 		http.logout().invalidateHttpSession(true)
 		.logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
-		.logoutSuccessUrl("/index");
+		.logoutSuccessUrl("/member/login?success=200");
 		
 		
 	}

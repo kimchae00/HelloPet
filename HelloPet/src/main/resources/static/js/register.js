@@ -83,7 +83,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('input[name=btnEmailCheck]').click(function(){
+	/*$('input[name=btnEmailCheck]').click(function(){
 		
 		let email = $('input[name=email]').val();
 				
@@ -110,7 +110,7 @@ $(document).ready(function(){
 			isEmailOk = false;
 			alert('유효하지 않은 이메일입니다.');
 		}
-	});
+	});*/
 	
 	$('input[name=btnNickCheck]').click(function(){
 		

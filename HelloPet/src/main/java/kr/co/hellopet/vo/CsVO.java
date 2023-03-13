@@ -14,6 +14,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class CsVO {
+	private int id;
 	private int no;
 	private String uid;
 	private int parent;

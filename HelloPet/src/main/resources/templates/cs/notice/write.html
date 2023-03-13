@@ -1,4 +1,17 @@
 <th:block th:include="@{cs/_header.html}"/>
+<script>
+	function validateForm() {
+	  var title = document.forms[0]["title"].value.trim();
+	  var content = document.forms[0]["content"].value.trim();
+	  
+	  if (title == "" || content == "") {
+	    alert("제목과 내용을 모두 입력해주세요.");
+	    return false;
+	  }
+	  
+	  return true;
+	}
+</script>
  <main id="notice">
 		    <div class="top">
 		        <h3>고객센터</h3>
@@ -12,7 +25,7 @@
 		    </div>
             <section id="write">
                 <div class="container">
-                    <form method="post" enctype="multipart/form-data">
+                    <form onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
                         <table class="writeTable">
                             <caption>공지사항 작성</caption>
                             <tr>

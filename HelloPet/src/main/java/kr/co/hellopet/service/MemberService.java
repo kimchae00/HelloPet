@@ -1,6 +1,7 @@
 package kr.co.hellopet.service;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.hellopet.dao.MemberDAO;
 import kr.co.hellopet.vo.Api_HospitalVO;
+import kr.co.hellopet.vo.Api_PharmacyVO;
 import kr.co.hellopet.vo.MedicalVO;
 import kr.co.hellopet.vo.MemberVO;
 
@@ -55,10 +57,13 @@ public class MemberService {
 		dao.deleteMember(null);
 	};
 	
-	public List<Api_HospitalVO> selectName(String trial, String county, String name){
-		return dao.selectName(trial, county, name);
+	public List<Api_HospitalVO> selectMedical(String trial, String county, String name){
+		return dao.selectMedical(trial, county, name);
 	}
 	
+	public List<Api_PharmacyVO> selectPharmacy(String trial, String county, String name){
+		return dao.selectPharmacy(trial, county, name);
+	}
 	
 	public int countUid(String uid) {
 		int result = dao.countUid(uid);
@@ -78,5 +83,26 @@ public class MemberService {
 	public int countNick(String nick) {
 		int result = dao.countNick(nick);
 		return result;
+	}
+	
+	public MemberVO selectFindId(String name, String hp) {
+		return dao.selectFindId(name, hp);
+	}
+	
+	public MemberVO selectChangePass(String email, String name, String hp) {
+		return dao.selectChangePass(email, name, hp);
+	}
+	
+	public int makeRandomPass() {
+		Random random = new Random();
+		int code = random.nextInt(88888)  + 11111;
+		System.out.println("인증번호는 :  " + code);
+		
+		return code;
+	}
+	
+	public void updatePetOwnerPasswordByCodeAndInfo(int code, String email, String name, String hp) {
+		dao.updatePetOwnerPasswordByCodeAndInfo(code, email, name, hp);
+		
 	}
 }

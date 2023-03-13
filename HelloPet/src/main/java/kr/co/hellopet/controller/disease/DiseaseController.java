@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.hellopet.service.DiseaseService;
+import kr.co.hellopet.vo.DiseaseResultMapVO;
 import kr.co.hellopet.vo.DiseaseVO;
 import kr.co.hellopet.vo.Disease_cate1VO;
 import kr.co.hellopet.vo.Disease_cate2VO;
 
 /*
  * HelloPet Project
- * 날짜 : 2023/03/29
+ * 날짜 : 2023/03/10
  * 담당 : 임민지
  * 내용 : HelloPet Disease 화면 구현 
  */
@@ -29,11 +30,15 @@ public class DiseaseController {
 	@Autowired
 	private DiseaseService service;
 	
+	/*dog*/
 	
 	@GetMapping("disease/index")
 	public String index(Model model) {
 		
+		String group = "dog";
 		
+		List<DiseaseResultMapVO> resultMaps = service.selectDisease(group);
+		model.addAttribute("resultMaps", resultMaps);
 		
 		return "disease/index";
 		
@@ -44,7 +49,25 @@ public class DiseaseController {
 		return "disease/view";
 	}
 	
-
+	
+	
+	/*
+	@GetMapping("disease/index")
+	public String index(Model model) {
 		
+		String group = "cat";
+		
+		List<DiseaseResultMapVO> resultMaps = service.selectDisease(group);
+		model.addAttribute("resultMaps", resultMaps);
+		
+		return "disease/index";
+	}
+	
+	@GetMapping("disease/index")
+	public String view() {
+		return "disease/view";
+	
+
+	*/	
 	}
 

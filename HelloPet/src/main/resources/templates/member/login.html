@@ -5,8 +5,8 @@
             <div class="main_first">
                 <h2>로그인</h2>
                 <div class="main_second">
-                    <form action="#" class="login_form">
-                        <input type="text" name="id" placeholder="아이디">
+                    <form action="#" class="login_form" method="post">
+                        <input type="text" name="uid" placeholder="아이디">
                         <input type="password" name="pass" placeholder="비밀번호">
                         <div>
                             <input type="checkbox" name="check"><i class="circle"></i><span class="text">아이디저장</span>
@@ -16,9 +16,9 @@
                         <input type="text" id="kakao" value="Kakao 로 로그인">
                         <input type="text" id="apple" value="Apple 로 로그인">
                         <ul>
-                            <li><a href="./terms.html">회원가입</a></li>
-                            <li><a href="./find.html">아이디</a></li>
-                            <li><a href="./find.html">비밀번호찾기</a></li>
+                            <li><a th:href="@{/member/join}">회원가입</a></li>
+                            <li><a th:href="@{/member/find}">아이디</a></li>
+                            <li><a tH:href="@{/member/find}">비밀번호찾기</a></li>
                         </ul>
                     </form>
                 </div>

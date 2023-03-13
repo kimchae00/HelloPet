@@ -33,8 +33,57 @@
     	select count(`no`) from `community_article` 
     		where `group`='tip';
     </select>
+    
+    <select id="selectTipArticle" resultType="kr.co.hellopet.vo.CommunityVO">
+    	select * from `community_article`
+    		where `no`=#{no};
+    </select>
 	
+	<update id="updateTipArticle">
+		update `community_article` set 
+			`title`=#{title},
+			`content`=#{content},
+			`rdate`=now()
+			where `no`=#{no};
+	</update>
 
 
+	<insert id="insertTalkArticle">
+		insert into `community_article` set 
+			`group`= #{group}, 
+			`title`= #{title}, 
+			`content`= #{content}, 
+			`img1`= #{img1},
+			`img2`= #{img2},
+			`img3`= #{img3},
+			`uid`= #{uid}, 
+			`regip`= #{regip}, 
+			`rdate`= NOW();
+	</insert>
+	
+	<select id="selectTalkArticles" resultType="kr.co.hellopet.vo.CommunityVO">
+		 select * from `community_article` 
+			where `group`='talktalk'
+			order by `no` desc
+			limit #{start},12;
+	</select>
+	
+	<update id="updateTalkArticle">
+		update `community_article` set 
+			`title`=#{title},
+			`content`=#{content},
+			`rdate`=now()
+			where `no`=#{no};
+	</update>
+	
+	<select id="selectTalkArticle" resultType="kr.co.hellopet.vo.CommunityVO">
+    	select * from `community_article`
+    		where `no`=#{no};
+    </select>
+    
+    <select id="selectTalkCount" resultType="int">
+    	select count(`no`) from `community_article` 
+    		where `group`='talk';
+    </select>
 
 </mapper>
