@@ -322,7 +322,3 @@ li{
    color:#32a69f;
    font-weight: 700;
 }
-
-ul li.dog.on { background-color: #32a69f;} ul li.cat.on { background-color: #32a69f; } 
-ul li.dog:not(.on) { background-color: white; } 
-ul li.cat:not(.on) { background-color: white; }

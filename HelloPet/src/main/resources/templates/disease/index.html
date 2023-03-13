@@ -151,12 +151,13 @@
 
 </style>
 <script>
-	$(function(){
-		var urlParams = new URL(location.href).searchParams;
-		var group= urlParams.get('group');
-		console.log(group);
+	$(document).ready(function(){
+		$(".on").on('click', function(e){
+			
+		});
 	});
 </script>
+
 
     
     <main>
@@ -166,8 +167,8 @@
             </div>
             <div class="tab">
                 <ul> 
-                	<li class="dog on"><a th:href="@{/disease/index(group=dog)}">반려견</a></li> 
-                	<li class="cat"><a th:href="@{/disease/index(group=cat)}">반려묘</a></li> 
+                	<li class="on"><a th:href="@{/disease/index(group=dog)}" >반려견</a></li> 
+                	<li class=""><a th:href="@{/disease/index(group=cat)}" >반려묘</a></li> 
                 </ul> 
                 
             </div>
