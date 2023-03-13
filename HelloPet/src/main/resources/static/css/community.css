@@ -500,7 +500,17 @@ color: #fff;
     border-spacing: 0 40px;
 }
 
+.write_table .write_cateName{
+	padding-left: 20px;
+}
 
+.write_table .write_cateName > select{
+	width: 230px;
+	height: 40px;
+	font-size: 15px;
+	font-weight: 400;
+	padding-left: 10px;
+}
 
 .write_table .write_title > input{
     width: 1060px;
@@ -553,6 +563,7 @@ color: #fff;
     font-weight: bold;
     text-align: center;
 }
+
 
 
 

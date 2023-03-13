@@ -36,10 +36,10 @@ public interface CommunityDAO {
 	public int insertTalkArticle(CommunityVO vo);
 	
 	// talk 글목록
-	public List<CommunityVO> selectTalkArticles(int start);
+	public List<CommunityVO> selectTalkArticles(int start, String cate, String sort);
 	
 	// talk 글목록 갯수
-	public int selectTalkCount();
+	public int selectTalkCount(String cate);
 	
 	// talk 글보기
 	public CommunityVO selectTalkArticle(int no);

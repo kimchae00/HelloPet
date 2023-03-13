@@ -171,13 +171,13 @@ public class CommunityService {
     }
 	
 	// talk 골목록
-	public List<CommunityVO> selectTalkArticles(int start){
-		return dao.selectTalkArticles(start);
+	public List<CommunityVO> selectTalkArticles(int start, String cate, String sort){
+		return dao.selectTalkArticles(start, cate, sort);
 	}
 	
 	// talk 글목록 갯수
-	public int selectTalkCount() {
-		return dao.selectTalkCount();
+	public int selectTalkCount(String cate) {
+		return dao.selectTalkCount(cate);
 	}
 	
 	// talk 글보기
