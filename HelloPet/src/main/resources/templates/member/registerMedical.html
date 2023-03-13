@@ -1,5 +1,4 @@
 <th:block th:include="/member/_header.html"/>
-<script th:src="@{/js/medical.js}"></script>
 <script th:src="@{/js/modal.js}"></script>
 <script th:src="@{/js/registerMedical.js}"></script>
 <main class="business_main">
@@ -26,65 +25,73 @@
 	                <tr>
 	                    <td>아이디</td>
 	                    <td>
-	                        <input type="text" name="uid" required="required" placeholder="아이디를 입력">
+	                        <input type="text" name="uid" placeholder="아이디를 입력">
 	                        <input type="button" name="btnUidCheck" value="중복확인">
 	                    </td>
 	                </tr>
                     <tr>
                         <td>휴대폰</td>
                         <td>
-                            <input type="text" name="hp" required="required" placeholder="- 포함 13자리">
+                            <input type="text" name="hp" placeholder="- 포함 13자리">
                             <input type="button" name="btnHpCheck" value="본인확인">
                         </td>
                     </tr>
                     <tr>
                         <td>이름</td>
                         <td>
-                            <input type="text" name="name" required="required" placeholder="이름">
+                            <input type="text" name="name" placeholder="이름">
                         </td>
                     </tr>
                     <tr>
                         <td>이메일</td>
                         <td>
-                            <input type="email" name="email" required="required" placeholder="이메일">
+                            <input type="email" name="email"   placeholder="이메일">
                             <input type="button" name="btnEmailCheck" value="중복확인">
                         </td>
                     </tr>
+                   <tr class="Email-auth" style="display: none;">
+                   	<td>이메일 인증하기</td>
+                   	<td>
+                   		<input type="text" class="auth-Code" placeholder="입력받은 인증코드를 입력"  >
+                   		<input type="button" name="email-auth" value="인증하기">
+                   	</td>
+                   </tr>
                     <tr>
                         <td>비밀번호</td>
                         <td>
-                            <input type="password" name="pass1" required="required" placeholder="숫자, 영어, 특수문자 포함 5자 이상 패스워드">
+                            <input type="password" name="pass1"   placeholder="숫자, 영어, 특수문자 포함 5자 이상 패스워드">
                         </td>
                     </tr>
                     <tr id="pass">
                         <td>비밀번호 확인</td>
                         <td>
-                            <input type="password" name="pass2" required="required" placeholder="숫자, 영어, 특수문자 포함 5자 이상 패스워드">
+                            <input type="password" name="pass2" placeholder="숫자, 영어, 특수문자 포함 5자 이상 패스워드">
+                            <span style="margin-left: 10px; font-size: 12px" class="passwordMsg"></span>
                         </td>
                     </tr>
                     <tr class="change">
                         <td>병원명</td>
                         <td>
-                            <input type="text" name="medicalName" required="required" placeholder="정보 입력하기 전에 미리 찾아보세요.">
+                            <input type="text" name="medicalName" placeholder="정보 입력하기 전에 미리 찾아보세요.">
                             <input type="button" name="searchHos" id="btn-modal" value="병원찾기">
                         </td>
                     </tr>
                     <tr class="change">
                         <td>대표수의사</td>
                         <td>
-                            <input type="text" name="ceo" placeholder="대표수의사 입력해주세요" required="required">
+                            <input type="text" name="ceo" placeholder="대표수의사 입력해주세요">
                         </td>
                     </tr>
                     <tr>
                         <td>연락처</td>
                         <td>
-                            <input type="text" name="tel" placeholder="연락처 입력" required="required">
+                            <input type="text" name="tel" placeholder="연락처 입력">
                         </td>
                     </tr>
                     <tr>
                         <td>대표연락처</td>
                         <td>
-                            <input type="text" name="ceoHp" placeholder="대표연락처 입력해주세요" required="required">
+                            <input type="text" name="ceoHp" placeholder="대표연락처 입력해주세요">
                         </td>
                     </tr>
                     <tr>
@@ -99,7 +106,7 @@
                     <tr>
                         <td>사업자등록증</td>
                         <td>
-                            <input type="file" id="Business_Registration" name="reserve" placeholder="선택된 파일없음">
+                            <input type="file" id="Business_Registration" name="reserve" placeholder="선택된 파일없음" required="required">
                             <input type="button" class="btnFile" value="파일찾기">
                         </td>
                     </tr>
@@ -114,7 +121,7 @@
                 <div class="register_button">
                     <ul>
                         <li><input type="button" value="취소"></li>
-                        <li><input type="submit" value="가입하기"></li>
+                        <li><input type="submit" class="medicalRegister" value="가입하기"></li>
                     </ul>
                 </div>
             </form>

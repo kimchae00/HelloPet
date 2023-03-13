@@ -52,29 +52,16 @@
             	let jsonData = {'email': email, 'name' : name, 'hp' : hp};
             	console.log('here1');
             	$.ajax({
-            		url : '/HelloPet/member/password',
-                	method : 'GET',
+            		url : '/HelloPet/member/changePass',
+                	method : 'POST',
                 	data : jsonData,
                 	dataType : 'json',
                 	success : function(data){
                 		console.log('here2');
-                		if(data.result != null){
-                			let email = $('input[name=findEamil]').val();
-                            let name = $('input[name=findPassName]').val();
-                            let hp = $('input[name=findPassHp]').val();
-                            
-                            let jsonData = {'email': email, 'name' : name, 'hp' : hp};
-                            
-                			$.ajax({
-								url : '/HelloPet/member/changePass',
-								method : 'GET',
-								data : jsonData,
-								success : function(data){
-									alert("변경된 password 는 "+ data.result + "입니다.");
-								}
-                			});
+                		if(data.result == 1){
+							alert('이메일로 임시비밀번호를 전송했습니다.');                			
                 		}else{
-                			alert('일치하는 정보가 없습니다.');
+                			alert('일치하는 사용자가 없습니다.');
                 		}
                 	}       		
             	});
