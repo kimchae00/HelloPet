@@ -1,25 +1,26 @@
-package kr.co.hellopet.service;
+package kr.co.hellopet.mail;
 
 import java.util.Random;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.logging.log4j.message.SimpleMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class MailSendService {
 	
 	@Autowired
-	private JavaMailSenderImpl mailSender;
+	private JavaMailSender mailSender;
 	private int authNumber;
 	
-	
 	public void makeRandomNumber() {
-		
 		Random r = new Random();
 		int checkNum = r.nextInt(88888) + 111111;
 		System.out.println("인증번호 : " + checkNum);

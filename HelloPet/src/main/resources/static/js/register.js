@@ -59,6 +59,7 @@ $(document).ready(function(){
 				success : function(data){
 					if(data.result < 1){
 						isHpOk = true;
+						alert('사용가능한 전화번호입니다.');
 					}else{
 						isHpOk = false;
 						alert('이미 가입된 전화번호입니다.');
@@ -82,35 +83,6 @@ $(document).ready(function(){
 			alert('사용불가');
 		}
 	});
-	
-	/*$('input[name=btnEmailCheck]').click(function(){
-		
-		let email = $('input[name=email]').val();
-				
-		if(email.match(regEmail)){
-			
-			let jsonData = {'email' : email};
-			
-			$.ajax({
-				url : '/HelloPet/member/countEmail',
-				method : 'GET',
-				data : jsonData,
-				dataType : 'json',
-				success : function(data){
-					if(data.result < 1){
-						isEmailOk = true;
-						alert('사용가능한 이메일입니다.');
-					}else{
-						isEmailOk = false;
-						alert('사용중인 이메일입니다.');
-					}
-				}
-			});
-		}else{
-			isEmailOk = false;
-			alert('유효하지 않은 이메일입니다.');
-		}
-	});*/
 	
 	$('input[name=btnNickCheck]').click(function(){
 		
@@ -141,7 +113,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('input[name=pass2]').focusout(function(){
+	$('input[name=pass2]').keyup(function(){
 		
 		let pass1 = $('input[name=pass1]').val();
 		let pass2 = $('input[name=pass2]').val();
@@ -150,16 +122,88 @@ $(document).ready(function(){
 			if(pass2.match(regPass)){
 				//비밀번호 유효성 검사
 				isPassOk = true;
+				$('.passwordMsg').css('color','green').text('사용 가능한 패스워드입니다.');
 			}else{
 				isPassOk = false;
-				alert('비밀번호 형식에 맞지 않습니다.');
+				$('.passwordMsg').css('color','red').text('유효하지 않은 패스워드입니다.');
 			}
 		}else{
 			// 비밀번호 일치 여부
 			isPassOk = false;
-			alert('비밀번호가 일치하지 않습니다.');
+			$('.passwordMsg').css('color','red').text('비밀번호가 일치하지 않습니다.');
 		}
 	});
+	
+	
+		$('input[name=btnEmailCheck]').click(function(){
+		
+		let email = $('input[name=email]').val();
+				
+		if(email.match(regEmail)){
+			
+			let jsonData = {'email' : email};
+			
+			$.ajax({
+				url : '/HelloPet/member/countEmail',
+				method : 'GET',
+				data : jsonData,
+				dataType : 'json',
+				success : function(data){
+					
+					if(data.result == 0){
+						alert('인증번호가 전송되었습니다.');
+						$('.Email-auth').css('display','table-row','block');
+						$('.auth-Code').focus();
+						let email = $('input[name=email]').val();
+						let jsonData = {'email' : email};
+						let check = $('.auth-Code') //인증번호 입력받는곳
+						
+						$.ajax({
+							url : '/HelloPet/member/registerAuth',
+							method : 'GET',
+							data : jsonData,
+							success : function(data) {
+								check.attr('disabled',false);
+								code = data;
+							}
+						});
+						
+					}else{
+						isEmailOk = false;
+						alert('사용중인 이메일입니다.');
+					}
+				}
+			});
+		}else{
+			isEmailOk = false;
+			alert('유효하지 않은 이메일입니다.');
+		}
+	});
+	
+	$('button[name=btn-authEmail]').click(function(){
+		let inputCode = $('.auth-Code').val();
+		//alert("보낸 코드는 : " + code);
+		
+		if(inputCode === code){
+			alert('인증번호 일치');
+			$('.Email-auth').css('display','none');
+			isEmailOk = true;
+			$('input[name=pass1]').focus();
+		}else{
+			alert('인증번호가 일치하지 않습니다.');
+			isEmailOk = false;
+		}
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 $('input[name=register_submit]').click(function(){
 

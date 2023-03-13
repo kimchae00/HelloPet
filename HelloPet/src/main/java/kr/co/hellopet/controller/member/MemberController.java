@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.annotations.Param;
@@ -16,7 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.co.hellopet.service.MailSendService;
+import kr.co.hellopet.mail.MailSendService;
+import kr.co.hellopet.mail.PasswordMailSendService;
 import kr.co.hellopet.service.MemberService;
 import kr.co.hellopet.vo.Api_HospitalVO;
 import kr.co.hellopet.vo.Api_PharmacyVO;
@@ -39,6 +41,9 @@ public class MemberController {
 	
 	@Autowired
 	private MailSendService mailService;
+	
+	@Autowired
+	private PasswordMailSendService passwordMail;
 	
 	// 로그인
 	@GetMapping("member/login")
@@ -144,40 +149,42 @@ public class MemberController {
 		Map<String, MemberVO> map = new HashMap<>();
 		map.put("result", vo);
 		
-		//System.out.println("map : " + map );
-		
 		return map;
 	}
 	
-	@ResponseBody
-	@GetMapping("member/password")
-	public Map<String, MemberVO> password(@RequestParam("email") String email, @RequestParam("name") String name, @RequestParam("hp") String hp) {
-		
-		MemberVO vo = service.selectChangePass(email, name, hp);
-		Map<String, MemberVO> map = new HashMap<>();
-		map.put("result", vo);
-		
-		return map;
-	}
 	
 	@ResponseBody
-	@GetMapping("member/changePass")
+	@PostMapping("member/changePass")
 	public Map<String, Integer> changePass(@RequestParam("email") String email, @RequestParam("name") String name, @RequestParam("hp") String hp, MemberVO vo) {
 		
-		int code = service.makeRandomPass();
-		System.out.println(code);
-		service.updatePetOwnerPasswordByCodeAndInfo(code, email, name, hp);
-		Map<String, Integer> map = new HashMap<>();
-		map.put("result", code);
+		System.out.println("email : " +  email + "name : " + name + "hp : "+  hp);
+	
+		Map<String, Integer> resultMap = new HashMap<>();
+		int count = service.selectCountMemberForChangePass(email, name, hp);
 		
-		return map;
+		if(count == 1) {
+			String code = service.makeRandomPass();
+			System.out.println("인증번호는 :  " + code);
+						
+			service.updatePetOwnerPasswordByCodeAndInfo(code, email, name, hp);
+			
+			resultMap.put("result", 1);
+			passwordMail.joinEmail(email);
+		}else {
+			resultMap.put("result", 0);
+		}
+				
+		return resultMap;
 	}
 
 	// uid 중복체크
 	@ResponseBody
 	@GetMapping("member/countUid")
 	public Map<String, Integer> countUid(@RequestParam("uid") String uid) {
-		int result = service.countUid(uid);
+		int owner = service.countUid(uid);
+		int medical = service.countMedicalUid(uid);
+		int result = owner + medical;
+		
 		Map<String, Integer> map = new HashMap<>();
 		map.put("result", result);
 		
@@ -188,7 +195,9 @@ public class MemberController {
 	@ResponseBody
 	@GetMapping("member/countHp")
 	public Map<String, Integer> countHp(@RequestParam("hp") String hp) {
-		int result = service.countHp(hp);
+		int owner = service.countHp(hp);
+		int medical = service.countMedicalHp(hp);
+		int result = owner + medical;
 		Map<String, Integer> map = new HashMap<>();
 		map.put("result", result);
 		
@@ -198,7 +207,9 @@ public class MemberController {
 	@ResponseBody
 	@GetMapping("member/countEmail")
 	public Map<String, Integer> countEmail(@RequestParam("email") String email) {
-		int result = service.countEmail(email);
+		int owner = service.countEmail(email);
+		int medical = service.countMedicalEmail(email);
+		int result = owner + medical;
 		Map<String, Integer> map = new HashMap<>();
 		map.put("result", result);
 		
@@ -215,11 +226,6 @@ public class MemberController {
 		return map;
 	}
 	
-	@GetMapping("member/emailTest")
-	public String test() {
-		return null;
-	}
-	
 	//회원가입 이메일 인증
 	@ResponseBody
 	@GetMapping("member/registerAuth")
@@ -230,6 +236,4 @@ public class MemberController {
 		
 		return mailService.joinEmail(email);
 	}
-	
-	//회원가입 이메일 인증
 }
