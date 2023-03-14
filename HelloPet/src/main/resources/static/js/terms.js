@@ -8,9 +8,9 @@ $(document).ready(function(){
         if(check1 && check2){
 			let type = $('input[name=type]').val();
 			if(type == 'owner'){
-				location.href="/HelloPet/member/register?type="+type;
+				location.href="/HelloPet/member/register";
 			}else if(type == 'medical'){
-				location.href="/HelloPet/member/registerMedical?type="+type;
+				location.href="/HelloPet/member/registerMedical";
 			}
         }else{
             alert('동의체크 확인!');
