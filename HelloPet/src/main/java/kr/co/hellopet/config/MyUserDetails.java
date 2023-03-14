@@ -22,26 +22,39 @@ public class MyUserDetails implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	
 	private MemberEntity member;
+	private MedicalEntity medical;
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// 계정이 갖는 권한 목록 리턴
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_"+member.getLevel()));
+		List<GrantedAuthority> authorities = new ArrayList<>();
+		if(member != null) {
+			authorities.add(new SimpleGrantedAuthority("ROLE_" + member.getLevel()));
+		}else if(medical != null) {
+			authorities.add(new SimpleGrantedAuthority("ROLE_" + medical.getLevel()));
+		}
         return authorities;
 	}
 	
-	@Override
-	public String getPassword() {
-		 //계정이 갖는 비밀번호
-		return member.getPass();
-	}
+    @Override
+    public String getPassword() {
+        if (member != null) {
+            return member.getPass();
+        } else if (medical != null) {
+            return medical.getPass();
+        }
+        return null;
+    }
 
-	@Override
-	public String getUsername() {
-		// 계정이 갖는 아이디
-		return member.getUid();
-	}
+    @Override
+    public String getUsername() {
+        if (member != null) {
+            return member.getUid();
+        } else if (medical != null) {
+            return medical.getUid();
+        }
+        return null;
+    }
 
 	@Override
 	public boolean isAccountNonExpired() {

@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.csrf().disable();
 		
 		//로그인 설정
-		http.formLogin().loginPage("/member/login").defaultSuccessUrl("/index").failureUrl("/member/login?success=100")
+		http.formLogin().loginPage("/member/login").defaultSuccessUrl("/member/login").failureUrl("/member/login?success=100")
 		.usernameParameter("uid").passwordParameter("pass");
 		
 		//로그아웃 설정

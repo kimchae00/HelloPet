@@ -24,8 +24,9 @@ public class MedicalVO {
 	private String addr2;
 	private String ceo;
 	private String ceoHp;
-	private int reserveOk;
+	private String business;
 	private String reserve;
+	private int reserveOk;
 	private int hit;
 	private String wdate;
 	private String rdate;

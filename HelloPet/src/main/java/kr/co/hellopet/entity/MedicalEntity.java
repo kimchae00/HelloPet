@@ -19,7 +19,8 @@ import lombok.ToString;
 @Table(name= "pet_hospital_pharmacy")
 public class MedicalEntity {
 	
-	private int medNo;
+	private Integer medNo;
+	private Integer pharNo;
 	
 	@Id
 	private String uid;
@@ -38,8 +39,9 @@ public class MedicalEntity {
 	private String addr2;
 	private String ceo;
 	private String ceoHp;
-	private int reserveOk;
+	private String business;
 	private String reserve;
+	private int reserveOk;
 	private int hit;
 	private String wdate;
 	private String rdate;
