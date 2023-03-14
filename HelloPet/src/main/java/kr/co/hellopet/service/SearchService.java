@@ -15,12 +15,12 @@ public class SearchService {
 	private SearchDAO dao;
 	
 	//SearchHs 검색기능
-	public List<SearchVO> SearchHs(String search){
-		return dao.SearchHs(search);
+	public List<SearchVO> SearchHs(String search, int start){
+		return dao.SearchHs(search, start);
 	}
 	
-	public List<SearchVO> SearchHsAddr(String search){
-		return dao.SearchHsAddr(search);
+	public List<SearchVO> SearchHsAddr(String search, int start){
+		return dao.SearchHsAddr(search, start);
 	}
 	
 	public List<SearchVO> SearchHsName(String search, int start){
@@ -31,11 +31,48 @@ public class SearchService {
 		return dao.selectSearchHsTotal(search);
 	}
 	
+	public int selectSearchHsTotalName(String search) {
+		return dao.selectSearchHsTotalName(search);
+	}
+	
+	public int selectSearchHsTotalAddr(String search) {
+		return dao.selectSearchHsTotalAddr(search);
+	}
+	
+	// searchPh 검색기능
+	public List<SearchVO> SearchPh(String search, int start){
+		return dao.SearchPh(search, start);
+	}
+	
+	public List<SearchVO> SearchPhAddr(String search, int start){
+		return dao.SearchPhAddr(search, start);
+	}
+	
+	public List<SearchVO> SearchPhName(String search, int start){
+		return dao.SearchPhName(search, start);
+	}
+	
+	public int selectSearchPhTotal(String search) {
+		return dao.selectSearchPhTotal(search);
+	}
+	
+	public int selectSearchPhTotalName(String search) {
+		return dao.selectSearchPhTotalName(search);
+	}
+	
+	public int selectSearchPhTotalAddr(String search) {
+		return dao.selectSearchPhTotalAddr(search);
+	}
+	
+	
 	
 	
 	// view
-	public SearchVO selectView(String hosNo){
-		return dao.selectView(hosNo);
+	public SearchVO selectViewHs(String hosNo){
+		return dao.selectViewHs(hosNo);
+	}
+	public SearchVO selectViesPh(String pharNo) {
+		return dao.selectViewPh(pharNo);
 	}
 	
 	

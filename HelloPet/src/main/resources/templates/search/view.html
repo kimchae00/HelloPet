@@ -1,19 +1,46 @@
 <th:block th:include="@{search/_header.html}"/>
+<!-- 
+날짜 : 2023-03-14
+이름 : 장인화
+내용 : View에 병원,약국 자세히 결과, 지도 출력
+ -->
             <main>
                 <div class="view">
                     <div class="contents">
-                    <input type="hidden" name="Addr" th:value="${a.hosAddr}">
-                    <input type="hidden" name="Name" th:value="${a.hosName}">
-                      <div class="view-top">
-                          <h3 class="title">[[${a.hosName}]]</h3>
-                          <a th:href="@{/search/reserve}"><img th:src="@{/img/search-예약하기.png}" alt="예약하기"></a>
-                      </div> 
+                    <input type="hidden" name="Addr" th:if="${a != null}" th:value="${a.hosAddr}">
+                    <input type="hidden" name="Addr" th:if="${b != null}" th:value="${b.pharAddr}">
+                    
+                    <input type="hidden" name="Name" th:if="${a != null}" th:value="${a.hosName}">
+                    <input type="hidden" name="Name" th:if="${b != null}" th:value="${b.pharName}">
+                     
+                      <div class="view-top" th:if="${a != null}">
+						  <h3 class="title" th:text="${a.hosName}"></h3>
+						  <a th:href="@{/search/reserve}">
+						    <img th:src="@{/img/search-예약하기.png}" alt="예약하기">
+						  </a>
+					  </div>
+						
+					  <div class="view-top" th:if="${b != null}">
+						  <h3 class="title" th:text="${b.pharName}"></h3>
+						  <a th:href="@{/search/reserve}">
+						    <img th:src="@{/img/search-예약하기.png}" alt="예약하기">
+						  </a>
+					  </div>
+					  
                     </div>
                     <div id="map"></div>
                     <div class="mapPlus">
                         <div><img th:src="@{/img/search-지도.jpg}" alt="지도아이콘"></div>
-                        <p class="addr">[[${a.zip}]]  [[${a.hosAddr}]]</p>
-                        <p class="ph">Tel [[${a.tel}]]</p>
+                        
+                        <div class="explain" th:if="${a != null}">
+	                        <p class="addr">[[${a.zip}]]  [[${a.hosAddr}]]</p>
+	                        <p class="ph">Tel [[${a.tel}]]</p>
+                        </div>
+                        
+                        <div class="explain" th:if="${b != null}">
+	                        <p class="addr">[[${b.zip}]]  [[${b.pharAddr}]]</p>
+	                        <p class="ph">Tel [[${b.tel}]]</p>
+                        </div>
                     </div>
                     
             
