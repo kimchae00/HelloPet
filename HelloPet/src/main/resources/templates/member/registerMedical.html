@@ -1,6 +1,7 @@
 <th:block th:include="/member/_header.html"/>
 <script th:src="@{/js/modal.js}"></script>
 <script th:src="@{/js/registerMedical.js}"></script>
+<script th:src="@{/js/medical.js}"></script>
 <main class="business_main">
     <div class="business_div">
         <div class="business_top">
@@ -106,7 +107,7 @@
                     <tr>
                         <td>사업자등록증</td>
                         <td>
-                            <input type="file" id="Business_Registration" name="reserve" placeholder="선택된 파일없음" required="required">
+                            <input type="file" id="Business_Registration" name="business" placeholder="선택된 파일없음" required="required">
                             <input type="button" class="btnFile" value="파일찾기">
                         </td>
                     </tr>

@@ -69,16 +69,9 @@ public class PetMemberController {
 	
 	// 가입 (일반회원)
 	@GetMapping("member/register")
-	public String register(String type) {
+	public String register() {
 		
-		System.out.println("type : " + type);
-		
-		if(type == null) {
-			System.out.println("null 입니다.");
-			return "redirect:/member/terms?type=owner";
-		}else {
-			return "/member/register";
-		}
+		return "/member/register";
 	}
 	
 	@PostMapping("member/register")
@@ -96,16 +89,7 @@ public class PetMemberController {
 	@GetMapping("member/registerMedical")
 	public String registerMedical(String type) {
 		
-		System.out.println("type : " + type);
-		
-		if(type == null) {
-			System.out.println("type 은 null 입니다." );
-			return "redirect:member/terms?type=medical";
-		}else{
-			return "/member/registerMedical";
-		}
-		
-		
+		return "/member/registerMedical";
 	}
 	
 	@PostMapping("member/registerMedical")
