@@ -16,6 +16,11 @@ public class SearchVO {
 	private String hosNo;
 	private String hosName;
 	private String hosAddr;
+	
+	private String pharNo;
+	private String pharName;
+	private String pharAddr;
+	
 	private String x;
 	private String y;
 	private String tel;

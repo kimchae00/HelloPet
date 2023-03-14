@@ -36,7 +36,17 @@ public class SearchController {
 	}
 	
 	@GetMapping("search/reserve")
-	public String reserve() {
+	public String reserve(Model model, String hosNo, String pharNo) {
+		
+		if (hosNo != null) {
+			SearchVO a = service.selectViewHs(hosNo);
+			model.addAttribute("a", a);
+			} else if (pharNo != null) {
+			SearchVO b = service.selectViesPh(pharNo);
+			model.addAttribute("b", b);
+			}
+		
+		
 		return "search/reserve";
 	}
 	
@@ -46,12 +56,19 @@ public class SearchController {
 	}
 	
 	@GetMapping("search/view")
-	public String view(Model model, String hosNo) {
-		SearchVO a = service.selectView(hosNo);
-		model.addAttribute("a",a);
+	public String view(Model model, String hosNo, String pharNo) {
+	
+		if (hosNo != null) {
+			SearchVO a = service.selectViewHs(hosNo);
+			model.addAttribute("a", a);
+			} else if (pharNo != null) {
+			SearchVO b = service.selectViesPh(pharNo);
+			model.addAttribute("b", b);
+			}
+			return "search/view";
 		
-		return "search/view";
 	}
+	
 	
 	@GetMapping("search/SearchHs")
 	public String SearchHs(Model model, HttpSession sess, String search) {
@@ -77,10 +94,10 @@ public class SearchController {
 	        hss = service.SearchHsName(search, start);
 	        map.put("hss", hss);
 	    } else if ("addr".equals(searchType)) {
-	        hss = service.SearchHsAddr(search);
+	        hss = service.SearchHsAddr(search, start);
 	        map.put("hss", hss);
 	    } else {
-	        hss = service.SearchHs(search);
+	        hss = service.SearchHs(search, start);
 	        map.put("hss", hss);
 	        
 	        
@@ -89,13 +106,18 @@ public class SearchController {
 	    if (hss != null && !hss.isEmpty()) { // hss 변수가 존재할 경우에 세션에 추가
 	        sess.setAttribute("hss", hss);
 	    }
-
-	    int result = service.selectSearchHsTotal(search);
-
-	    //model.addAttribute("search", search);
-	    //model.addAttribute("hss", hss);
-	    //model.addAttribute("result", result);
-		
+	    
+	    int result = 0;
+	    
+	    if ("name".equals(searchType)) {
+	    	result = service.selectSearchHsTotalName(search);
+	    } else if ("addr".equals(searchType)) {
+	    	result = service.selectSearchHsTotalAddr(search);
+	    } else {
+	    	result = service.selectSearchHsTotal(search);
+	    }	
+	        
+	    
 		// 페이징 처리
 
         int total = result;
@@ -108,16 +130,77 @@ public class SearchController {
         map.put("start", start);
         map.put("total", total);
         map.put("lastPageNum", lastPageNum);
+        map.put("pageStartNum", pageStartNum);
         
 		return map;
 	}
 	
 	
-	@GetMapping("search/SearchPm")
-	public String SearchPm() {
-		return "search/SearchPm";
+	@GetMapping("search/SearchPh")
+	public String SearchPh() {
+		return "search/SearchPh";
 	}
 	
+	
+	@ResponseBody
+	@PostMapping("search/SearchPh")
+	public Map<String, Object> SearchPh(@RequestParam("search") String search, 
+										@RequestParam("searchType") String searchType, 
+										String pg,
+										HttpSession sess) throws IOException {
+		
+		int currentPage = service.getCurrentPage(pg);
+        int start = service.getLimitStart(currentPage);
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		 List<SearchVO> phs = null; // phs 변수 선언
+
+	    if ("name".equals(searchType)) {
+	    	phs = service.SearchPhName(search, start);
+	        map.put("phs", phs);
+	    } else if ("addr".equals(searchType)) {
+	    	phs = service.SearchPhAddr(search, start);
+	        map.put("phs", phs);
+	    } else {
+	    	phs = service.SearchPh(search, start);
+	        map.put("phs", phs);
+	        
+	        
+	    }
+
+	    if (phs != null && !phs.isEmpty()) { // phs 변수가 존재할 경우에 세션에 추가
+	        sess.setAttribute("hss", phs);
+	    }
+	    
+	    int result = 0;
+	    
+	    if ("name".equals(searchType)) {
+	    	result = service.selectSearchPhTotalName(search);
+	    } else if ("addr".equals(searchType)) {
+	    	result = service.selectSearchPhTotalAddr(search);
+	    } else {
+	    	result = service.selectSearchPhTotal(search);
+	    }	
+	        
+	    
+		// 페이징 처리
+
+        int total = result;
+        int lastPageNum = service.getLastPageNum(total);
+        int pageStartNum = service.getpageStartNum(total, start);
+        int[] groups = service.getPageGroup(currentPage, lastPageNum);
+
+        map.put("groups", groups);
+        map.put("currentPage", currentPage);
+        map.put("start", start);
+        map.put("total", total);
+        map.put("lastPageNum", lastPageNum);
+        map.put("pageStartNum", pageStartNum);
+        
+		return map;
+	}
+
 	
 	
 }
