@@ -58,7 +58,7 @@ public class CommunityController {
 	@GetMapping("community/tip/view")
 	public String tipView(int no, Model model) {
 		
-		CommunityVO article = service.selectTipArticle(no);
+		CommunityVO article = service.selectTipView(no);
 		
 		
 
@@ -93,7 +93,7 @@ public class CommunityController {
 	@GetMapping("community/tip/modify")
 	public String tipModify(Model model, CommunityVO vo, int no) {
 		
-		CommunityVO article = service.selectTipArticle(no);
+		CommunityVO article = service.selectTipModify(no);
 		model.addAttribute("article", article);
 		
 		return "community/tip/modify";
@@ -109,40 +109,48 @@ public class CommunityController {
 		return "redirect:/community/tip/view?no="+vo.getNo();
 	}
 	
-	// talktalk 목록
-	@GetMapping("community/talktalk/list")
-	public String talkList(String pg, Model model, String cate, String sort) {
+	// tip 글삭제
+	@GetMapping("community/tip/delete")
+	public String tipDelete(int no, String group){
+		service.deleteArticle(no);
 		
-		//페이징 
-    	int currentPage = service.getCurrentPage(pg); // 현재 페이지 번호
-		int total = 0;
-		
-		total = service.selectTalkCount(cate);
-		
-		int lastPageNum = service.getLastPageNum(total);// 마지막 페이지 번호
-		int[] result = service.getPageGroupNum(currentPage, lastPageNum); // 페이지 그룹번호
-		int pageStartNum = service.getPageStartNum(total, currentPage); // 페이지 시작번호
-		int start = service.getStartNum(currentPage); // 시작 인덱스
-		
-		model.addAttribute("lastPageNum", lastPageNum);		
-		model.addAttribute("currentPage", currentPage);		
-		model.addAttribute("pageGroupStart", result[0]);
-		model.addAttribute("pageGroupEnd", result[1]);
-		model.addAttribute("pageStartNum", pageStartNum+1);
-    			
-		//전체 목록 가져오기
-		List<CommunityVO> articles = service.selectTalkArticles(start, cate, sort);
-		//좋아요 랭킹 3위 목록 가져오기
-		List<CommunityVO> ranks = service.selectTalkRanks(cate);
-		
-		model.addAttribute("articles", articles);
-		model.addAttribute("ranks",ranks);
-		model.addAttribute("sort", sort);
-		model.addAttribute("cate", cate);
-		
-		
-		return "community/talktalk/list";
+		return "redirect:/community/tip/list?group="+group;
 	}
+	
+	// talktalk 목록
+		@GetMapping("community/talktalk/list")
+		public String talkList(String pg, Model model, String cate, String sort) {
+			
+			//페이징 
+	    	int currentPage = service.getCurrentPage2(pg); // 현재 페이지 번호
+			int total = 0;
+			
+			total = service.selectTalkCount(cate);
+			
+			int lastPageNum = service.getLastPageNum2(total);// 마지막 페이지 번호
+			int[] result = service.getPageGroupNum2(currentPage, lastPageNum); // 페이지 그룹번호
+			int pageStartNum = service.getPageStartNum2(total, currentPage); // 페이지 시작번호
+			int start = service.getStartNum2(currentPage); // 시작 인덱스
+			
+			model.addAttribute("lastPageNum", lastPageNum);		
+			model.addAttribute("currentPage", currentPage);		
+			model.addAttribute("pageGroupStart", result[0]);
+			model.addAttribute("pageGroupEnd", result[1]);
+			model.addAttribute("pageStartNum", pageStartNum+1);
+	    			
+			//전체 목록 가져오기
+			List<CommunityVO> articles = service.selectTalkArticles(start, cate, sort);
+			//좋아요 랭킹 3위 목록 가져오기
+			List<CommunityVO> ranks = service.selectTalkRanks(cate);
+			
+			model.addAttribute("articles", articles);
+			model.addAttribute("ranks",ranks);
+			model.addAttribute("sort", sort);
+			model.addAttribute("cate", cate);
+			
+			
+			return "community/talktalk/list";
+		}
 	
 	// talktalk 글쓰기
 	@GetMapping("community/talktalk/write")
@@ -177,8 +185,9 @@ public class CommunityController {
 		
 		
 		service.updateTalkArticle(vo);
-		return "redirect:/community/talktalk/list?cate";
+		return "redirect:/community/talktalk/list";
 	}
+	
 	
 	
 }

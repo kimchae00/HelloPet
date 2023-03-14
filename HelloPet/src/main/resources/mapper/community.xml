@@ -25,16 +25,23 @@
 	<select id="selectTipArticles" resultType="kr.co.hellopet.vo.CommunityVO">
 		 select * from `community_article` 
 			where `group`='tip'
+			and `parent`=0
 			order by `no` desc
 			limit #{start},10;
 	</select>
 
 	<select id="selectTipCount" resultType="int">
     	select count(`no`) from `community_article` 
-    		where `group`='tip';
+    		where `group`='tip'
+    		and `parent` = 0;
     </select>
     
-    <select id="selectTipArticle" resultType="kr.co.hellopet.vo.CommunityVO">
+    <select id="selectTipView" resultType="kr.co.hellopet.vo.CommunityVO">
+    	select * from `community_article`
+    		where `no`=#{no};
+    </select>
+    
+    <select id="selectTipModify" resultType="kr.co.hellopet.vo.CommunityVO">
     	select * from `community_article`
     		where `no`=#{no};
     </select>
@@ -66,6 +73,7 @@
 		 select a.*, b.nick from `community_article` as a
 		 	join `pet_owner` as b on a.uid = b.uid
 			where `group`='talktalk'
+			and `parent`=0
 			and 
 				<choose>
 					<when test="cate == null">
@@ -83,6 +91,7 @@
 		 select a.*, b.nick from `community_article` as a
 		 	join `pet_owner` as b on a.uid = b.uid
 			where `group`='talktalk'
+			and `parent` = 0
 			and 
 				<choose>
 					<when test="cate == null">
@@ -115,17 +124,18 @@
 			`title`=#{title},
 			`content`=#{content},
 			`rdate`=now()
-			where `no`=#{no};
+			where `no`=25;
 	</update>
 	
 	<select id="selectTalkArticle" resultType="kr.co.hellopet.vo.CommunityVO">
     	select * from `community_article`
-    		where `no`=#{no};
+    		where `no`=25;
     </select>
     
     <select id="selectTalkCount" resultType="int">
     	select count(`no`) from `community_article` 
     		where `group`='talktalk'
+    		and `parent` = 0
     		and 
     			<choose>
 					<when test="cate == null">
@@ -135,9 +145,21 @@
 					`cate`=#{cate};
 					</when>
 				</choose>
-				
-    				
     </select>
+    
+    <update id="updateHit">
+    	update `community_article` set
+    		`hit` = `hit`+1
+    		WHERE `no`=#{no}
+    		and `parent`=0;
+    </update>
+    
+    <delete id="deleteArticle">
+    	delete from `community_article` 
+    		where `no`=#{no}
+    		and `parent` = 0;
+    </delete>
+    
     
     
 
