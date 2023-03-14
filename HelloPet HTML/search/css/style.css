@@ -370,7 +370,7 @@ padding: 0 15px;
 .SearchHs .inner {
     overflow: hidden;
     position: relative;
-    width: 100%;
+    width: 78%;
     height: 100%;
     background: #fff;
 }
@@ -483,7 +483,12 @@ padding: 0 15px;
     margin-left: 30px;
 }
 
-.SearchHs #section2 > .lists > ul> li > .button-wrap > a > button:hover {
+.SearchHs #section2 > .lists > ul> li > .button-wrap > a > img{
+    width: 45%;
+}
+
+
+.SearchHs #section2 > .lists > ul> li > .button-wrap > a > img:hover {
     transform: scale(1.1);
 }
 

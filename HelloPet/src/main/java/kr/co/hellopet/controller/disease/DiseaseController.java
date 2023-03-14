@@ -18,7 +18,7 @@ import kr.co.hellopet.vo.Disease_cate2VO;
 
 /*
  * HelloPet Project
- * 날짜 : 2023/03/29
+ * 날짜 : 2023/03/10
  * 담당 : 임민지
  * 내용 : HelloPet Disease 화면 구현 
  */
@@ -30,14 +30,18 @@ public class DiseaseController {
 	@Autowired
 	private DiseaseService service;
 	
+	/*dog*/
 	
 	@GetMapping("disease/index")
-	public String index(Model model) {
+	public String index(Model model, String group) {
 		
-		String group = "dog";
+		if(group == null) {
+			group = "dog";
+		}
 		
 		List<DiseaseResultMapVO> resultMaps = service.selectDisease(group);
 		model.addAttribute("resultMaps", resultMaps);
+		model.addAttribute("group", group);
 		
 		return "disease/index";
 		
@@ -48,7 +52,11 @@ public class DiseaseController {
 		return "disease/view";
 	}
 	
+	
+	
+	/*cat*/
 
-		
-	}
+	
+	
+}
 

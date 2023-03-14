@@ -8,14 +8,67 @@
  	내용 : HelloPet search 페이지 기능구현
   -->
 <mapper namespace="kr.co.hellopet.dao.SearchDAO">
-
-	<select id="selectSearchHs" resultType="kr.co.hellopet.vo.SearchVO">
-		SELECT * FROM `api_hospital` WHERE `hosName` LIKE concat('%', #{search}, '%');
+	
+	
+	<!-- searchHs -->
+	<select id="SearchHsName" resultType="kr.co.hellopet.vo.SearchVO">
+		SELECT * FROM `api_hospital` WHERE `hosName` LIKE concat('%', #{search}, '%') limit #{start},10;
+	</select>
+	
+	<select id="SearchHsAddr" resultType="kr.co.hellopet.vo.SearchVO">
+		SELECT * FROM `api_hospital` WHERE `hosAddr` LIKE concat('%', #{search}, '%') limit #{start},10;
+	</select>
+	
+	<select id="SearchHs" resultType="kr.co.hellopet.vo.SearchVO">
+		SELECT * FROM `api_hospital` WHERE `hosName` LIKE concat('%', #{search}, '%') or `hosAddr` LIKE concat('%', #{search}, '%') limit #{start},10;
 	</select>
 	
 	<select id="selectSearchHsTotal" resultType="int" parameterType="map">
+	 	Select Count(`hosName`) from `api_hospital` WHERE `hosName` Like concat('%', #{search}, '%') or `hosAddr` LIKE concat('%', #{search}, '%');
+	</select>
+	
+	<select id="selectSearchHsTotalName" resultType="int" parameterType="map">
 	 	Select Count(`hosName`) from `api_hospital` WHERE `hosName` Like concat('%', #{search}, '%');
 	</select>
-
+	
+	<select id="selectSearchHsTotalAddr" resultType="int" parameterType="map">
+	 	Select Count(`hosAddr`) from `api_hospital` WHERE `hosAddr` Like concat('%', #{search}, '%');
+	</select>
+	
+	
+	<!-- searchPh -->
+	<select id="SearchPhName" resultType="kr.co.hellopet.vo.SearchVO">
+		SELECT * FROM `api_pharmacy` WHERE `pharName` LIKE concat('%', #{search}, '%') limit #{start},10;
+	</select>
+	
+	<select id="SearchPhAddr" resultType="kr.co.hellopet.vo.SearchVO">
+		SELECT * FROM `api_pharmacy` WHERE `pharAddr` LIKE concat('%', #{search}, '%') limit #{start},10;
+	</select>
+	
+	<select id="SearchPh" resultType="kr.co.hellopet.vo.SearchVO">
+		SELECT * FROM `api_pharmacy` WHERE `pharName` LIKE concat('%', #{search}, '%') or `pharAddr` LIKE concat('%', #{search}, '%') limit #{start},10;
+	</select>
+	
+	<select id="selectSearchPhTotal" resultType="int" parameterType="map">
+	 	Select Count(`pharName`) from `api_pharmacy` WHERE `pharName` Like concat('%', #{search}, '%') or `pharAddr` LIKE concat('%', #{search}, '%');
+	</select>
+	
+	<select id="selectSearchPhTotalName" resultType="int" parameterType="map">
+	 	Select Count(`pharName`) from `api_pharmacy` WHERE `pharName` Like concat('%', #{search}, '%');
+	</select>
+	
+	<select id="selectSearchPhTotalAddr" resultType="int" parameterType="map">
+	 	Select Count(`pharAddr`) from `api_pharmacy` WHERE `pharAddr` Like concat('%', #{search}, '%');
+	</select>
+	
+	
+	<!-- view -->
+	<select id="selectViewHs" resultType="kr.co.hellopet.vo.SearchVO">
+		SELECT * FROM `api_hospital` WHERE `hosNo` =#{hosNo};
+	</select>
+	
+	<select id="selectViewPh" resultType="kr.co.hellopet.vo.SearchVO">
+		SELECT * FROM `api_pharmacy` WHERE `pharNo` =#{pharNo};
+	</select>
 
 </mapper>

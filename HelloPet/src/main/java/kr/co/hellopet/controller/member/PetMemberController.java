@@ -92,6 +92,7 @@ public class PetMemberController {
 		  }
 		}
 	
+	
 	@PostMapping("member/register")
 	public String register(MemberVO vo, HttpServletRequest req) {
 		
