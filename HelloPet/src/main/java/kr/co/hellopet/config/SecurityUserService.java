@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.hellopet.dao.MemberDAO;
 import kr.co.hellopet.entity.MemberEntity;
+import kr.co.hellopet.repo.MedicalRepo;
 import kr.co.hellopet.repo.MemberRepo;
 
 @Service
@@ -15,7 +16,7 @@ public class SecurityUserService  implements UserDetailsService{
 	
 	@Autowired
 	private MemberRepo repo;
-
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 

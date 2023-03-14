@@ -18,17 +18,17 @@
             	
                 $.ajax({
                 	url : '/HelloPet/member/findId',
-                	method : 'GET',
+                	method : 'POST',
                 	data : jsonData,
                 	dataType : 'json',
                 	success : function(data){
-                		if(data.result != null){
-                			alert('고객님의 아이디는 '+data.result.uid + ' 입니다.');
-                			emailSend();
-                		}else{
-                			alert('일치하는 정보가 없습니다.');
-                			emailSend();
-                		}
+                	    if (data.owner) {
+                	        alert("회원님의 아이디는 " + data.owner.uid + "입니다.");
+                	    } else if (data.medical) {
+                	        alert("회원님의 아이디는 " + data.medical.uid + "입니다");
+                	    } else {
+                	        alert("회원 정보를 찾을 수 없습니다.");
+                	    }
                 	}
                 });
             };
@@ -75,7 +75,6 @@
         <div class="findEmail">
             <h3>이메일 찾기</h3>
             <div>
-            	<input type="text" id="userID" value="leemh4390@naver.com">
                 <input type="text" name="name" placeholder="이름">
                 <input type="text" name="hp" placeholder="010-0000-0000">
                 <button type="button" name="btnFindEmail">이메일찾기</button>

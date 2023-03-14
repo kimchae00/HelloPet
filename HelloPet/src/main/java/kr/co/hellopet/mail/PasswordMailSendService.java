@@ -23,12 +23,11 @@ public class PasswordMailSendService {
 	
 	public void makeRandomNumber() {
 		Random r = new Random();
-		int checkNum = r.nextInt(88888) + 111111;
-		System.out.println("인증번호 : " + checkNum);
+		int checkNum = r.nextInt(888888) + 111111;
 		authNumber = checkNum;
 	}
 	
-	public String joinEmail(String email) {
+	public String SendPasswordEmail(String email) {
 		makeRandomNumber();
 		String setFrom = "HelloPet@gmail.com";
 		String toMail = email;

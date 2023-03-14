@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import kr.co.hellopet.entity.MedicalEntity;
 import kr.co.hellopet.entity.MemberEntity;
 import lombok.Builder;
 import lombok.Getter;
