@@ -86,6 +86,7 @@ public class CommunityService {
 	
 	// tip 글목록
 	public List<CommunityVO> selectTipArticles(int start){
+		
 		return dao.selectTipArticles(start);
 	}
 	
@@ -95,13 +96,28 @@ public class CommunityService {
 	}
 	
 	// tip 글보기
-	public CommunityVO selectTipArticle(int no) {
-		return dao.selectTipArticle(no);
+	public CommunityVO selectTipView(int no) {
+		
+		//조회수+1
+		dao.updateHit(no);
+		return dao.selectTipView(no);
 	}
 	
 	// tip 글수정
+		public CommunityVO selectTipModify(int no) {
+			
+			
+			return dao.selectTipModify(no);
+		}
+	
+	// tip 글수정 폼
 	public int updateTipArticle(CommunityVO vo) {
 		return dao.updateTipArticle(vo);
+	}
+	
+	// tip 글 삭제
+	public int deleteArticle(int no) {
+		return dao.deleteArticle(no);
 	}
 	
 	// talk 글쓰기
@@ -195,7 +211,10 @@ public class CommunityService {
 		return dao.updateTalkArticle(vo);
 	}
 	
-	// 페이징
+	
+	
+	
+	// 페이징(tip)
 	public int getLastPageNum(int total) {
 		
 		int lastPageNum = 0;
@@ -241,6 +260,55 @@ public class CommunityService {
 	public int getStartNum(int currentPage) {
 		return (currentPage - 1) * 10;
 	}
+	
+	// 페이징(talk)
+		public int getLastPageNum2(int total) {
+			
+			int lastPageNum = 0;
+			
+			if(total % 12 == 0){
+				lastPageNum = total / 12;
+			}else{
+				lastPageNum = total / 12 + 1;
+			}
+			
+			return lastPageNum;
+		}
+		
+		public int[] getPageGroupNum2(int currentPage, int lastPageNum) {
+			int currentPageGroup = (int)Math.ceil(currentPage / 12.0);
+			int pageGroupStart = (currentPageGroup - 1) * 12 + 1;
+			int pageGroupEnd = currentPageGroup * 12;
+			
+			if(pageGroupEnd > lastPageNum){
+				pageGroupEnd = lastPageNum;
+			}
+			
+			int[] result = {pageGroupStart, pageGroupEnd};
+			
+			return result;
+		}
+		
+		public int getPageStartNum2(int total, int currentPage) {
+			int start = (currentPage - 1) * 12;
+			return total - start;
+		}
+		
+		public int getCurrentPage2(String pg) {
+			int currentPage = 1;
+			
+			if(pg != null){
+				currentPage = Integer.parseInt(pg);	
+			}
+			
+			return currentPage;
+		}
+		
+		public int getStartNum2(int currentPage) {
+			return (currentPage - 1) * 12;
+		}
+		
+	
 	
 	}
 

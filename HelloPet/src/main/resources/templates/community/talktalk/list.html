@@ -6,14 +6,18 @@
 <th:block th:include="@{community/_header.html}"/>
     <script>
         
-                
-
         $(function(){
-        		
+        	
         	// 모달 창 열림
                 $('.gallery_item').click(function(){
                     $('#modal').css('display','flex');
                     $('.v-overlay').css('display','flex');
+                    
+                    var slider = $('.gallery_modal_left').bxSlider({
+                    	mode: 'horizontal'
+                    	
+                      });
+                    slider.reloadSlider();
                 });
         	// x를 누르면 모달 창 닫힘
                 $('.modal_close').click(function(){
@@ -55,6 +59,8 @@
             		location.href = "/HelloPet/community/talktalk/list?pg=1&sort="+sort+"&cate="+cate;
             	});
         	
+            	
+            	
             });
         		
         		
@@ -179,30 +185,9 @@
                     <div class="modal_body">
                         <div class="gallery_modal">
                             <div class="gallery_modal_left">
-                                <div class="gallery_slide_wrap">
-                                    <div class="gallery_slide">
-                                        <div class="swiper_container">
-                                            <div class="swiper_wrapper">
-                                            	<div class="swiper_slide" style="width: 600px;">
-                                                    <div class="gallery_slide_img" th:style="'background-image: url('+@{/img/talk_rank_thumb2.jpg}+');'"></div>
-                                                </div>
-                                                <div class="swiper_slide" style="width: 600px;">
-                                                    <div class="gallery_slide_img" th:style="'background-image: url('+@{/img/talk_rank_thumb1.jpg}+');'"></div>
-                                                </div>
-                                                <div class="swiper_slide" style="width: 600px;">
-                                                    <div class="gallery_slide_img" th:style="'background-image: url('+@{/img/talk_rank_thumb3.jpg}+');'"></div>
-                                                </div>
-                                            </div>
-                                            <div class="button_prev"></div>
-                                            <div class="button_next"></div>
-                                            <div class="swiper_pagination">
-                                                <span class="swiper_pagination_bullet bullet_active"></span>
-                                                <span class="swiper_pagination_bullet"></span>
-                                                <span class="swiper_pagination_bullet"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                            	<div class="gallery_slide_img"><a href="#"><img th:src="@{/img/talk_rank_thumb1.jpg}" alt="img1"></a></div>
+                                            	<div class="gallery_slide_img"><a href="#"><img th:src="@{/img/talk_rank_thumb2.jpg}" alt="img2"></a></div>
+                                            	<div class="gallery_slide_img"><a href="#"><img th:src="@{/img/talk_rank_thumb3.jpg}" alt="img3"></a></div>
                             </div>
                             <div class="gallery_modal_right">
                                 <div class="gallery_content">
@@ -252,7 +237,7 @@
                                             </div>
                                             <div class="gallery_content_txt">지원합니다.</div>
                                             <div class="gallery_modify_delete">
-                                                <div class="gallery_modify"><a th:href="@{/community/talktalk/modify}">수정</a></div>ㅣ
+                                                <div class="gallery_modify"><a th:href="@{/community/talktalk/modify(group='talktalk', no='${articles.no}')}">수정</a></div>ㅣ
                                                 <div class="gallery_delete"><a href="#">삭제</a></div>
                                             </div>
                                         </div>
@@ -309,14 +294,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <form action="#" method="post">
                                     <div class="gallery_content_foot">
                                         <div class="content_write">
                                             <div class="input_box">
                                                 <input type="text" placeholder="댓글을 입력해주세요." class="input">
-                                                <button class="button"> 확인 </button>
+                                                <input type="submit" class="button" value="확인">
                                             </div>
                                         </div>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
