@@ -1,22 +1,17 @@
 package kr.co.hellopet.controller.cs;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.hellopet.service.CsService;
 import kr.co.hellopet.vo.CsVO;
-import lombok.Data;
 
 /* 
  *  날짜 : 2023/03/09

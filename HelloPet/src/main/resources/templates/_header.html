@@ -18,14 +18,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/lists.css}">
     <script>
         $(document).ready(function(){
           
             $('.slider').bxSlider({
             easing:'linear'
           });
-        
+            
+            
         });
+        
+        $(function(){
+        	$('#top').click(function(){
+	            $(window).scrollTop(0);
+	       });
+        });
+        
     </script>
 </head>
 <body>
@@ -40,7 +49,7 @@
                 </div>
             </div>
             <div class="menu">
-                <div>
+                <div class="menu2">
                     <ul>
                         <li><a th:href="@{/disease/index}">증상별질병찾기</a></li>
                         <li><a href="./search/index.html">병원/약국찾기</a></li>

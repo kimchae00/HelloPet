@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import kr.co.hellopet.service.IndexService;
 import kr.co.hellopet.vo.CsVO;
-
+/* 
+ *  날짜 : 2023/03/13
+ *  이름 : 김채영
+ *  설명 : HelloPet Index 페이지 기능구현
+ */
 @Controller
 public class IndexController {
 	
