@@ -130,6 +130,9 @@ main {
 .tab > ul > .on {
     background: #32a69f;
 }
+.tab > ul > .on2 {
+    background: #32a69f;
+}
 .tab > ul > .on a {
     color: #fff;
 }
@@ -259,6 +262,10 @@ ul {
    font-weight: 700;
    height: 100%;
 }
+
+
+
+
 .tab-list>li .button {
    display: flex;
    align-items: center;
@@ -315,3 +322,7 @@ li{
    color:#32a69f;
    font-weight: 700;
 }
+
+ul li.dog.on { background-color: #32a69f;} ul li.cat.on { background-color: #32a69f; } 
+ul li.dog:not(.on) { background-color: white; } 
+ul li.cat:not(.on) { background-color: white; }

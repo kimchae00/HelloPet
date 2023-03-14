@@ -37,14 +37,23 @@ public interface MemberDAO {
 											   @Param("county") String county, 
 											   @Param("name") String name);
 	
-	// uid 중복체크
+	// uid(회원) 중복체크
 	public int countUid(String uid);
+	
+	// uid(Medical) 중복체크
+	public int countMedicalUid(String uid);
 	
 	// hp 중복체크
 	public int countHp(String hp);
 	
+	// hp Medical 중복체크
+	public int countMedicalHp(String hp); 	
+	
 	// email 중복체크
 	public int countEmail(String email);
+	
+	// email 중복체크
+	public int countMedicalEmail(String email);
 	
 	// nick 중복체크
 	public int countNick(String nick); 
@@ -53,8 +62,12 @@ public interface MemberDAO {
 	public MemberVO selectFindId(@Param("name") String name, @Param("hp") String hp);
 	
 	// find paswword 
-	public MemberVO selectChangePass(@Param("email") String email, @Param("name") String name, @Param("hp") String hp);
+	public int selectCountMemberForChangePass(@Param("email") String email, @Param("name") String name, @Param("hp") String hp);
 	
 	// find password update
-	public void updatePetOwnerPasswordByCodeAndInfo(int code, @Param("email") String email, @Param("name") String name, @Param("hp") String hp);
+	public void updatePetOwnerPasswordByCodeAndInfo(@Param("pass") String pass, @Param("email") String email, @Param("name") String name, @Param("hp") String hp);
+	
+	public MemberVO selectGetUserInfo (@Param("email") String email, @Param("name") String name, @Param("hp") String hp);
+	
+	public void updateUser(String pass, String email, String name, String hp);
 }

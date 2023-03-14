@@ -175,6 +175,11 @@ public class CommunityService {
 		return dao.selectTalkArticles(start, cate, sort);
 	}
 	
+	// talk 글 좋아요순 3위까지 목록
+	public List<CommunityVO> selectTalkRanks(String cate){
+		return dao.selectTalkRanks(cate);
+	}
+	
 	// talk 글목록 갯수
 	public int selectTalkCount(String cate) {
 		return dao.selectTalkCount(cate);

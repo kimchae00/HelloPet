@@ -61,48 +61,54 @@ public class SearchController {
 	
 	@ResponseBody
 	@PostMapping("search/SearchHs")
-	public Map<String, List<SearchVO>> SearchHs(Model model, @RequestParam("search") String search, @RequestParam("searchType") String searchType, HttpSession sess, HttpServletResponse resp, String pg) throws IOException {
-		Map<String, List<SearchVO>> map = new HashMap<>();
+	public Map<String, Object> SearchHs(@RequestParam("search") String search, 
+										@RequestParam("searchType") String searchType, 
+										String pg,
+										HttpSession sess) throws IOException {
+		
+		int currentPage = service.getCurrentPage(pg);
+        int start = service.getLimitStart(currentPage);
+		
+		Map<String, Object> map = new HashMap<>();
 		
 		 List<SearchVO> hss = null; // hss 변수 선언
 
-		    if ("name".equals(searchType)) {
-		        hss = service.SearchHsName(search);
-		        map.put("hss", hss);
-		    } else if ("addr".equals(searchType)) {
-		        hss = service.SearchHsAddr(search);
-		        map.put("hss", hss);
-		    } else {
-		        hss = service.SearchHs(search);
-		        map.put("hss", hss);
-		    }
+	    if ("name".equals(searchType)) {
+	        hss = service.SearchHsName(search, start);
+	        map.put("hss", hss);
+	    } else if ("addr".equals(searchType)) {
+	        hss = service.SearchHsAddr(search);
+	        map.put("hss", hss);
+	    } else {
+	        hss = service.SearchHs(search);
+	        map.put("hss", hss);
+	        
+	        
+	    }
 
-		    if (hss != null && !hss.isEmpty()) { // hss 변수가 존재할 경우에 세션에 추가
-		        sess.setAttribute("hss", hss);
-		    }
+	    if (hss != null && !hss.isEmpty()) { // hss 변수가 존재할 경우에 세션에 추가
+	        sess.setAttribute("hss", hss);
+	    }
 
-		    int result = service.selectSearchHsTotal(search);
+	    int result = service.selectSearchHsTotal(search);
 
-		    model.addAttribute("search", search);
-		    model.addAttribute("hss", hss);
-		    model.addAttribute("result", result);
+	    //model.addAttribute("search", search);
+	    //model.addAttribute("hss", hss);
+	    //model.addAttribute("result", result);
 		
 		// 페이징 처리
-		int currentPage = 1;
-		int start = (currentPage - 1) * 10;
 
         int total = result;
         int lastPageNum = service.getLastPageNum(total);
         int pageStartNum = service.getpageStartNum(total, start);
         int[] groups = service.getPageGroup(currentPage, lastPageNum);
 
-        model.addAttribute("groups", groups);
-        model.addAttribute("currentPage", currentPage);
-        model.addAttribute("start", start);
-        model.addAttribute("total", total);
-        model.addAttribute("lastPageNum", lastPageNum);
+        map.put("groups", groups);
+        map.put("currentPage", currentPage);
+        map.put("start", start);
+        map.put("total", total);
+        map.put("lastPageNum", lastPageNum);
         
-		
 		return map;
 	}
 	
