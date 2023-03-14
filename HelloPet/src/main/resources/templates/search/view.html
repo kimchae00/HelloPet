@@ -4,9 +4,43 @@
 이름 : 장인화
 내용 : View에 병원,약국 자세히 결과, 지도 출력
  -->
+ <script>
+ 
+ $(function(){
+		$('.uid').hide();
+		let hosNo = $('input[name=hosNo]').val();
+		let pharNo = $('input[name=pharNo]').val();
+		
+		 console.log(hosNo);
+		 console.log(pharNo);
+		// 예약하기 버튼
+		$('#GoRe').click(function() {
+		    
+			console.log(hosNo);
+			console.log(pharNo);
+			
+			var eul = "";
+			
+			if(hosNo != null){
+				url = "/HelloPet/search/reserve?hosNo="+hosNo;
+			}else if(pharNo != null){
+				url = "/HelloPet/search/reserve?pharNo="+pharNo; 
+			}
+		    window.location.href = url;
+		  });
+		
+	 
+ });
+ 
+ 
+ 
+ </script>
             <main>
                 <div class="view">
                     <div class="contents">
+                    <input type="hidden" name="hosNo" th:if="${a != null}" th:value="${a.hosNo}">
+                    <input type="hidden" name="pharNo" th:if="${b != null}" th:value="${b.pharNo}">
+                    
                     <input type="hidden" name="Addr" th:if="${a != null}" th:value="${a.hosAddr}">
                     <input type="hidden" name="Addr" th:if="${b != null}" th:value="${b.pharAddr}">
                     
@@ -16,14 +50,14 @@
                       <div class="view-top" th:if="${a != null}">
 						  <h3 class="title" th:text="${a.hosName}"></h3>
 						  <a th:href="@{/search/reserve}">
-						    <img th:src="@{/img/search-예약하기.png}" alt="예약하기">
+						    <img id="GoRe" th:src="@{/img/search-예약하기.png}" alt="예약하기">
 						  </a>
 					  </div>
 						
 					  <div class="view-top" th:if="${b != null}">
 						  <h3 class="title" th:text="${b.pharName}"></h3>
 						  <a th:href="@{/search/reserve}">
-						    <img th:src="@{/img/search-예약하기.png}" alt="예약하기">
+						    <img id="GoRe" th:src="@{/img/search-예약하기.png}" alt="예약하기" >
 						  </a>
 					  </div>
 					  
@@ -46,7 +80,6 @@
             
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5f25185293d664bcd951443d8b8e4a67&libraries=services"></script>
 		<script>
-		
 		let Addr = $('input[name=Addr]').val();
 		let Name = $('input[name=Name]').val();
 		console.log(Addr)
@@ -90,6 +123,6 @@
 		</script>
 	
 	            </div>
-
+				<label sec:authorize="isAuthenticated()"><span class="uid" name="uid" sec:authentication="principal.member.uid">길동</span></label>
             </main>
 <th:block th:include="@{search/_footer.html}"/>

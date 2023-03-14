@@ -1,4 +1,10 @@
 <th:block th:include="@{search/_header.html}"/>
+<script>
+
+let Name = $('input[name=Name]').val();
+
+
+</script>
         <main id="reserve">
             <div class="re">
                 <nav>
@@ -8,10 +14,12 @@
                     <section>
                         <table>
                             <caption>보호자 정보입력</caption>
+                            <input type="hidden" name="Name" th:if="${a != null}" th:value="${a.hosName}">
+                    		<input type="hidden" name="Name" th:if="${b != null}" th:value="${b.pharName}">
                             <tbody>
                                 <tr>
                                     <th>병원</th>
-                                    <td>가루동물병원</td>
+                                    <td>Name</td>
                                 </tr>
                                 <tr>
                                     <th>예약날짜/시간</th>
