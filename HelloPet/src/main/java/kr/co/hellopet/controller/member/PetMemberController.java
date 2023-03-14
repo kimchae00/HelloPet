@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import ch.qos.logback.classic.Logger;
 import kr.co.hellopet.mail.MailSendService;
 import kr.co.hellopet.mail.PasswordMailSendService;
 import kr.co.hellopet.service.MemberService;
@@ -67,12 +69,29 @@ public class PetMemberController {
 		return "member/terms";
 	}
 	
+	//약관 인증 처리
+	@ResponseBody
+	@PostMapping("member/authority")
+	public void authority(@RequestParam("check") boolean check, HttpSession session) {
+		
+		session.setAttribute("termAgreed", check);		
+	}
+	
 	// 가입 (일반회원)
 	@GetMapping("member/register")
-	public String register() {
+	public String register(HttpSession session) {
 		
-		return "/member/register";
-	}
+		boolean termAgreed = Boolean.TRUE.equals(session.getAttribute("termAgreed"));
+		
+		  if (!termAgreed) {
+		    return "redirect:/member/terms?type=owner";
+		    
+		  }else {
+			  session.removeAttribute("termAgreed");
+			  return "/member/register";
+		  }
+		}
+	
 	
 	@PostMapping("member/register")
 	public String register(MemberVO vo, HttpServletRequest req) {
@@ -87,9 +106,17 @@ public class PetMemberController {
 	
 	// 가입 (병원 약국)
 	@GetMapping("member/registerMedical")
-	public String registerMedical(String type) {
+	public String registerMedical(HttpSession session) {
 		
-		return "/member/registerMedical";
+		boolean termAgreed = Boolean.TRUE.equals(session.getAttribute("termAgreed"));
+		
+		  if (!termAgreed) {
+		    return "redirect:/member/terms?type=medical";
+		    
+		  }else {
+			  session.removeAttribute("termAgreed");
+			  return "/member/registerMedical";
+		  }
 	}
 	
 	@PostMapping("member/registerMedical")
@@ -145,39 +172,31 @@ public class PetMemberController {
 	}
 	
 	@ResponseBody
-	@GetMapping("member/findId")
-	public Map<String, MemberVO> findId(@RequestParam("name") String name, @RequestParam("hp") String hp) {
-		
-		MemberVO vo = service.selectFindId(name, hp);
-		Map<String, MemberVO> map = new HashMap<>();
-		map.put("result", vo);
-		
-		return map;
+	@PostMapping("member/findId")
+	public Map<String, ? extends Object> findId(@RequestParam("name") String name, @RequestParam("hp") String hp) {
+
+	    MemberVO owner = service.selectFindId(name, hp);
+	    MedicalVO medical = service.selectFindMedicalId(name, hp);
+
+	    if (owner != null) {
+	        Map<String, MemberVO> map = new HashMap<>();
+	        map.put("owner", owner);
+	        return map;
+	    } else if (medical != null) {
+	        Map<String, MedicalVO> map = new HashMap<>();
+	        map.put("medical", medical);
+	        return map;
+	    } else {
+	        return null;
+	    }
 	}
 	
 	
 	@ResponseBody
 	@PostMapping("member/changePass")
-	public Map<String, Integer> changePass(@RequestParam("email") String email, @RequestParam("name") String name, @RequestParam("hp") String hp, MemberVO vo) {
+	public Map<String, Integer> changePass(@RequestParam("email") String email, @RequestParam("name") String name, @RequestParam("hp") String hp) {
 		
-		System.out.println("email : " +  email + "name : " + name + "hp : "+  hp);
-	
-		Map<String, Integer> resultMap = new HashMap<>();
-		int count = service.selectCountMemberForChangePass(email, name, hp);
-		
-		if(count == 1) {
-			String code = service.makeRandomPass();
-			System.out.println("인증번호는 :  " + code);
-						
-			service.updatePetOwnerPasswordByCodeAndInfo(code, email, name, hp);
-			
-			resultMap.put("result", 1);
-			passwordMail.joinEmail(email);
-		}else {
-			resultMap.put("result", 0);
-		}
-				
-		return resultMap;
+		return null;
 	}
 
 	// uid 중복체크

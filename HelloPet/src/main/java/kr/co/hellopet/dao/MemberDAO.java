@@ -61,13 +61,19 @@ public interface MemberDAO {
 	// find ID 찾기
 	public MemberVO selectFindId(@Param("name") String name, @Param("hp") String hp);
 	
-	// find paswword 
+	// find ID 찾기
+	public MedicalVO selectFindMedicalId(@Param("name") String name, @Param("hp") String hp);
+	
+	// find 존재여부 확인하기 owner
 	public int selectCountMemberForChangePass(@Param("email") String email, @Param("name") String name, @Param("hp") String hp);
 	
-	// find password update
+	// find 존재여부 확인하기 Medical 
+	public int selectCountMedicalForChangePass(@Param("email") String email, @Param("name") String name, @Param("hp") String hp);
+	
+	// find password update - pet owner
 	public void updatePetOwnerPasswordByCodeAndInfo(@Param("pass") String pass, @Param("email") String email, @Param("name") String name, @Param("hp") String hp);
 	
-	public MemberVO selectGetUserInfo (@Param("email") String email, @Param("name") String name, @Param("hp") String hp);
+	// find password update - pet medical
+	public void updateMedicalPasswordByCodeAndInfo(@Param("pass") String pass, @Param("email") String email, @Param("name") String name, @Param("hp") String hp);
 	
-	public void updateUser(String pass, String email, String name, String hp);
 }

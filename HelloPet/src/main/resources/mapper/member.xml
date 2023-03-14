@@ -105,22 +105,25 @@
 		SELECT * FROM `pet_owner` WHERE `name` = #{name} AND `hp` = #{hp};
 	</select>
 	
+	<select id="selectFindMedicalId" resultType="kr.co.hellopet.vo.MedicalVO">
+		SELECT * FROM `pet_hospital_pharmacy` WHERE `name` = #{name} AND `hp` = #{hp};
+	</select>
+	
 	<select id="selectCountMemberForChangePass" resultType="int">
 		SELECT COUNT(`uid`) FROM `pet_owner` WHERE `email`= #{email} AND `name` = #{name} AND `hp` = #{hp};
 	</select>
 	
-	<select id="selectGetUserInfo" resultType="kr.co.hellopet.vo.MemberVO">
-		SELECT * FROM `pet_owner` WHERE `email`; = #{email} AND `name` = #{name} AND `hp` = #{hp};
+	<select id="selectCountMedicalForChangePass" resultType="int">
+		SELECT COUNT(`uid`) FROM `pet_hospital_pharmacy` WHERE `email`= #{email} AND `name` = #{name} AND `hp` = #{hp};
 	</select>
+	
 	
 	<update id="updatePetOwnerPasswordByCodeAndInfo">
 		update `pet_owner` set `pass` = #{pass} where `email` = #{email} AND `name` = #{name} AND `hp` = #{hp}; 
 	</update>
 	
-	<update id="updateUser">
-		UPDATE `pet_owner` SET `pass` = #{pass} where `email` = #{email} AND `name` = #{name} AND `hp` = #{hp};
+	<update id="updateMedicalPasswordByCodeAndInfo">
+		update `pet_hospital_pharmacy` set `pass` = #{pass} where `email` = #{email} AND `name` = #{name} AND `hp` = #{hp}; 
 	</update>
-	
-	
 
 </mapper>

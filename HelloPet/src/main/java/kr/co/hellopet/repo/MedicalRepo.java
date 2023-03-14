@@ -2,11 +2,10 @@ package kr.co.hellopet.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import kr.co.hellopet.entity.MemberEntity;
+import kr.co.hellopet.entity.MedicalEntity;
 
-public interface MemberRepo extends JpaRepository<MemberEntity, String>{
+public interface MedicalRepo extends JpaRepository<MedicalEntity, String>{
 	
 	public int countByuid(String uid);
 
 }
-

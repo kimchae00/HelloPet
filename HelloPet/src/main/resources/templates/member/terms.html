@@ -1,5 +1,32 @@
 <th:block th:include="/member/_header.html"/>
 <script th:src="@{/js/terms.js}"></script>
+<script>
+	$(document).ready(function(){
+		$('#terms_next').click(function(e){
+			e.preventDefault();
+			
+			let check = $('input[name=all]').prop('checked');
+			if(check){
+				
+				let jsonData = {'check' : check};
+				
+				$.ajax({
+					url : '/HelloPet/member/authority',
+					method : 'POST',
+					data : jsonData,
+					dataType : 'json',
+					success : function(data){
+						
+					}
+				});
+				
+			}else{
+				alert('약관에 동의해주세요.');
+			}
+		});
+	});
+
+</script>
 <main class="terms_main">
     <div class="terms_div">
         <div class="terms_top">

@@ -1,13 +1,28 @@
-package kr.co.hellopet.vo;
+package kr.co.hellopet.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
 
-@Getter
-@Setter
-public class MedicalVO {
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Builder
+@Entity
+@Table(name= "pet_hospital_pharmacy")
+public class MedicalEntity {
 	
-	private int medNo;
+	private Integer medNo;
+	private Integer pharNo;
+	
+	@Id
 	private String uid;
 	private String pass;
 	private String pass1;

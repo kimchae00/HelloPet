@@ -104,8 +104,16 @@ public class MemberService {
 		return dao.selectFindId(name, hp);
 	}
 	
+	public MedicalVO selectFindMedicalId(String name, String hp) {
+		return dao.selectFindMedicalId(name, hp);
+	}
+	
 	public int selectCountMemberForChangePass(String email, String name, String hp) {
 		return dao.selectCountMemberForChangePass(email, name, hp);
+	}
+	
+	public int selectCountMedicalForChangePass(String email, String name, String hp) {
+		return dao.selectCountMedicalForChangePass(email, name, hp);
 	}
 	
 	public String makeRandomPass() {
@@ -115,6 +123,11 @@ public class MemberService {
 	}
 	
 	public void updatePetOwnerPasswordByCodeAndInfo(String code, String email, String name, String hp) {
+		String pass = passwordEncoder.encode(code);
+		dao.updatePetOwnerPasswordByCodeAndInfo(pass, email, name, hp);
+	}
+	
+	public void updateMedicalPasswordByCodeAndInfo(String code, String email, String name, String hp) {
 		String pass = passwordEncoder.encode(code);
 		dao.updatePetOwnerPasswordByCodeAndInfo(pass, email, name, hp);
 	}
