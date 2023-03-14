@@ -41,6 +41,7 @@ public class DiseaseController {
 		
 		List<DiseaseResultMapVO> resultMaps = service.selectDisease(group);
 		model.addAttribute("resultMaps", resultMaps);
+		model.addAttribute("group", group);
 		
 		return "disease/index";
 		

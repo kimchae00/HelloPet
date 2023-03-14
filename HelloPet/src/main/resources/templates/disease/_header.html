@@ -22,8 +22,8 @@
         <header class="header">
             <div class="headerTop">
                 <div>
-                    <a href="#">로그인</a>
-                    <a href="#">회원가입</a>
+                    <a th:href="@{/member/login}">로그인</a>
+                    <a th:href="@{/member/join}">회원가입</a>
                     <a href="#">마이페이지</a>
                 </div>
             </div>
@@ -31,9 +31,9 @@
                 <div>
                     <ul>
                         <li><a th:href="@{/disease/index}">증상별질병찾기</a></li>
-                        <li><a href="./search/index.html">병원/약국찾기</a></li>
+                        <li><a th:href="@{/search/index}">병원/약국찾기</a></li>
                         <li class="logo"><a th:href="@{/}"><img th:src="@{/img/ci.png}" alt="logo"></a></li>
-                        <li><a href="./community/tip/list.html">커뮤니티</a></li>
+                        <li><a th:href="@{/community/tip/list}">커뮤니티</a></li>
                         <li><a th:href="@{/cs/notice/list}">고객센터</a></li>
                     </ul>
                 </div>
