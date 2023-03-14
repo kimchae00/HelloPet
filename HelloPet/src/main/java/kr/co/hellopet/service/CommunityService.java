@@ -127,25 +127,20 @@ public class CommunityService {
 		
 		// DB에 저장할 이미지 경로 지정
 		List<String> names = imgsUpload(vo);
+		
 		vo.setImg1("/HelloPet/file/"+names.get(0));
-		
-		if(names.get(1) == null || names.get(2) == null) {
-			vo.setImg2(null);
-			vo.setImg3(null);
-			// 수정필요
-		}else {
-			vo.setImg2("/HelloPet/file/"+names.get(1));
-			vo.setImg3("/HelloPet/file/"+names.get(2));
-		}
+		vo.setImg2("/HelloPet/file/"+names.get(1));
+		vo.setImg3("/HelloPet/file/"+names.get(2));
 		
 		
 		
 		
 		
 		
-		if(vo.getImg1() != null) {
+		
+		
 			result = dao.insertTalkArticle(vo);
-		}
+		
 		return result;
 	}
 	
